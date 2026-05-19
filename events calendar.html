@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AlumniArc – Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:   #F5A623;
+      --dark:   #1A1A1A;
+      --mid:    #555;
+      --light:  #F0F0EE;
+      --white:  #FFFFFF;
+      --radius: 14px;
+      --shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: white;
+      
+      min-height: 100vh;
+    }
+
+    nav {
+      background: orange;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.25rem;
+    }
+    
+    main {
+      padding: 28px 20px 140px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .calendar-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 20px 24px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+      animation: fadeUp .4s ease both;
+    }
+    .section-sub {
+      color: var(--mid);
+      font-size: .9rem;
+      line-height: 1.55;
+      margin-bottom: 24px;
+      animation: fadeUp .4s .08s ease both;
+    }
+
+    .event-item {
+      display: flex;
+      align-items: stretch;
+      border: 1px solid #E8E8E8;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+      animation: fadeUp .4s .12s ease both;
+    }
+
+    .event-date {
+      background: var(--gold);
+      min-width: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 10px;
+      border-radius: var(--radius) 0 0 var(--radius);
+      line-height: 1.2;
+    }
+    .event-date .day-name {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .event-date .day-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .event-date .month {
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .event-info {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+    .event-name {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .event-location {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .83rem;
+      color: var(--mid);
+    }
+    .event-location svg {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    /* Hidden extra events */
+    .extra-events {
+      display: none;
+      margin-top: 0;
+    }
+    .extra-events.open {
+      display: block;
+    }
+
+    .view-btn {
+      display: block;
+      width: 100%;
+      margin-top: 28px;
+      padding: 15px;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(245,166,35,.35);
+      transition: transform .15s, box-shadow .15s;
+      animation: fadeUp .4s .2s ease both;
+    }
+    .view-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(245,166,35,.45); }
+
+    .sticky-footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white);
+      padding: 16px 20px 28px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-signup {
+      padding: 14px;
+      background: #1877F2;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-login {
+      padding: 14px;
+      background: transparent;
+      color: var(--dark);
+      border: 1.5px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <span class="nav-logo">AlumniArc</span>
+    <div style="width:22px"></div>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="calendar-card">
+
+      <h1 class="section-title">Event calendar</h1>
+      <p class="section-sub">Upcoming community meetups and tech workshops</p>
+
+      <!-- Default 2 events -->
+      <div class="event-item">
+        <div class="event-date">
+          <span class="day-name">SAT</span>
+          <span class="day-num">28</span>
+          <span class="month">MAY</span>
+        </div>
+        <div class="event-info">
+          <span class="event-name">End of month alumni social meetup</span>
+          <span class="event-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            Downtown Tech Hub
+          </span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date">
+          <span class="day-name">FRI</span>
+          <span class="day-num">29</span>
+          <span class="month">May</span>
+        </div>
+        <div class="event-info">
+          <span class="event-name">Graduation Day</span>
+          <span class="event-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            National Hub
+          </span>
+        </div>
+      </div>
+
+      <!-- 7 Extra events (hidden by default) -->
+      <div class="extra-events" id="extraEvents">
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="day-name">MON</span>
+            <span class="day-num">12</span>
+            <span class="month">JUN</span>
+          </div>
+          <div class="event-info">
+            <span class="event-name">Web Development Bootcamp</span>
+            <span class="event-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              Innovation Hub, Kampala
+            </span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="day-name">WED</span>
+            <span class="day-num">18</span>
+            <span class="month">JUN</span>
+          </div>
+          <div class="event-info">
+            <span class="event-name">UI/UX Design Masterclass</span>
+            <span class="event-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              Design Studio, Nakasero
+            </span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="day-name">SAT</span>
+            <span class="day-num">22</span>
+            <span class="month">JUN</span>
+          </div>
+          <div class="event-info">
+            <span class="event-name">Alumni Networking Night</span>
+            <span class="event-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              Serena Hotel, Kampala
+            </span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="day-name">TUE</span>
+            <span class="day-num">01</span>
+            <span class="month">JUL</span>
+          </div>
+          <div class="event-info">
+            <span class="event-name">Data Science Workshop</span>
+            <span class="event-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              Tech Park, Ntinda
+            </span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="day-name">FRI</span>
+            <span class="day-num">11</span>
+            <span class="month">JUL</span>
+          </div>
+          <div class="event-info">
+            <span class="event-name">GitHub & Open Source Talk</span>
+            <span class="event-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              National Hub, Kololo
+            </span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="day-name">SAT</span>
+            <span class="day-num">19</span>
+            <span class="month">JUL</span>
+          </div>
+          <div class="event-info">
+            <span class="event-name">Cybersecurity Awareness Seminar</span>
+            <span class="event-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              Downtown Tech Hub
+            </span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="day-name">THU</span>
+            <span class="day-num">31</span>
+            <span class="month">JUL</span>
+          </div>
+          <div class="event-info">
+            <span class="event-name">Alumin Arc Meetup</span>
+            <span class="event-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              Kampala Convention Centre
+            </span>
+          </div>
+        </div>
+
+      </div>
+      <!-- End extra events -->
+
+      <button class="view-btn" id="viewBtn" onclick="toggleEvents()">View All Events</button>
+
+    </div>
+  </main>
+
+  <script>
+    function toggleEvents() {
+      const extra = document.getElementById('extraEvents');
+      const btn = document.getElementById('viewBtn');
+      extra.classList.toggle('open');
+      if (extra.classList.contains('open')) {
+        btn.textContent = 'Show Less';
+      } else {
+        btn.textContent = 'View All Events';
+      }
+    }
+  </script>
+
+</body>
+</html>
