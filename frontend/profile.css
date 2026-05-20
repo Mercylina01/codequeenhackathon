@@ -1,0 +1,224 @@
+/* profile.css — styles for profile.html */
+/* Requires dashboard.css and auth.css to be loaded first */
+
+/* ===== PROFILE HEADER ===== */
+.profile-header {
+  background: linear-gradient(160deg, var(--orange) 0%, #D97420 100%);
+  padding: 28px 20px 24px;
+  text-align: center;
+  color: #fff;
+}
+
+/* ===== PROFILE PICTURE ===== */
+.avatar-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.profile-pic {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.3);
+
+  /* Fallback colour if image is missing */
+  display: block;
+}
+
+/* Hide the real file input — we use the label instead */
+#photo-upload {
+  display: none;
+}
+
+.change-photo-btn {
+  display: inline-block;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* ===== NAME & ROLE ===== */
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.profile-name-row h2 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.cohort-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+.profile-role {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+
+/* ===== EDIT BUTTON ===== */
+.btn-edit {
+  background: #fff;
+  color: var(--orange);
+  border: none;
+  border-radius: 50px;
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ===== BIO TEXT ===== */
+.bio-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ===== SKILLS DISPLAY ===== */
+.skills-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ===== SETTINGS LIST ===== */
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.settings-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ===== TOGGLE SWITCH ===== */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* The little white circle inside the toggle */
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s;
+}
+
+/* When the checkbox is checked, turn orange and slide the circle */
+.toggle input:checked + .toggle-slider {
+  background: var(--orange);
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* ===== ACCOUNT LINKS ===== */
+.account-links {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.account-link {
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.account-link:last-child {
+  border-bottom: none;
+}
+
+.account-link.danger {
+  color: #C0392B;
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.btn-logout {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #fff;
+  color: #C0392B;
+  border: 1.5px solid #C0392B;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
