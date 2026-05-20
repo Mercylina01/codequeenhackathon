@@ -158,7 +158,7 @@ body {
   text-decoration: none;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 .section {
   padding: 24px 20px;
   border-bottom: 6px solid #f4f4f4;
@@ -201,7 +201,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* ===== ACTION GRID ===== */
+/* ACTION GRID */
 .action-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -226,7 +226,7 @@ body {
   color: var(--text);
 }
 
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 .btn-primary {
   display: block;
   width: 100%;
@@ -260,7 +260,7 @@ body {
   margin-top: 10px;
 }
 
-/* ===== MENTOR HIGHLIGHT ===== */
+/* MENTOR HIGHLIGHT */
 .mentor-highlight {
   display: flex;
   gap: 14px;
@@ -305,7 +305,7 @@ body {
 /* .mentor-img-placeholder span { font-size: 22px; }
 .mentor-img-placeholder p { font-size: 9px; color: var(--muted); text-align: center; } */
 
-/* ===== EVENT CARDS ===== */
+/* EVENT CARDS */
 .event-card {
   display: flex;
   gap: 14px;
