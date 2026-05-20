@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlumniArc – Sign Up</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="auth.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <div class="logo">
+          alumni Arc
+          <small>Code Queen</small>
+        </div>
+      </nav>
+
+      <!-- PROGRESS BAR -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <!-- STEP INDICATORS -->
+      <div class="steps-row">
+        <div class="step active" id="step-dot-1">
+          <div class="step-circle">1</div>
+          <div class="step-label">Account</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" id="step-dot-2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Profile</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" id="step-dot-3">
+          <div class="step-circle">✓</div>
+          <div class="step-label">Done</div>
+        </div>
+      </div>
+
+      <!-- STEP 1: ACCOUNT -->
+      <div class="form-section" id="step-1">
+        <h2>Create your account</h2>
+        <p class="section-sub">Join the AlumniArc community</p>
+
+        <div class="form-group">
+          <label>Full name</label>
+          <input type="text" placeholder="e.g. Aisha Nalwoga" />
+        </div>
+
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="you@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input
+              type="password"
+              id="password"
+              placeholder="At least 8 characters"
+            />
+            <button class="toggle-pw" onclick="togglePassword()" type="button">
+              👁
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm password</label>
+          <input type="password" placeholder="Repeat your password" />
+        </div>
+
+        <button class="btn-primary" onclick="goToStep(2)">Continue →</button>
+
+        <div class="divider-text" style="margin: 14px 0"><span>or</span></div>
+
+        <button class="btn-google">
+          <img
+            src="https://www.google.com/favicon.ico"
+            alt="Google"
+            class="google-icon"
+          />
+          Continue with Google
+        </button>
+
+        <p class="auth-link">
+          Already have an account? <a href="login.html">Log in</a>
+        </p>
+      </div>
+
+      <!-- STEP 2: PROFILE -->
+      <div class="form-section hidden" id="step-2">
+        <h2>Set up your profile</h2>
+        <p class="section-sub">Help your alumni community know you</p>
+
+        <div class="form-group">
+          <label>Cohort number</label>
+          <select>
+            <option value="">Select your cohort</option>
+            <option>Cohort 1</option>
+            <option>Cohort 2</option>
+            <option>Cohort 3</option>
+            <option>Cohort 4</option>
+            <option>Cohort 5</option>
+            <option>Cohort 6</option>
+            <option>Cohort 7</option>
+            <option>Cohort 8</option>
+            <option>Cohort 9</option>
+            <option>Cohort 10</option>
+            <option>Cohort 11</option>
+            <option>Cohort 12</option>
+            <option>Cohort 13</option>
+            <option>Cohort 14</option>
+            <option>Cohort 15</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Your role / title</label>
+          <input type="text" placeholder="e.g. Frontend Developer" />
+        </div>
+
+        <div class="form-group">
+          <label>Current location</label>
+          <input type="text" placeholder="e.g. Kampala, Uganda" />
+        </div>
+
+        <div class="form-group">
+          <label>Short bio</label>
+          <textarea
+            placeholder="Tell the community a little about yourself..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Skills (select all that apply)</label>
+          <div class="tags-select">
+            <span class="skill-tag" onclick="toggleTag(this)"
+              >UI/UX Design</span
+            >
+            <span class="skill-tag" onclick="toggleTag(this)"
+              >Frontend Dev</span
+            >
+            <span class="skill-tag" onclick="toggleTag(this)">Backend Dev</span>
+            <span class="skill-tag" onclick="toggleTag(this)"
+              >Data Science</span
+            >
+            <span class="skill-tag" onclick="toggleTag(this)"
+              >Project Mgmt</span
+            >
+            <span class="skill-tag" onclick="toggleTag(this)"
+              >Cybersecurity</span
+            >
+            <span class="skill-tag" onclick="toggleTag(this)">Cloud</span>
+            <span class="skill-tag" onclick="toggleTag(this)">Mobile Dev</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button
+            class="btn-outline"
+            onclick="goToStep(1)"
+            style="width: auto; padding: 13px 24px"
+          >
+            ← Back
+          </button>
+          <button class="btn-primary" onclick="goToStep(3)" style="flex: 1">
+            Complete Sign Up
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: SUCCESS -->
+      <div class="form-section hidden text-center" id="step-3">
+        <div class="success-icon">🎉</div>
+        <h2>Welcome to AlumniArc!</h2>
+        <p class="section-sub">
+          Your account has been created. You're now part of the CodeQueen
+          sisterhood.
+        </p>
+        <a href="dashboard.html" class="btn-primary" style="margin-top: 24px"
+          >Go to Dashboard</a
+        >
+      </div>
+    </div>
+
+    <script>
+      function goToStep(n) {
+        document
+          .querySelectorAll(".form-section")
+          .forEach((s) => s.classList.add("hidden"));
+        document.getElementById("step-" + n).classList.remove("hidden");
+
+        document.querySelectorAll(".step").forEach((s, i) => {
+          s.classList.toggle("active", i + 1 <= n);
+        });
+
+        const fills = { 1: "33%", 2: "66%", 3: "100%" };
+        document.getElementById("progress-fill").style.width = fills[n];
+      }
+
+      function togglePassword() {
+        const pw = document.getElementById("password");
+        pw.type = pw.type === "password" ? "text" : "password";
+      }
+
+      function toggleTag(el) {
+        el.classList.toggle("selected");
+      }
+
+      goToStep(1);
+    </script>
+  </body>
+</html>

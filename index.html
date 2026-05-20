@@ -1,1031 +1,246 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>AlumniArc Platform</title>
-  <link rel="icon"
-  type="image/jpg"
-  href="img.03.jpg">
-
-
-
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      font-family:Arial, sans-serif;
-      background:#8e9093;
-      overflow-x:hidden;
-    }
-
-
-    .navbar{
-      background:#b79fcf;
-      padding:15px 0;
-    }
-
-    .navbar-brand{
-      color:rgb(16, 15, 15);
-      font-size:32px;
-      font-weight:900;
-    }
-
-    .navbar-brand:hover{
-      color:#9d9256;
-    }
-
-    .nav-link{
-      color:white !important;
-      margin-left:18px;
-      font-size:17px;
-      font-weight:600;
-    }
-
-    .join-btn{
-      background:#ffd700;
-      color:black !important;
-      padding:10px 22px !important;
-      border-radius:30px;
-      font-weight:bold;
-    }
-
-
-    .hero{
-      height:100vh;
-
-      background:
-      linear-gradient(rgba(0,0,0,0.6),
-      rgba(0,0,0,0.6)),
-
-    url("img.02.jpg");
-    
-      background-size:cover;
-      background-position:center;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      text-align:center;
-      color:white;
-      padding:20px;
-    }
-
-    .hero h1{
-      font-size:70px;
-      font-weight:900;
-      line-height:1.2;
-    }
-
-    .hero p{
-      font-size:24px;
-      font-weight:300;
-      margin-top:20px;
-    }
-
-    .hero button{
-      margin-top:30px;
-      padding:14px 32px;
-      border:none;
-      border-radius:30px;
-      background:#ffd700;
-      font-size:18px;
-      font-weight:bold;
-    }
-
-
-    section{
-      padding:90px 0;
-    }
-
-    .section-title{
-      text-align:center;
-      color:#74677d;
-      font-size:45px;
-      font-weight:900;
-      margin-bottom:60px;
-    }
-
-
-    .about-text{
-      font-size:22px;
-      font-weight:300;
-      line-height:1.8;
-    }
-
-
-    .card-box{
-      background:white;
-      padding:35px;
-      border-radius:20px;
-      text-align:center;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-      height:100%;
-      transition:0.3s;
-    }
-
-    .card-box:hover{
-      transform:translateY(-10px);
-    }
-
-    .card-box h3{
-      font-size:30px;
-      font-weight:900;
-      margin-bottom:15px;
-      color:#6e478a;
-    }
-
-    .card-box p{
-      font-size:18px;
-      font-weight:300;
-    }
-
-
-    .achievement{
-      background:white;
-      padding:35px;
-      border-radius:20px;
-      text-align:center;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-      height:100%;
-    }
-
-    .achievement h2{
-      font-size:45px;
-      font-weight:900;
-      color:#6e478a;
-    }
-
-    .achievement p{
-      font-size:18px;
-      font-weight:300;
-    }
-
-
-    .mentor-card{
-      background:white;
-      padding:40px;
-      border-radius:20px;
-      text-align:center;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-      height:100%;
-    }
-
-    .mentor-card h4{
-      font-size:30px;
-      font-weight:900;
-      margin-bottom:15px;
-    }
-
-    .mentor-card p{
-      font-size:20px;
-      font-weight:300;
-      margin-bottom:20px;
-    }
-
-
-    .events-section{
-
-      background:
-      linear-gradient(rgba(0,0,0,0.7),
-      rgba(0,0,0,0.7)),
-      url("img.04.jpg");
-
-      background-size:cover;
-      background-repeat:no-repeat;
-
-      animation:moveBackground 18s infinite linear;
-    }
-
-    @keyframes moveBackground{
-
-      0%{
-        background-position:center top;
-      }
-
-      50%{
-        background-position:center bottom;
-      }
-
-      100%{
-        background-position:center top;
-      }
-
-    }
-
-   .job-card{
-      background:white;
-      padding:35px;
-      border-radius:20px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-      height:100%;
-      transition:0.3s;
-    }
-
-    .job-card:hover{
-      transform:translateY(-10px);
-    }
-
-    .job-card h4{
-      color:#623980;
-      font-size:28px;
-      font-weight:900;
-      margin-bottom:15px;
-    }
-
-    .job-card p{
-      font-size:18px;
-      margin-bottom:10px;
-    }
-
-    .leader-card{
-      background:rgb(255, 255, 255);
-      padding:30px;
-      border-radius:20px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom:25px;
-    }
-
-    .leader-card h5{
-      font-size:32px;
-      font-weight:900;
-      margin-bottom:10px;
-    }
-
-    .leader-card p{
-      font-size:20px;
-      font-weight:300;
-    }
-
-    .progress{
-      height:22px;
-      border-radius:20px;
-    }
-
-
-    .contact-section{
-      background:#5f3b7d;
-      color:white;
-    }
-
-    .form-control{
-      margin-bottom:20px;
-      border-radius:12px;
-      padding:15px;
-      border:none;
-    }
-
-
-    footer{
-      background:#5f3b7d;
-      color:white;
-      text-align:center;
-      padding:40px 20px;
-    }
-
-    footer h4{
-      font-size:35px;
-      font-weight:900;
-      margin-bottom:20px;
-    }
-
-    footer p{
-      margin-top:20px;
-      font-size:18px;
-      font-weight:300;
-    }
-
-    .social-icons i{
-      font-size:30px;
-      margin:10px;
-      transition:0.3s;
-      cursor:pointer;
-    }
-
-    .social-icons i:hover{
-      color:#ffd700;
-    }
-
-  </style>
-
-</head>
-
-<body>
-
-
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-
-    <div class="container">
-
-    <a class="navbar-brand" href="#">
-
-  <img src="img.03.jpg"
-  alt="AlumniArc Logo"
-  width="70"
-  class="rounded-circle">
-
-</a>
-
-      <button class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav">
-
-        <span class="navbar-toggler-icon"></span>
-
-      </button>
-
-      <div class="collapse navbar-collapse"
-      id="navbarNav">
-
-        <ul class="navbar-nav ms-auto">
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Home
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              About
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Services
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Login
-            </a>
-          </li>
-
-         <li class="nav-item">
-            <a class="nav-link" href="#">
-              Jobs
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Login
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link join-btn" href="#">
-              Join The Community
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-  </nav>
-
-
-  <section class="hero">
-
-    <div class="container">
-
-      <h1>
-        Building Digital Sisterhood,
-        <br>
-        One Cohort At A Time
-      </h1>
-
-      <p>
-        Connecting Current and Alumni Code Queens
-        Through Leadership, Mentorship and Innovation
-      </p>
-
-      <button>
-        Explore Community
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <section>
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Your Digital Sisterhood Awaits
-      </h2>
-
-      <div class="row align-items-center g-5">
-
-        <div class="col-md-6">
-
-          <img src="img.01.jpg"
-          class="img-fluid rounded-4">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlumniArc – Building Digital Sisterhood</title>
+    <link rel="stylesheet" href="landing.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- NAVBAR -->
+      <nav class="navbar" style="position: relative">
+        <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="nav-menu hidden" id="nav-menu">
+          <a href="#about">About</a>
+          <a href="mentors.html">Mentors</a>
+          <a href="eventscalendar.html">Events</a>
+          <a href="#jobs">Jobs</a>
+          <a href="login.html">Login</a>
+          <a href="signup.html" style="color: var(--orange)"
+            >Join the Community</a
+          >
         </div>
-
-        <div class="col-md-6">
-
-          <p class="about-text">
-
-            AlumniArc is a digital platform designed to
-            connect current and alumni Code Queens through
-            mentorship, networking, collaboration and leadership.
-
-            The platform promotes digital sisterhood by
-            empowering young women in technology to share
-            opportunities, inspire innovation and build
-            stronger communities together.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="bg-light">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Our Services
-      </h2>
-
-      <div class="row g-4">
-
-        <div class="col-md-4">
-
-          <div class="card-box">
-
-            <h3>Mentorship</h3>
-
-            <p>
-              Connect with experienced mentors
-              for guidance, career growth and support.
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="card-box">
-
-            <h3>Networking</h3>
-
-            <p>
-              Meet fellow alumni, employers and
-              women in technology communities.
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="card-box">
-
-            <h3>Opportunities</h3>
-
-            <p>
-              Access scholarships, internships,
-              bootcamps and job opportunities.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section>
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Community Achievements
-      </h2>
-
-      <div class="row g-4 text-center">
-
-        <div class="col-md-3">
-
-          <div class="achievement">
-
-            <h2>500+</h2>
-
-            <p>Community Members</p>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-3">
-
-          <div class="achievement">
-
-            <h2>120+</h2>
-
-            <p>Mentorship Sessions</p>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-3">
-
-          <div class="achievement">
-
-            <h2>80+</h2>
-
-            <p>Tech Events Hosted</p>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-3">
-
-          <div class="achievement">
-
-            <h2>300+</h2>
-
-            <p>Internships Shared</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="bg-light">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Connect With Mentors
-      </h2>
-
-      <div class="row g-4">
-
-        <div class="col-md-4">
-
-          <div class="mentor-card">
-
-            <h4>Sheba</h4>
-
-            <p>HTML and CSS</p>
-
-            <button class="btn btn-dark px-4">
-              Connect
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="mentor-card">
-
-            <h4>Prossy</h4>
-
-            <p>Git and GitHub</p>
-
-            <button class="btn btn-dark px-4">
-              Connect
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="mentor-card">
-
-            <h4>Vision</h4>
-
-            <p>Java Script</p>
-
-            <button class="btn btn-dark px-4">
-              Connect
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section>
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Upcoming Events
-      </h2>
-
-      <div class="row g-4">
-
-        <div class="col-md-4">
-
-          <div class="event-card">
-
-            <h4>Women In Tech Summit</h4>
-
-            <p>Date: June 12, 2026</p>
-
-            <button class="btn btn-primary px-4">
-              Reservation
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="event-card">
-
-            <h4>Frontend Bootcamp</h4>
-
-            <p>Date: July 5, 2026</p>
-
-            <button class="btn btn-primary px-4">
-              Reservation
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="event-card">
-
-            <h4>Networking Meetup</h4>
-
-            <p>Date: August 10, 2026</p>
-
-            <button class="btn btn-primary px-4">
-              Reservation
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-<section class="bg-light">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Latest Job Opportunities
-      </h2>
-
-      <div class="row g-4">
-
-        <div class="col-md-4">
-
-          <div class="job-card">
-
-            <h4>Frontend Developer</h4>
-
-            <p>Company: TechRise Africa</p>
-
-            <p>Location: Kampala</p>
-
-            <button class="btn btn-dark">
-              Apply Now
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="job-card">
-
-            <h4>UI/UX Designer</h4>
-
-            <p>Company: Digital Queens</p>
-
-            <p>Location: Remote</p>
-
-            <button class="btn btn-dark">
-              Apply Now
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="job-card">
-
-            <h4>Software Intern</h4>
-
-            <p>Company: Refactory Academy</p>
-
-            <p>Location: Uganda</p>
-
-            <button class="btn btn-dark">
-              Apply Now
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section class="bg-light">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Community Leader Board
-      </h2>
-
-      <div class="leader-card">
-
-        <h5>Staicy Lena</h5>
-
-        <p>
-          Cohort 5 • Mentorship & Event Coordination
-        </p>
-
-        <div class="progress">
-
-          <div class="progress-bar bg-success"
-          style="width:90%">
-
-            90%
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="leader-card">
-
-        <h5>Tracy</h5>
-
-        <p>
-          Cohort 2 • Community Engagement
-        </p>
-
-        <div class="progress">
-
-          <div class="progress-bar bg-danger"
-          style="width:80%">
-
-            80%
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="leader-card">
-
-        <h5>Proscovia N</h5>
-
-        <p>
-          Cohort 4 • Internship Support
-        </p>
-
-        <div class="progress">
-
-          <div class="progress-bar bg-info"
-          style="width:75%">
-
-            75%
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="leader-card">
-
-        <h5>Mercy L</h5>
-
-        <p>
-          Cohort 3 • Community Leadership
-        </p>
-
-        <div class="progress">
-
-          <div class="progress-bar bg-warning"
-          style="width:85%">
-
-            85%
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="contact-section">
-
-    <div class="container">
-
-      <h2 class="section-title text-white">
-        Comments & Inquiries
-      </h2>
-
-      <div class="row justify-content-center">
-
-        <div class="col-md-8">
-
-          <form>
-
-            <input type="text"
-            class="form-control"
-            placeholder="Your Name">
-
-            <input type="email"
-            class="form-control"
-            placeholder="Your Email">
-
-            <textarea class="form-control"
-            rows="5"
-            placeholder="Write your comment or inquiry"></textarea>
-
-            <button class="btn btn-warning w-100 py-3 fw-bold">
-              Submit
-            </button>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-<footer>
-
-    <div class="container">
-
-      <div class="row g-5">
-
-        <!-- FOOTER BRAND -->
-
-        <div class="col-lg-4">
-
-          <img src="img.03.jpg"
-          alt="Footer Logo"
-          width="120"
-          class="rounded-circle mb-4">
-
-          <h4 class="fw-bold">
-            AlumniArc Platform
-          </h4>
-
+      </nav>
+
+      <!-- HERO SECTION -->
+      <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Building Digital Sisterhood</h1>
+          <h1>One Cohort at a Time</h1>
           <p>
-            Building Digital Sisterhood,
-            One Cohort At A Time.
+            Connecting Current and Alumni Code Queens Through Leadership, Mentorship and Innovation
           </p>
-
-        </div>
-
-        <!-- QUICK LINKS -->
-
-        <div class="col-lg-4">
-
-          <h4 class="mb-4">
-            Quick Links
-          </h4>
-
-          <div class="footer-links">
-
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Mentors</a>
-            <a href="#">Events</a>
-            <a href="#">Jobs</a>
-            <a href="#">Contact</a>
-
+          <div class="hero-btns">
+            <a href="signup.html" class="btn-hero-primary"
+              >Join the Community</a
+            >
+            <a href="login.html" class="btn-hero-outline">Login</a>
           </div>
-
         </div>
-
-        <!-- SOCIAL MEDIA -->
-
-        <div class="col-lg-4">
-
-          <h4 class="mb-4">
-            Follow Us
-          </h4>
-
-          <div class="social-icons">
-
-            <i class="bi bi-facebook"></i>
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-twitter-x"></i>
-            <i class="bi bi-linkedin"></i>
-            <i class="bi bi-tiktok"></i>
-
-          </div>
-
-          <p class="mt-4">
-            Stay connected with our
-            growing digital community.
-          </p>
-
-        </div>
-
       </div>
 
-      <!-- FOOTER BOTTOM -->
+      <!-- ABOUT SECTION -->
+      <div class="section" id="about">
+        <div class="about-label">ABOUT ALUMNIARC</div>
+        <p class="about-text">
+          AlumniArc is a digital platform designed to connect current and alumni
+          Code Queens through mentorship, networking, collaboration and
+          leadership. The platform promotes digital sisterhood by empowering
+          young women in technology to share opportunities, inspire innovation
+          and build stronger communities together.
+        </p>
+        <a href="#" class="view-link">Learn more</a>
+      </div>
 
-      <div class="footer-bottom">
-
-        <p>
-          © 2026 Educating The Children.
-          AlumniArc Platform.
-          All Rights Reserved.
+      <!-- DASHBOARD PREVIEW -->
+      <div class="section">
+        <h2>Alumni Dashboard</h2>
+        <p class="section-sub">
+          Access your profile, feed and personalized chats
         </p>
 
+        <div class="action-grid">
+          <div class="action-card">
+            <div class="icon">👤</div>
+            <span>Profile / Edit Profile</span>
+          </div>
+          <div class="action-card">
+            <div class="icon">🌐</div>
+            <span>Newsfeed</span>
+          </div>
+          <div class="action-card">
+            <div class="icon">💬</div>
+            <span>Active Chat Panel</span>
+          </div>
+        </div>
+
+        <a href="login.html" class="btn-primary" style="margin-top: 14px"
+          >Login to Alumni Dashboard</a
+        >
       </div>
 
+      <!-- MENTORS SECTION -->
+      <div class="section" id="mentors">
+        <h2>Mentors</h2>
+        <p class="section-sub">
+          Guided professional growth from experienced leaders
+        </p>
+
+        <div class="mentor-highlight">
+          <div class="mentor-quote">
+            "Our mentorship program pairs young professionals with industry
+            veterans for structured career guidance."
+          </div>
+          <!-- MENTOR PLACEHOLDER IMAGE -->
+          <img src="mentor.jpg" alt="Mentor photo" class="mentor-img" />
+        </div>
+
+        <a href="mentors.html" class="btn-outline">Connect with a Mentor</a>
+      </div>
+
+      <!-- EVENTS SECTION -->
+      <div class="section" id="events">
+        <h2>Event Calendar</h2>
+        <p class="section-sub">Upcoming community meetups and tech workshops</p>
+
+        <div class="events-row">
+          <div class="event-card">
+            <div class="date-box">
+              <div class="day">28</div>
+              <div class="month">MAY</div>
+            </div>
+            <div>
+              <div class="title">End-of-month alumni social meetup</div>
+              <div class="location">📍 Downtown Tech Hub</div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="date-box">
+              <div class="day">05</div>
+              <div class="month">JUNE</div>
+            </div>
+            <div>
+              <div class="title">Navigating Tech-space Center Seminar</div>
+              <div class="location">📍 National ICT Hub, UG</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="eventscalendar.html" class="btn-outline">View All Events</a>
+      </div>
+
+      <!-- JOBS SECTION -->
+      <div class="section" id="jobs">
+        <h2>Jobs</h2>
+        <p class="section-sub">
+          Exclusive opportunities for the AlumniArc network
+        </p>
+
+        <div class="jobs-row">
+          <div class="job-card">
+            <span class="job-badge full-time">Full-time</span>
+            <div class="title">UI/UX Designer</div>
+            <div class="location">📍 Kampala, UG</div>
+            <button
+              class="btn-apply"
+              onclick="window.location.href = 'signup.html'"
+            >
+              Apply Now
+            </button>
+          </div>
+          <div class="job-card">
+            <span class="job-badge remote">Remote</span>
+            <div class="title">Software Engineer</div>
+            <div class="location">📍 Nairobi, KE</div>
+            <button
+              class="btn-apply"
+              onclick="window.location.href = 'signup.html'"
+            >
+              Apply Now
+            </button>
+          </div>
+        </div>
+
+        <a href="#" class="btn-outline">View more Jobs</a>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-inner">
+          <!-- Column 1: Logo + tagline + social -->
+          <div class="footer-col">
+            <img src="logo.png" alt="AlumniArc Logo" class="footer-logo" />
+            <p class="footer-tagline">
+              Empowering women in tech, one cohort at a time.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-btn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.73C24 .77 23.2 0 22.22 0z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-btn" title="X / Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.24 2h3.27l-7.14 8.16L23 22h-6.58l-5.15-6.74L5.15 22H1.88l7.63-8.72L1 2h6.75l4.66 6.17L18.24 2zm-1.15 18h1.81L6.99 3.84H5.06L17.09 20z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-btn" title="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.27c0-5.45 4.44-9.88 9.9-9.88a9.84 9.84 0 0 1 7 2.9 9.81 9.81 0 0 1 2.89 6.99c0 5.45-4.44 9.9-9.9 9.9zm8.41-18.2A11.82 11.82 0 0 0 12.04 0C5.4 0 .02 5.38.02 12a11.93 11.93 0 0 0 1.6 6L0 24l6.18-1.62A11.94 11.94 0 0 0 12.05 24c6.63 0 12.01-5.38 12.01-12 0-3.2-1.25-6.22-3.6-8.4z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="footer-col">
+            <div class="footer-heading">Quick Links</div>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="mentors.html">Mentors</a>
+            <a href="eventscalendar.html">Events</a>
+            <a href="#">View Gallery</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+          </div>
+
+          <!-- Column 3: Contact -->
+          <div class="footer-col">
+            <div class="footer-heading">Contact</div>
+            <div class="footer-item">✉️ hello@alumniarc.edu</div>
+            <div class="footer-item">📞 +256 70 012-3456</div>
+            <div class="footer-item">📍 National ICT Hub, UG</div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          © 2025 AlumniArc · Code Queen · Educating the Children
+        </div>
+      </footer>
     </div>
 
-  </footer>
+    <script>
+      function toggleMenu() {
+        document.getElementById("nav-menu").classList.toggle("hidden");
+      }
 
-  <!-- BOOTSTRAP JS -->
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
+      document.addEventListener("click", function (e) {
+        const menu = document.getElementById("nav-menu");
+        const btn = document.querySelector(".menu-btn");
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          menu.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
 </html>
