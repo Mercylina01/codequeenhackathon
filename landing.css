@@ -415,7 +415,7 @@ body {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  /* background: #2e2e2e; */
+  background: #2e2e2e;
   display: grid;
   place-items: center;
   color: #aaa;
@@ -451,7 +451,7 @@ body {
 
 .footer-item {
   font-size: 12px;
-  /* color: #aaa; */
+  color: #aaa;
   margin-bottom: 7px;
   line-height: 1.4;
 }
@@ -619,8 +619,8 @@ body {
   .footer-item { color: rgba(255,255,255,0.85); }
 
   .social-btn {
-    /* background: rgba(255,255,255,0.25); */
-    /* color: #fff; */
+    background: rgba(255,255,255,0.25);
+    color: #fff;
   }
 
   .social-btn:hover {
