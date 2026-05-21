@@ -11,24 +11,31 @@
 
 <div class="page">
 
-  <!--  VIEW 1: CONVERSATION LIST  -->
-  <div id="view-list">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
 
-    <!-- NAVBAR -->
-    <nav class="navbar" style="position:relative;">
-      <img src="logo.png.png" alt="AlumniArc Logo" class="nav-logo" />
-      <button class="menu-btn" onclick="toggleMenu()">☰</button>
-      <div class="nav-menu hidden" id="nav-menu">
-        <a href="dashboard.html">🏠 Dashboard</a>
-        <a href="feed.html">🌐 Feed</a>
-        <a href="chats.html">💬 Chats</a>
-        <a href="profile.html">👤 My Profile</a>
-        <a href="mentors.html">🎓 Mentors</a>
-        <a href="events.html">📅 Events</a>
-        <a href="jobs.html">💼 Jobs</a>
-        <a href="login.html" class="danger">🚪 Log Out</a>
-      </div>
-    </nav>
+  <!-- SIDEBAR -->
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="feed.html">🌐 Feed</a>
+    <a href="chats.html" class="active">💬 Chats</a>
+    <a href="profile.html">👤 My Profile</a>
+    <a href="mentors.html">🎓 Mentors</a>
+    <a href="eventscalendar.html">📅 Events</a>
+    <a href="jobs.html">💼 Jobs</a>
+    <a href="login.html" class="danger">🚪 Log Out</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dash-content" style="padding:0;">
+
+  
+  <!--  VIEW 1: CONVERSATION LIST  -->
+  
+  <div id="view-list">
 
     <!-- HEADER -->
     <div class="section" style="border-bottom: 6px solid #f4f4f4;">
@@ -198,10 +205,10 @@
 
     </div>
 
-    </div>
+    </div><!-- end chat-scroll-area -->
 
     <!-- BOTTOM NAV -->
-    <!-- <nav class="bottom-nav">
+    <nav class="bottom-nav">
       <a href="dashboard.html" class="nav-item">
         <span class="icon">🏠</span>Home
       </a>
@@ -217,9 +224,9 @@
       <a href="profile.html" class="nav-item">
         <span class="icon">👤</span>Profile
       </a>
-    </nav> -->
+    </nav>
 
-  </div>
+  </div><!-- end view-list -->
 
   <!-- NEW CHAT MODAL -->
   <div class="modal-overlay hidden" id="new-chat-modal">
@@ -254,7 +261,9 @@
   </div>
 
 
+
   <!--  VIEW 2: OPEN CONVERSATION  -->
+
   <div id="view-chat" class="hidden">
 
     <!-- CHAT TOPBAR -->
@@ -287,11 +296,15 @@
       <button class="send-btn" onclick="sendMessage()">➤</button>
     </div>
 
-  </div>
+  </div><!-- end view-chat -->
 
-</div>
+  </div><!-- end dash-content -->
+
+</div><!-- end page -->
+
 
 <!--  CONVERSATION DATA  -->
+
 <script>
   const conversations = {
     grace: {
@@ -395,7 +408,7 @@
     }
   });
     document.getElementById('new-chat-modal').classList.remove('hidden');
-  
+  }
 
   function closeNewChat() {
     document.getElementById('new-chat-modal').classList.add('hidden');
@@ -469,6 +482,19 @@
       row.style.display = name.includes(query.toLowerCase()) ? 'flex' : 'none';
     });
   }
+
+  // Hamburger menu
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('nav-menu');
+    const btn  = document.querySelector('.menu-btn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
 </script>
 
 </body>

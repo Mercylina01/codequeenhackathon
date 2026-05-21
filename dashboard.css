@@ -469,3 +469,170 @@ body {
 .modal-person:last-child { border-bottom: none; }
 .modal-person:hover { opacity: 0.75; }
 
+/* ===== RESPONSIVE — TABLET & DESKTOP (768px and above) ===== */
+@media (min-width: 768px) {
+
+  body {
+    background: #f0f0f0;
+    display: block;
+  }
+
+  .page {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 60px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ── Navbar spans full top ── */
+  .navbar {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: 0 32px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  /* Hide hamburger on desktop */
+  .menu-btn { display: none; }
+
+  /* ── Sidebar ── */
+  .nav-menu {
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    width: 240px;
+    height: calc(100vh - 60px);
+    border-right: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 24px 0;
+    grid-column: 1;
+    grid-row: 2;
+    top: 0;
+    overflow-y: auto;
+    background: #fff;
+    position: sticky !important;
+    top: 60px !important;
+    align-self: start;
+  }
+
+  .nav-menu a {
+    border-bottom: none;
+    padding: 12px 24px;
+    border-radius: 0;
+    font-size: 13px;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-menu a:hover {
+    background: var(--orange-light);
+    border-left-color: var(--orange);
+  }
+
+  .nav-menu a.active {
+    background: var(--orange-light);
+    border-left-color: var(--orange);
+    color: var(--orange);
+  }
+
+  /* ── Main content area ── */
+  .dash-content {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 32px;
+    overflow-y: auto;
+  }
+
+  /* ── Hide mobile bottom nav on desktop ── */
+  .bottom-nav { display: none; }
+
+  /* ── Welcome card ── */
+  .welcome-card {
+    padding: 28px 32px;
+  }
+
+  .welcome-card h3 { font-size: 22px; }
+  .welcome-card .avatar { font-size: 48px; }
+
+  /* ── Stats — more padding ── */
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .stat { padding: 20px; }
+  .stat .num { font-size: 28px; }
+  .stat .label { font-size: 12px; }
+
+  /* ── Action grid — 6 items in 2 rows ── */
+  .action-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .action-card { padding: 20px 12px; }
+  .action-card .icon { font-size: 28px; }
+  .action-card span { font-size: 12px; }
+
+  /* ── Sections ── */
+  .section {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section h2 { font-size: 20px; }
+
+  /* ── Mentor cards side by side ── */
+  .mentor-cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* ── Events side by side ── */
+  .events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* ── Jobs - 3 columns ── */
+  .jobs-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  /* ── Feed items ── */
+  .feed-item { padding: 16px; }
+
+  /* ── Buttons ── */
+  .btn-primary, .btn-outline {
+    width: auto;
+    display: inline-block;
+    padding: 12px 32px;
+  }
+
+}
+
+/* ===== LARGE SCREENS (1200px+) ===== */
+@media (min-width: 1200px) {
+
+  .page {
+    grid-template-columns: 260px 1fr;
+  }
+
+  .dash-content { padding: 40px 48px; }
+
+  .action-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .jobs-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

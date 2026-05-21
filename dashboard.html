@@ -11,22 +11,25 @@
 <div class="page">
 
   <!-- NAVBAR -->
-  <nav class="navbar" style="position:relative;">
-    <img src="logo.png.png" alt="AlumniArc Logo" class="nav-logo" />
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-    <!-- DROPDOWN MENU -->
-    <div class="nav-menu hidden" id="nav-menu">
-      <a href="dashboard.html">🏠 Dashboard</a>
-      <a href="feed.html">🌐 Feed</a>
-      <a href="chats.html">💬 Chats</a>
-      <a href="profile.html">👤 My Profile</a>
-      <a href="mentors.html">🎓 Mentors</a>
-      <a href="events.html">📅 Events</a>
-      <a href="jobs.html">💼 Jobs</a>
-      <a href="login.html" class="danger">🚪 Log Out</a>
-    </div>
   </nav>
+
+  <!-- SIDEBAR NAV (becomes hamburger dropdown on mobile) -->
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="feed.html">🌐 Feed</a>
+    <a href="chats.html">💬 Chats</a>
+    <a href="profile.html">👤 My Profile</a>
+    <a href="mentors.html">🎓 Mentors</a>
+    <a href="eventscalendar.html">📅 Events</a>
+    <a href="jobs.html">💼 Jobs</a>
+    <a href="login.html" class="danger">🚪 Log Out</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dash-content">
 
   <!-- WELCOME & STATS -->
   <div class="section">
@@ -70,7 +73,7 @@
       </a>
       <a href="#" class="action-card">
         <div class="icon">🌐</div>
-        <span>Global Newsfeed</span>
+        <span>Newsfeed</span>
       </a>
       <a href="chats.html" class="action-card">
         <div class="icon">💬</div>
@@ -84,10 +87,8 @@
         <div class="icon">📋</div>
         <span>Resources</span>
       </a>
-      
     </div>
 
-    <a href="login.html" class="btn-primary">Login to Alumni Dashboard</a>
   </div>
 
   <!-- NEWSFEED -->
@@ -126,7 +127,7 @@
   <div class="section">
     <div class="row-header">
       <h2>Mentors</h2>
-      <a href="#">See all</a>
+      <a href="mentors.html">See all</a>
     </div>
     <p class="section-sub">Guided professional growth from experienced leaders</p>
 
@@ -150,14 +151,14 @@
       </div>
     </div>
 
-    <a href="#" class="btn-outline">Connect with a Mentor</a>
+    <a href="mentors.html" class="btn-outline">Connect with a Mentor</a>
   </div>
 
   <!-- EVENT CALENDAR -->
   <div class="section">
     <div class="row-header">
       <h2>Event Calendar</h2>
-      <a href="#">View all</a>
+      <a href="eventscalendar.html">View all</a>
     </div>
     <p class="section-sub">Upcoming community meetups and tech workshops</p>
 
@@ -183,7 +184,7 @@
       </div>
     </div>
 
-    <a href="#" class="btn-outline">View All Events</a>
+    <a href="eventscalendar.html" class="btn-outline">View All Events</a>
   </div>
 
   <!-- JOBS -->
@@ -212,9 +213,11 @@
     <a href="#" class="btn-outline">View more Jobs</a>
   </div>
 
-  <!-- BOTTOM NAV -->
+  </div><!-- end dash-content -->
+
+  <!-- BOTTOM NAV (mobile only) -->
   <nav class="bottom-nav">
-    <a href="#" class="nav-item active">
+    <a href="dashboard.html" class="nav-item active">
       <span class="icon">🏠</span>
       Home
     </a>

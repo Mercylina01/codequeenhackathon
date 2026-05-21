@@ -13,20 +13,25 @@
 <div class="page">
 
   <!-- NAVBAR -->
-  <nav class="navbar" style="position:relative;">
-    <img src="logo.png.png" alt="AlumniArc Logo" class="nav-logo" />
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <div class="nav-menu hidden" id="nav-menu">
-      <a href="dashboard.html">🏠 Dashboard</a>
-      <a href="feed.html">🌐 Feed</a>
-      <a href="chats.html">💬 Chats</a>
-      <a href="profile.html">👤 My Profile</a>
-      <a href="mentors.html">🎓 Mentors</a>
-      <a href="events.html">📅 Events</a>
-      <a href="jobs.html">💼 Jobs</a>
-      <a href="login.html" class="danger">🚪 Log Out</a>
-    </div>
   </nav>
+
+  <!-- SIDEBAR -->
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="feed.html">🌐 Feed</a>
+    <a href="chats.html">💬 Chats</a>
+    <a href="profile.html" class="active">👤 My Profile</a>
+    <a href="mentors.html">🎓 Mentors</a>
+    <a href="eventscalendar.html">📅 Events</a>
+    <a href="jobs.html">💼 Jobs</a>
+    <a href="login.html" class="danger">🚪 Log Out</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dash-content" style="padding:0;">
 
   <!-- PROFILE HEADER CARD -->
   <div class="profile-header">
@@ -47,7 +52,7 @@
     <button class="btn-edit" onclick="toggleEdit()">✏️ Edit Profile</button>
   </div>
 
-  <!-- EDIT FORM -->
+  <!-- EDIT FORM (hidden by default) -->
   <div class="form-section hidden" id="edit-form">
     <h2>Edit Profile</h2>
     <p class="section-sub">Update your details below</p>
@@ -75,11 +80,22 @@
     <div class="form-group">
       <label>Cohort</label>
       <select id="edit-cohort">
+        <option>Cohort 1</option>
+        <option>Cohort 2</option>
+         <option>Cohort 3</option>
+        <option>Cohort 4</option>
+         <option>Cohort 5</option>
         <option>Cohort 6</option>
-        <option>Cohort 7</option>
+         <option>Cohort 7</option>
         <option selected>Cohort 8</option>
         <option>Cohort 9</option>
         <option>Cohort 10</option>
+         <option>Cohort 11</option>
+        <option>Cohort 12</option>
+         <option>Cohort 13</option>
+        <option>Cohort 14</option>
+         <option>Cohort 15</option>
+        <option>Cohort 16</option>
       </select>
     </div>
 
@@ -103,7 +119,7 @@
     </div>
   </div>
 
-  <!-- BIO SECTION -->
+  <!-- BIO SECTION (visible when not editing) -->
   <div class="section" id="bio-section">
     <h2>About me</h2>
     <p class="bio-text" id="display-bio">
@@ -159,17 +175,6 @@
         </label>
       </div>
 
-      <div class="settings-item">
-        <div>
-          <div class="settings-label">Mentorship available</div>
-          <div class="settings-sub">Show up as a mentor to others</div>
-        </div>
-        <label class="toggle">
-          <input type="checkbox" />
-          <span class="toggle-slider"></span>
-        </label>
-      </div>
-
     </div>
   </div>
 
@@ -213,6 +218,8 @@
       Profile
     </a>
   </nav>
+
+  </div><!-- end dash-content -->
 
 </div>
 

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+    <div class="admin-badge">Admin</div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="admin-dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="#" onclick="showSection('posts')">📝 Manage Posts</a>
+    <a href="eventscalendar.html" onclick="showSection('events')">📅 Manage Events</a>
+    <a href="#" onclick="showSection('jobs')">💼 Manage Jobs</a>
+    <a href="#" onclick="showSection('announcements')">📢 Announcements</a>
+    <a href="#" onclick="showSection('reports')">📊 Reports</a>
+    <a href="login.html" class="danger">🚪 Log Out</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dash-content">
+
+    <!-- WELCOME -->
+    <div class="admin-welcome">
+      <div>
+        <h2>Admin Dashboard 🛡️</h2>
+        <p>Manage content, events, jobs and announcements</p>
+      </div>
+      <div class="admin-avatar">🛡️</div>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="stats" style="margin-bottom:24px;">
+      <div class="stat">
+        <div class="num">1,024</div>
+        <div class="label">Total Alumni</div>
+      </div>
+      <div class="stat">
+        <div class="num">8</div>
+        <div class="label">Pending Posts</div>
+      </div>
+      <div class="stat">
+        <div class="num">3</div>
+        <div class="label">Active Events</div>
+      </div>
+      <div class="stat">
+        <div class="num">12</div>
+        <div class="label">Job Listings</div>
+      </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="section">
+      <div class="row-header">
+        <h2>Quick Actions</h2>
+      </div>
+      <div class="action-grid">
+        <div class="action-card" onclick="showSection('posts')">
+          <div class="icon">📝</div>
+          <span>Review Posts</span>
+        </div>
+        <div class="action-card" onclick="showSection('events')">
+          <div class="icon">📅</div>
+          <span>Add Event</span>
+        </div>
+        <div class="action-card" onclick="showSection('jobs')">
+          <div class="icon">💼</div>
+          <span>Post a Job</span>
+        </div>
+        <div class="action-card" onclick="showSection('announcements')">
+          <div class="icon">📢</div>
+          <span>Announce</span>
+        </div>
+        <div class="action-card" onclick="showSection('reports')">
+          <div class="icon">📊</div>
+          <span>Reports</span>
+        </div>
+        <div class="action-card">
+          <div class="icon">👥</div>
+          <span>View Alumni</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANAGE POSTS -->
+    <div class="section admin-section" id="section-posts">
+      <div class="row-header">
+        <h2>📝 Pending Posts</h2>
+        <span class="badge-count">8 pending</span>
+      </div>
+
+      <div class="post-review-card">
+        <div class="post-meta">
+          <span class="post-author">👩🏾 Aisha Nalwoga</span>
+          <span class="post-time">2 hrs ago</span>
+        </div>
+        <p class="post-content">"Just landed a new role as UI/UX Designer at a tech startup in Kampala! Grateful for this community 🙏"</p>
+        <div class="post-actions">
+          <button class="btn-approve" onclick="approvePost(this)">✓ Approve</button>
+          <button class="btn-reject" onclick="rejectPost(this)">✕ Reject</button>
+        </div>
+      </div>
+
+      <div class="post-review-card">
+        <div class="post-meta">
+          <span class="post-author">👩🏽 Priya Ochieng</span>
+          <span class="post-time">5 hrs ago</span>
+        </div>
+        <p class="post-content">"Looking for a study partner for the Google Africa scholarship application. Anyone interested?"</p>
+        <div class="post-actions">
+          <button class="btn-approve" onclick="approvePost(this)">✓ Approve</button>
+          <button class="btn-reject" onclick="rejectPost(this)">✕ Reject</button>
+        </div>
+      </div>
+
+      <div class="post-review-card">
+        <div class="post-meta">
+          <span class="post-author">👩🏿 Fatuma Wanjiku</span>
+          <span class="post-time">Yesterday</span>
+        </div>
+        <p class="post-content">"Sharing my experience at the Andela interview process — full blog post linked below!"</p>
+        <div class="post-actions">
+          <button class="btn-approve" onclick="approvePost(this)">✓ Approve</button>
+          <button class="btn-reject" onclick="rejectPost(this)">✕ Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANAGE EVENTS -->
+    <div class="section admin-section" id="section-events">
+      <div class="row-header">
+        <h2>📅 Manage Events</h2>
+        <button class="btn-add" onclick="toggleAddEvent()">+ Add Event</button>
+      </div>
+
+      <!-- Add Event Form -->
+      <div class="admin-form hidden" id="add-event-form">
+        <div class="form-group">
+          <label>Event Title</label>
+          <input type="text" placeholder="e.g. Sisterhood Friday" />
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" />
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" placeholder="e.g. National ICT Hub, UG" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea placeholder="Event details..."></textarea>
+        </div>
+        <button class="btn-primary" onclick="toggleAddEvent()">Publish Event</button>
+      </div>
+
+      <!-- Existing Events -->
+      <div class="event-card">
+        <div class="date-box"><div class="day">28</div><div class="month">MAY</div></div>
+        <div style="flex:1;">
+          <div class="title">End-of-month alumni social meetup</div>
+          <div class="location">📍 Downtown Tech Hub</div>
+        </div>
+        <div class="event-manage-btns">
+          <button class="btn-edit-sm">✏️</button>
+          <button class="btn-delete-sm">🗑️</button>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="date-box"><div class="day">05</div><div class="month">JUNE</div></div>
+        <div style="flex:1;">
+          <div class="title">Navigating Tech-space Center Seminar</div>
+          <div class="location">📍 National ICT Hub, UG</div>
+        </div>
+        <div class="event-manage-btns">
+          <button class="btn-edit-sm">✏️</button>
+          <button class="btn-delete-sm">🗑️</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANAGE JOBS -->
+    <div class="section admin-section" id="section-jobs">
+      <div class="row-header">
+        <h2>💼 Manage Jobs</h2>
+        <button class="btn-add" onclick="toggleAddJob()">+ Post Job</button>
+      </div>
+
+      <!-- Add Job Form -->
+      <div class="admin-form hidden" id="add-job-form">
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" placeholder="e.g. Frontend Developer" />
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="e.g. Andela" />
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" placeholder="e.g. Kampala, UG or Remote" />
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <select>
+            <option>Full-time</option>
+            <option>Part-time</option>
+            <option>Remote</option>
+            <option>Internship</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="toggleAddJob()">Post Job</button>
+      </div>
+
+      <!-- Existing Jobs -->
+      <div class="jobs-row">
+        <div class="job-card">
+          <span class="job-badge full-time">Full-time</span>
+          <div class="title">UI/UX Designer</div>
+          <div class="location">📍 Kampala, UG</div>
+          <div class="job-manage-btns">
+            <button class="btn-edit-sm">✏️ Edit</button>
+            <button class="btn-delete-sm">🗑️ Delete</button>
+          </div>
+        </div>
+        <div class="job-card">
+          <span class="job-badge remote">Remote</span>
+          <div class="title">Software Engineer</div>
+          <div class="location">📍 Nairobi, KE</div>
+          <div class="job-manage-btns">
+            <button class="btn-edit-sm">✏️ Edit</button>
+            <button class="btn-delete-sm">🗑️ Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANNOUNCEMENTS -->
+    <div class="section admin-section" id="section-announcements">
+      <div class="row-header">
+        <h2>📢 Send Announcement</h2>
+      </div>
+
+      <div class="admin-form">
+        <div class="form-group">
+          <label>Send to</label>
+          <select>
+            <option>All Alumni</option>
+            <option>Cohort 8</option>
+            <option>Cohort 7</option>
+            <option>Cohort 6</option>
+            <option>All Cohorts</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" placeholder="Announcement title..." />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Write your announcement..."></textarea>
+        </div>
+        <button class="btn-primary">Send Announcement 📢</button>
+      </div>
+
+      <!-- Recent Announcements -->
+      <div class="row-header" style="margin-top:20px;">
+        <h2>Recent Announcements</h2>
+      </div>
+      <div class="feed-item">
+        <div class="dot"></div>
+        <div>
+          <div class="title">Sisterhood Friday this week!</div>
+          <div class="meta">Sent to All Alumni · 2 days ago</div>
+        </div>
+      </div>
+      <div class="feed-item">
+        <div class="dot read"></div>
+        <div>
+          <div class="title">New job listings available</div>
+          <div class="meta">Sent to All Alumni · 1 week ago</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPORTS -->
+    <div class="section admin-section" id="section-reports">
+      <div class="row-header">
+        <h2>📊 Reports</h2>
+      </div>
+
+      <div class="reports-grid">
+        <div class="report-card">
+          <div class="report-icon">👥</div>
+          <div class="report-num">1,024</div>
+          <div class="report-label">Total Users</div>
+          <div class="report-change up">↑ +12 this month</div>
+        </div>
+        <div class="report-card">
+          <div class="report-icon">📅</div>
+          <div class="report-num">87%</div>
+          <div class="report-label">Event Attendance</div>
+          <div class="report-change up">↑ +5% vs last month</div>
+        </div>
+        <div class="report-card">
+          <div class="report-icon">💬</div>
+          <div class="report-num">342</div>
+          <div class="report-label">Active Chats</div>
+          <div class="report-change up">↑ +28 this week</div>
+        </div>
+        <div class="report-card">
+          <div class="report-icon">📝</div>
+          <div class="report-num">56</div>
+          <div class="report-label">Posts This Month</div>
+          <div class="report-change down">↓ -3 vs last month</div>
+        </div>
+      </div>
+
+      <!-- Cohort breakdown -->
+      <div class="row-header" style="margin-top:20px;">
+        <h2>Alumni by Cohort</h2>
+      </div>
+      <div class="cohort-list">
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 8</span>
+          <div class="cohort-bar-wrap">
+            <div class="cohort-bar" style="width:85%"></div>
+          </div>
+          <span class="cohort-count">87</span>
+        </div>
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 7</span>
+          <div class="cohort-bar-wrap">
+            <div class="cohort-bar" style="width:72%"></div>
+          </div>
+          <span class="cohort-count">74</span>
+        </div>
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 6</span>
+          <div class="cohort-bar-wrap">
+            <div class="cohort-bar" style="width:65%"></div>
+          </div>
+          <span class="cohort-count">66</span>
+        </div>
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 5</span>
+          <div class="cohort-bar-wrap">
+            <div class="cohort-bar" style="width:58%"></div>
+          </div>
+          <span class="cohort-count">59</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end dash-content -->
+
+</div><!-- end page -->
+
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('nav-menu');
+    const btn  = document.querySelector('.menu-btn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  function showSection(id) {
+    document.getElementById('nav-menu').classList.add('hidden');
+    document.getElementById('section-' + id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function toggleAddEvent() {
+    document.getElementById('add-event-form').classList.toggle('hidden');
+  }
+
+  function toggleAddJob() {
+    document.getElementById('add-job-form').classList.toggle('hidden');
+  }
+
+  function approvePost(btn) {
+    const card = btn.closest('.post-review-card');
+    card.style.borderColor = '#2E7D32';
+    card.style.background  = '#E6F4EA';
+    btn.textContent = '✓ Approved';
+    btn.disabled = true;
+    card.querySelector('.btn-reject').disabled = true;
+  }
+
+  function rejectPost(btn) {
+    const card = btn.closest('.post-review-card');
+    card.style.opacity = '0.4';
+    btn.textContent = '✕ Rejected';
+    btn.disabled = true;
+    card.querySelector('.btn-approve').disabled = true;
+  }
+</script>
+
+</body>
+</html>

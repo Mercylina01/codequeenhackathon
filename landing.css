@@ -618,10 +618,6 @@ body {
   .footer-col a:hover { color: #fff; }
   .footer-item { color: rgba(255,255,255,0.85); }
 
-  .social-btn {
-    /* background: rgba(255,255,255,0.25); */
-    /* color: #fff; */
-  }
 
   .social-btn:hover {
     background: rgba(255,255,255,0.45);
