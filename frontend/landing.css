@@ -618,13 +618,10 @@ body {
   .footer-col a:hover { color: #fff; }
   .footer-item { color: rgba(255,255,255,0.85); }
 
-<<<<<<< HEAD:landing.css
-=======
   .social-btn {
     background: rgba(255,255,255,0.25);
     color: #fff;
   }
->>>>>>> 858d5613d775eeb3b8b2c139c485cea5bc42f56d:frontend/landing.css
 
   .social-btn:hover {
     background: rgba(255,255,255,0.45);
