@@ -299,11 +299,11 @@
 /* Desktop — role cards side by side */
 @media (min-width: 768px) {
   .role-grid {
-    flex-direction: row;
+    flex-direction:row;
     gap: 16px;
   }
  
   .role-card {
-    flex: 1;
+    flex: 3;
   }
 }
