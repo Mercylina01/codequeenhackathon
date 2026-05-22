@@ -3,9 +3,9 @@
 
 /* ===== VARIABLES ===== */
 :root {
-  --orange: #F28C28;
-  --orange-dark: #D97420;
-  --orange-light: #FDF0E0;
+  --orange: #f103d2;
+  --orange-dark: #c737bb;
+  --orange-light: #9e0992;
   --text: #1A1A1A;
   --muted: #888;
   --border: #EBEBEB;
@@ -18,7 +18,7 @@
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: #f0f0f0;
+  background: #f103d2;
   display: flex;
   justify-content: center;
 }
@@ -26,7 +26,7 @@ body {
 .page {
   width: 100%;
   max-width: 430px;
-  background: #fff;
+  background: #e9c1e4;
   min-height: 100vh;
 }
 

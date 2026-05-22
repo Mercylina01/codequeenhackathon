@@ -15,7 +15,7 @@
 
 /* ===== WELCOME BANNER ===== */
 .superadmin-welcome {
-  background: linear-gradient(135deg, #1A1A1A 0%, #3a1a00 60%, #D97420 100%);
+  background: linear-gradient(135deg, #f103d2 0%, #f103d2 60%, #D97420 100%);
   border-radius: var(--radius);
   padding: 24px;
   color: #fff;
