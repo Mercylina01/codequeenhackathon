@@ -1,51 +1,45 @@
+const dns = require('dns');
+
+
+
+dns.setServers([ '1.1.1.1', '8.8.8.8'])
+
+
+
+// Load environment variables immediately
+require('dotenv').config();
+
 const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const connectDB = require('./db/connect');
 
+// Initialize Express App
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-const PORT=5000;
+// Connect to MongoDB
+connectDB();
 
-app.use(express.json());
+// Global Middleware
+app.use(express.json()); // Parse JSON bodies
+app.use(cors());         // Allow frontend to communicate without cross-origin errors
+app.use(morgan('dev'));  // Log API requests to the terminal (e.g., "GET /users/login 200")
 
+// Import route modules
 const userRoutes = require('./routes/users');
 
+// Route middlewares
 app.use('/users', userRoutes);
 
-
-app.get("/", (req,res) => {
-  res.send("Welcome to our backend")  
+app.get("/", (req, res) => {
+    res.status(200).send("Welcome to the Code Queen Hackathon Backend API");
 });
 
-
-// TODO
-// 1. Create user route here
-// 2. Create Folder/Directory for routes and name routes-> must be in src/routes/
-// 3. Create Folder inside src -> controllers
-// 4. create Folder inside src -> db
-// 5. Create File inside routes -> users.js
-// 6. Create File inside Controller -> users.js
-// 7. create File  inside db -> users.js
-
-
-/*
---- controller/user
-1. a function called register-> parameters(Fistname, Lastname, faculty, date_of_birth, occupation, email, password)
-2. Console.log(parameters)
-*/
-
-/*
---- routes/users.js
-1. import express
-2. create express routes (/register, callback function-> parameters(req, res))
-3. console log (user is created)
-*/
-
-
-/*
---- index.js
-1. use the module ("/user", routes/users.js)
-
-*/
-
+// Start listening
+  
 app.listen(PORT, () => {
-console.log(`Server is listening to the PORT ${PORT}`);
-});
+    console.log(`Server is running at http://localhost:${PORT}`);
+})
+
+// connectDB();
