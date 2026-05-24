@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Super Admin</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="superadmin.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+    <div class="superadmin-badge">Super Admin 👑</div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="superadmin-dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="#" onclick="showSection('users')">👥 Manage Users</a>
+    <a href="#" onclick="showSection('admins')">🛡️ Manage Admins</a>
+    <a href="#" onclick="showSection('cohorts')">🎓 Manage Cohorts</a>
+    <a href="#" onclick="showSection('analytics')">📊 Analytics</a>
+    <a href="#" onclick="showSection('notifications')">🔔 Bulk Notifications</a>
+    <a href="#" onclick="showSection('settings')">⚙️ Platform Settings</a>
+    <a href="login.html" class="danger">🚪 Log Out</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dash-content">
+
+    <!-- WELCOME -->
+    <div class="superadmin-welcome">
+      <div>
+        <h2>Super Admin 👑</h2>
+        <p>Full platform control — AlumniArc Code Queen</p>
+      </div>
+      <div class="sa-avatar">👑</div>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="sa-stats">
+      <div class="sa-stat">
+        <div class="sa-stat-icon">👥</div>
+        <div class="sa-stat-num">1,024</div>
+        <div class="sa-stat-label">Total Users</div>
+      </div>
+      <div class="sa-stat">
+        <div class="sa-stat-icon">🛡️</div>
+        <div class="sa-stat-num">5</div>
+        <div class="sa-stat-label">Admins</div>
+      </div>
+      <div class="sa-stat">
+        <div class="sa-stat-icon">🎓</div>
+        <div class="sa-stat-num">15</div>
+        <div class="sa-stat-label">Cohorts</div>
+      </div>
+      <div class="sa-stat">
+        <div class="sa-stat-icon">📈</div>
+        <div class="sa-stat-num">78%</div>
+        <div class="sa-stat-label">Engagement</div>
+      </div>
+      <div class="sa-stat">
+        <div class="sa-stat-icon">💬</div>
+        <div class="sa-stat-num">342</div>
+        <div class="sa-stat-label">Active Chats</div>
+      </div>
+      <div class="sa-stat">
+        <div class="sa-stat-icon">📅</div>
+        <div class="sa-stat-num">12</div>
+        <div class="sa-stat-label">Events This Month</div>
+      </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="section">
+      <div class="row-header"><h2>Quick Actions</h2></div>
+      <div class="action-grid">
+        <div class="action-card" onclick="showSection('users')">
+          <div class="icon">👥</div>
+          <span>Manage Users</span>
+        </div>
+        <div class="action-card" onclick="showSection('admins')">
+          <div class="icon">🛡️</div>
+          <span>Manage Admins</span>
+        </div>
+        <div class="action-card" onclick="showSection('cohorts')">
+          <div class="icon">🎓</div>
+          <span>Manage Cohorts</span>
+        </div>
+        <div class="action-card" onclick="showSection('analytics')">
+          <div class="icon">📊</div>
+          <span>Analytics</span>
+        </div>
+        <div class="action-card" onclick="showSection('notifications')">
+          <div class="icon">🔔</div>
+          <span>Bulk Notify</span>
+        </div>
+        <div class="action-card" onclick="showSection('settings')">
+          <div class="icon">⚙️</div>
+          <span>Settings</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANAGE USERS -->
+    <div class="section" id="section-users">
+      <div class="row-header">
+        <h2>👥 Manage Users</h2>
+        <span class="badge-count">1,024 users</span>
+      </div>
+
+      <!-- Search -->
+      <div class="sa-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search by name, email or cohort..." oninput="filterUsers(this.value)" />
+      </div>
+
+      <!-- Users Table -->
+      <div class="users-table">
+        <div class="table-header">
+          <span>User</span>
+          <span>Cohort</span>
+          <span>Role</span>
+          <span>Status</span>
+          <span>Actions</span>
+        </div>
+
+        <div class="table-row" id="user-1">
+          <div class="user-cell">
+            <span class="user-avatar">👩🏾</span>
+            <div>
+              <div class="user-name">Aisha Nalwoga</div>
+              <div class="user-email">aisha@example.com</div>
+            </div>
+          </div>
+          <span class="cell">Cohort 8</span>
+          <span class="cell"><span class="role-tag alumni">Alumni</span></span>
+          <span class="cell"><span class="status-tag active">Active</span></span>
+          <div class="cell actions-cell">
+            <button class="btn-edit-sm" onclick="changeRole('user-1')">Change Role</button>
+            <button class="btn-delete-sm" onclick="deactivate('user-1')">Deactivate</button>
+          </div>
+        </div>
+
+        <div class="table-row" id="user-2">
+          <div class="user-cell">
+            <span class="user-avatar">👩🏽</span>
+            <div>
+              <div class="user-name">Priya Ochieng</div>
+              <div class="user-email">priya@example.com</div>
+            </div>
+          </div>
+          <span class="cell">Cohort 7</span>
+          <span class="cell"><span class="role-tag alumni">Alumni</span></span>
+          <span class="cell"><span class="status-tag active">Active</span></span>
+          <div class="cell actions-cell">
+            <button class="btn-edit-sm" onclick="changeRole('user-2')">Change Role</button>
+            <button class="btn-delete-sm" onclick="deactivate('user-2')">Deactivate</button>
+          </div>
+        </div>
+
+        <div class="table-row" id="user-3">
+          <div class="user-cell">
+            <span class="user-avatar">👩🏿</span>
+            <div>
+              <div class="user-name">Fatuma Wanjiku</div>
+              <div class="user-email">fatuma@example.com</div>
+            </div>
+          </div>
+          <span class="cell">Cohort 6</span>
+          <span class="cell"><span class="role-tag admin">Admin</span></span>
+          <span class="cell"><span class="status-tag active">Active</span></span>
+          <div class="cell actions-cell">
+            <button class="btn-edit-sm" onclick="changeRole('user-3')">Change Role</button>
+            <button class="btn-delete-sm" onclick="deactivate('user-3')">Deactivate</button>
+          </div>
+        </div>
+
+        <div class="table-row" id="user-4">
+          <div class="user-cell">
+            <span class="user-avatar">👩🏾</span>
+            <div>
+              <div class="user-name">Diana Namutebi</div>
+              <div class="user-email">diana@example.com</div>
+            </div>
+          </div>
+          <span class="cell">Cohort 8</span>
+          <span class="cell"><span class="role-tag alumni">Alumni</span></span>
+          <span class="cell"><span class="status-tag inactive">Inactive</span></span>
+          <div class="cell actions-cell">
+            <button class="btn-edit-sm" onclick="changeRole('user-4')">Change Role</button>
+            <button class="btn-delete-sm" onclick="deactivate('user-4')">Activate</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MANAGE ADMINS -->
+    <div class="section" id="section-admins">
+      <div class="row-header">
+        <h2>🛡️ Manage Admins</h2>
+        <button class="btn-add" onclick="togglePromoteForm()">+ Promote to Admin</button>
+      </div>
+
+      <!-- Promote form -->
+      <div class="admin-form hidden" id="promote-form">
+        <div class="form-group">
+          <label>Select User to Promote</label>
+          <select>
+            <option>Select a user...</option>
+            <option>Aisha Nalwoga — Cohort 8</option>
+            <option>Priya Ochieng — Cohort 7</option>
+            <option>Diana Namutebi — Cohort 8</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Assign Role</label>
+          <select>
+            <option>Admin</option>
+            <option>Super Admin</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="togglePromoteForm()">Promote User</button>
+      </div>
+
+      <!-- Current Admins -->
+      <div class="admin-list">
+
+        <div class="admin-row">
+          <span class="user-avatar">👩🏿</span>
+          <div class="admin-info">
+            <div class="user-name">Fatuma Wanjiku</div>
+            <div class="user-email">Cohort 6 · fatuma@example.com</div>
+          </div>
+          <span class="role-tag admin">Admin</span>
+          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke</button>
+        </div>
+
+        <div class="admin-row">
+          <span class="user-avatar">👩🏽‍🏫</span>
+          <div class="admin-info">
+            <div class="user-name">Grace Nakato</div>
+            <div class="user-email">Cohort 4 · grace@example.com</div>
+          </div>
+          <span class="role-tag admin">Admin</span>
+          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke</button>
+        </div>
+
+        <div class="admin-row">
+          <span class="user-avatar">👩🏿‍💼</span>
+          <div class="admin-info">
+            <div class="user-name">Sandra Akello</div>
+            <div class="user-email">Cohort 3 · sandra@example.com</div>
+          </div>
+          <span class="role-tag superadmin">Super Admin</span>
+          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MANAGE COHORTS -->
+    <div class="section" id="section-cohorts">
+      <div class="row-header">
+        <h2>🎓 Manage Cohorts</h2>
+        <button class="btn-add" onclick="toggleAddCohort()">+ New Cohort</button>
+      </div>
+
+      <div class="admin-form hidden" id="add-cohort-form">
+        <div class="form-group">
+          <label>Cohort Name</label>
+          <input type="text" placeholder="e.g. Cohort 16" />
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" placeholder="e.g. Web Development Track" />
+        </div>
+        <button class="btn-primary" onclick="toggleAddCohort()">Create Cohort</button>
+      </div>
+
+      <div class="cohort-cards">
+        <div class="cohort-card">
+          <div class="cohort-card-header">
+            <span class="cohort-card-name">Cohort 8</span>
+            <span class="cohort-card-count">87 members</span>
+          </div>
+          <div class="cohort-card-date">Started: Jan 2024</div>
+          <div class="cohort-card-btns">
+            <button class="btn-edit-sm">✏️ Edit</button>
+            <button class="btn-edit-sm">👥 View Members</button>
+          </div>
+        </div>
+        <div class="cohort-card">
+          <div class="cohort-card-header">
+            <span class="cohort-card-name">Cohort 7</span>
+            <span class="cohort-card-count">74 members</span>
+          </div>
+          <div class="cohort-card-date">Started: Jun 2023</div>
+          <div class="cohort-card-btns">
+            <button class="btn-edit-sm">✏️ Edit</button>
+            <button class="btn-edit-sm">👥 View Members</button>
+          </div>
+        </div>
+        <div class="cohort-card">
+          <div class="cohort-card-header">
+            <span class="cohort-card-name">Cohort 6</span>
+            <span class="cohort-card-count">66 members</span>
+          </div>
+          <div class="cohort-card-date">Started: Jan 2023</div>
+          <div class="cohort-card-btns">
+            <button class="btn-edit-sm">✏️ Edit</button>
+            <button class="btn-edit-sm">👥 View Members</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="section" id="section-analytics">
+      <div class="row-header">
+        <h2>📊 Platform Analytics</h2>
+      </div>
+
+      <div class="reports-grid">
+        <div class="report-card">
+          <div class="report-icon">📈</div>
+          <div class="report-num">+12%</div>
+          <div class="report-label">User Growth</div>
+          <div class="report-change up">↑ vs last month</div>
+        </div>
+        <div class="report-card">
+          <div class="report-icon">💬</div>
+          <div class="report-num">78%</div>
+          <div class="report-label">Engagement Rate</div>
+          <div class="report-change up">↑ +5% vs last month</div>
+        </div>
+        <div class="report-card">
+          <div class="report-icon">🎓</div>
+          <div class="report-num">92%</div>
+          <div class="report-label">Profile Completion</div>
+          <div class="report-change up">↑ +8% this month</div>
+        </div>
+        <div class="report-card">
+          <div class="report-icon">📅</div>
+          <div class="report-num">87%</div>
+          <div class="report-label">Event Attendance</div>
+          <div class="report-change down">↓ -2% vs last month</div>
+        </div>
+      </div>
+
+      <!-- Top mentors -->
+      <div class="row-header" style="margin-top:20px;">
+        <h2>Top Mentors</h2>
+      </div>
+      <div class="top-mentors">
+        <div class="mentor-rank">
+          <span class="rank-num">1</span>
+          <span class="user-avatar">👩🏽‍🏫</span>
+          <div>
+            <div class="user-name">Grace Nakato</div>
+            <div class="user-email">24 mentees · 4.9 ⭐</div>
+          </div>
+        </div>
+        <div class="mentor-rank">
+          <span class="rank-num">2</span>
+          <span class="user-avatar">👩🏿‍💼</span>
+          <div>
+            <div class="user-name">Sandra Akello</div>
+            <div class="user-email">18 mentees · 4.8 ⭐</div>
+          </div>
+        </div>
+        <div class="mentor-rank">
+          <span class="rank-num">3</span>
+          <span class="user-avatar">👩🏾</span>
+          <div>
+            <div class="user-name">Ruth Namukasa</div>
+            <div class="user-email">15 mentees · 4.7 ⭐</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cohort growth -->
+      <div class="row-header" style="margin-top:20px;">
+        <h2>Alumni by Cohort</h2>
+      </div>
+      <div class="cohort-list">
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 8</span>
+          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:85%"></div></div>
+          <span class="cohort-count">87</span>
+        </div>
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 7</span>
+          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:72%"></div></div>
+          <span class="cohort-count">74</span>
+        </div>
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 6</span>
+          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:65%"></div></div>
+          <span class="cohort-count">66</span>
+        </div>
+        <div class="cohort-row">
+          <span class="cohort-name">Cohort 5</span>
+          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:58%"></div></div>
+          <span class="cohort-count">59</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BULK NOTIFICATIONS -->
+    <div class="section" id="section-notifications">
+      <div class="row-header">
+        <h2>🔔 Bulk Notifications</h2>
+      </div>
+
+      <div class="admin-form">
+        <div class="form-group">
+          <label>Notification Type</label>
+          <select>
+            <option>In-app notification</option>
+            <option>Email</option>
+            <option>Both</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Send to</label>
+          <select>
+            <option>All Users</option>
+            <option>All Alumni</option>
+            <option>All Admins</option>
+            <option>Cohort 8</option>
+            <option>Cohort 7</option>
+            <option>Cohort 6</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" placeholder="Notification title..." />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Write your message..."></textarea>
+        </div>
+        <button class="btn-primary">Send Notification 🔔</button>
+      </div>
+    </div>
+
+    <!-- PLATFORM SETTINGS -->
+    <div class="section" id="section-settings">
+      <div class="row-header">
+        <h2>⚙️ Platform Settings</h2>
+      </div>
+
+      <div class="settings-list">
+        <div class="settings-item">
+          <div>
+            <div class="settings-label">Allow new registrations</div>
+            <div class="settings-sub">Let new users sign up to the platform</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="settings-item">
+          <div>
+            <div class="settings-label">Post moderation</div>
+            <div class="settings-sub">Require admin approval before posts go live</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="settings-item">
+          <div>
+            <div class="settings-label">Maintenance mode</div>
+            <div class="settings-sub">Take platform offline for maintenance</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="settings-item">
+          <div>
+            <div class="settings-label">Allow mentor requests</div>
+            <div class="settings-sub">Let alumni request mentorship connections</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end dash-content -->
+
+</div><!-- end page -->
+
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('nav-menu');
+    const btn  = document.querySelector('.menu-btn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  function showSection(id) {
+    document.getElementById('nav-menu').classList.add('hidden');
+    document.getElementById('section-' + id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function togglePromoteForm() {
+    document.getElementById('promote-form').classList.toggle('hidden');
+  }
+
+  function toggleAddCohort() {
+    document.getElementById('add-cohort-form').classList.toggle('hidden');
+  }
+
+  function filterUsers(query) {
+    document.querySelectorAll('.table-row').forEach(row => {
+      const name = row.querySelector('.user-name').textContent.toLowerCase();
+      row.style.display = name.includes(query.toLowerCase()) ? 'grid' : 'none';
+    });
+  }
+
+  function changeRole(id) {
+    const row  = document.getElementById(id);
+    const tag  = row.querySelector('.role-tag');
+    const current = tag.textContent.trim();
+    if (current === 'Alumni') {
+      tag.textContent = 'Admin';
+      tag.className = 'role-tag admin';
+    } else if (current === 'Admin') {
+      tag.textContent = 'Super Admin';
+      tag.className = 'role-tag superadmin';
+    } else {
+      tag.textContent = 'Alumni';
+      tag.className = 'role-tag alumni';
+    }
+  }
+
+  function deactivate(id) {
+    const row    = document.getElementById(id);
+    const status = row.querySelector('.status-tag');
+    if (status.textContent === 'Active') {
+      status.textContent = 'Inactive';
+      status.className   = 'status-tag inactive';
+    } else {
+      status.textContent = 'Active';
+      status.className   = 'status-tag active';
+    }
+  }
+
+  function revokeAdmin(btn) {
+    const row = btn.closest('.admin-row');
+    row.style.opacity = '0.4';
+    btn.textContent   = 'Revoked';
+    btn.disabled      = true;
+  }
+</script>
+
+</body>
+</html>

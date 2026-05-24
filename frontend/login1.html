@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Login</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+  </nav>
+
+  <!-- LOGIN FORM -->
+  <div class="form-section">
+
+    <div class="auth-hero">
+      <div class="auth-emoji">👩🏾‍💻</div>
+      <h2>Welcome back!</h2>
+      <p class="section-sub">Sign in to your AlumniArc account</p>
+    </div>
+
+    <div class="form-group">
+      <label>Email address</label>
+      <input type="email" placeholder="you@example.com" />
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <div class="input-wrap">
+        <input type="password" id="login-pw" placeholder="Your password" />
+        <button class="toggle-pw" onclick="togglePassword()" type="button">👁</button>
+      </div>
+    </div>
+
+    <div class="forgot-row">
+      <a href="#">Forgot password?</a>
+    </div>
+
+    <a href="dashboard.html" class="btn-primary">Log In</a>
+
+    <div class="divider-text"><span>or</span></div>
+
+    <button class="btn-google">
+      <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon" />
+      Continue with Google
+    </button>
+
+    <p class="auth-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+
+  </div>
+
+</div>
+
+    <script>
+      function togglePassword() {
+        const pw = document.getElementById("login-pw");
+        pw.type = pw.type === "password" ? "text" : "password";
+      }
+    </script>
+  </body>
+</html>
