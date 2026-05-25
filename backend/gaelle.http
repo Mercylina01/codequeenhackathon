@@ -1,0 +1,58 @@
+### Root Test Endpoint
+GET http://localhost:5000
+
+### Register a regular Mentee user
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+    "firstname": "Lillian",
+    "lastname": "Akiiki",
+    "date_of_birth": "2002-11-14",
+    "occupation": "Student",
+    "role": "user",
+    "email": "lillian@hackathon.com",
+    "password": "securepassword123"
+}
+
+### Register a Mentor user
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+    "firstname": "Collins",
+    "lastname": "Okello",
+    "date_of_birth": "1990-04-23",
+    "occupation": "Senior Software Engineer",
+    "role": "mentor",
+    "email": "collins@hackathon.com",
+    "password": "mentorpassword456"
+}
+
+### User Login Request
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "email": "lillian@hackathon.com",
+    "password": "securepassword123"
+}
+
+### Fetch Dashboard Analytics Data
+GET http://localhost:5000/users/dashboard
+
+### Fetch Filtered Mentor List
+GET http://localhost:5000/users/mentors
+
+### Retrieve Chat History log
+GET http://localhost:5000/users/chats
+
+### Dispatch a Chat Message
+POST http://localhost:5000/users/chats
+Content-Type: application/json
+
+{
+    "sender": "Lillian",
+    "receiver": "Collins",
+    "message": "I have successfully submitted my project draft backend file updates!"
+}

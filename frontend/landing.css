@@ -37,14 +37,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 10px;
   /* border-bottom: 1px solid var(--border); */
   background: #e9c1e4;
   position: fixed;
+  height: 50px;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 200;
 }
 
 .nav-logo { height: 50px; width: auto; }
