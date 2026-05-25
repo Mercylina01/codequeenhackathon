@@ -4,143 +4,150 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlumniArc – My Profile</title>
-  <link rel="stylesheet" href="dashboard.css" />
-  <link rel="stylesheet" href="auth.css" />
-  <link rel="stylesheet" href="profile.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="profile.css">
 </head>
 <body>
 
 <div class="page">
 
+  <!-- OVERLAY -->
+  <div class="nav-overlay" id="nav-overlay" onclick="closeMenu()"></div>
+
   <!-- NAVBAR -->
   <nav class="navbar">
-    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="nav-brand">
+      <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+      <span class="nav-wordmark">AlumniArc</span>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+      <i class="ti ti-menu-2"></i>
+    </button>
   </nav>
 
   <!-- SIDEBAR -->
   <div class="nav-menu hidden" id="nav-menu">
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="feed.html">🌐 Feed</a>
-    <a href="chats.html">💬 Chats</a>
-    <a href="profile.html" class="active">👤 My Profile</a>
-    <a href="mentors.html">🎓 Mentors</a>
-    <a href="eventscalendar.html">📅 Events</a>
-    <a href="jobs.html">💼 Jobs</a>
-    <a href="login.html" class="danger">🚪 Log Out</a>
+    <a href="dashboard.html"><i class="ti ti-home"></i> Dashboard</a>
+    <a href="feed.html"><i class="ti ti-world"></i> Feed</a>
+    <a href="chats.html"><i class="ti ti-message"></i> Chats</a>
+    <a href="profile.html" class="active"><i class="ti ti-user"></i> My Profile</a>
+    <a href="mentors.html"><i class="ti ti-school"></i> Mentors</a>
+    <a href="eventscalendar.html"><i class="ti ti-calendar"></i> Events</a>
+    <a href="jobs.html"><i class="ti ti-briefcase"></i> Jobs</a>
+    <a href="login.html" class="danger"><i class="ti ti-logout"></i> Log Out</a>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="dash-content" style="padding:0;">
+  <!-- ═══ SINGLE PROFILE CARD ═══ -->
+  <div class="profile-card">
 
-  <!-- PROFILE HEADER CARD -->
-  <div class="profile-header">
+    <!-- Header -->
+    <div class="card-header">
+      <div class="header-stripe"></div>
 
-    <!-- Profile Picture -->
-    <div class="avatar-wrap">
-      <img src="avatar-placeholder.png" alt="Profile photo" class="profile-pic" id="profile-pic" />
-      <label class="change-photo-btn" for="photo-upload">📷 Change</label>
-      <input type="file" id="photo-upload" accept="image/*" onchange="previewPhoto(event)" />
+      <div class="avatar-wrap">
+        <div class="avatar-circle" id="avatar-circle">
+          <img src="" id="profile-pic" alt="Profile photo" />
+          <span id="avatar-initials">AN</span>
+        </div>
+        <label class="change-photo-btn" for="photo-upload" aria-label="Change photo">
+          <i class="ti ti-camera"></i>
+        </label>
+        <input type="file" id="photo-upload" accept="image/*" onchange="previewPhoto(event)" />
+      </div>
+
+      <div class="name-row">
+        <h2 class="display-name" id="display-name">Aisha Nalwoga</h2>
+        <span class="cohort-badge" id="cohort-badge">Cohort 8</span>
+      </div>
+
+      <p class="profile-role">
+        <i class="ti ti-map-pin"></i>
+        <span id="display-role">Frontend Developer · Kampala, UG</span>
+      </p>
+
+      <button class="btn-edit" onclick="toggleEdit()">
+        <i class="ti ti-pencil"></i> Edit profile
+      </button>
     </div>
 
-    <div class="profile-name-row">
-      <h2 id="display-name">Aisha Nalwoga</h2>
-      <span class="cohort-badge" id="cohort-badge">Cohort 8</span>
-    </div>
-    <p class="profile-role" id="display-role">Frontend Developer · Kampala, UG</p>
+    <!-- Edit Form -->
+    <div class="edit-form" id="edit-form">
+      <div class="card-divider" style="margin: 0 0 20px;"></div>
+      <div class="section-label">Edit profile</div>
 
-    <button class="btn-edit" onclick="toggleEdit()">✏️ Edit Profile</button>
-  </div>
+      <div class="form-group">
+        <label for="edit-name">Full name</label>
+        <input type="text" id="edit-name" value="Aisha Nalwoga" />
+      </div>
+      <div class="form-group">
+        <label for="edit-role">Role / Title</label>
+        <input type="text" id="edit-role" value="Frontend Developer" />
+      </div>
+      <div class="form-group">
+        <label for="edit-location">Location</label>
+        <input type="text" id="edit-location" value="Kampala, Uganda" />
+      </div>
+      <div class="form-group">
+        <label for="edit-bio">Short bio</label>
+        <textarea id="edit-bio">Passionate about building beautiful interfaces and empowering women in tech.</textarea>
+      </div>
+      <div class="form-group">
+        <label for="edit-cohort">Cohort</label>
+        <select id="edit-cohort">
+          <option>Cohort 1</option><option>Cohort 2</option><option>Cohort 3</option>
+          <option>Cohort 4</option><option>Cohort 5</option><option>Cohort 6</option>
+          <option>Cohort 7</option><option selected>Cohort 8</option><option>Cohort 9</option>
+          <option>Cohort 10</option><option>Cohort 11</option><option>Cohort 12</option>
+          <option>Cohort 13</option><option>Cohort 14</option><option>Cohort 15</option>
+          <option>Cohort 16</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Skills</label>
+        <div class="tags-select">
+          <span class="skill-tag selected" onclick="toggleTag(this)">UI/UX Design</span>
+          <span class="skill-tag selected" onclick="toggleTag(this)">Frontend Dev</span>
+          <span class="skill-tag" onclick="toggleTag(this)">Backend Dev</span>
+          <span class="skill-tag" onclick="toggleTag(this)">Data Science</span>
+          <span class="skill-tag" onclick="toggleTag(this)">Project Mgmt</span>
+          <span class="skill-tag" onclick="toggleTag(this)">Cybersecurity</span>
+          <span class="skill-tag" onclick="toggleTag(this)">Cloud</span>
+          <span class="skill-tag" onclick="toggleTag(this)">Mobile Dev</span>
+        </div>
+      </div>
 
-  <!-- EDIT FORM (hidden by default) -->
-  <div class="form-section hidden" id="edit-form">
-    <h2>Edit Profile</h2>
-    <p class="section-sub">Update your details below</p>
-
-    <div class="form-group">
-      <label>Full name</label>
-      <input type="text" id="edit-name" value="Aisha Nalwoga" />
-    </div>
-
-    <div class="form-group">
-      <label>Role / Title</label>
-      <input type="text" id="edit-role" value="Frontend Developer" />
-    </div>
-
-    <div class="form-group">
-      <label>Location</label>
-      <input type="text" id="edit-location" value="Kampala, Uganda" />
-    </div>
-
-    <div class="form-group">
-      <label>Short bio</label>
-      <textarea id="edit-bio">Passionate about building beautiful interfaces and empowering women in tech.</textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Cohort</label>
-      <select id="edit-cohort">
-        <option>Cohort 1</option>
-        <option>Cohort 2</option>
-         <option>Cohort 3</option>
-        <option>Cohort 4</option>
-         <option>Cohort 5</option>
-        <option>Cohort 6</option>
-         <option>Cohort 7</option>
-        <option selected>Cohort 8</option>
-        <option>Cohort 9</option>
-        <option>Cohort 10</option>
-         <option>Cohort 11</option>
-        <option>Cohort 12</option>
-         <option>Cohort 13</option>
-        <option>Cohort 14</option>
-         <option>Cohort 15</option>
-        <option>Cohort 16</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Skills</label>
-      <div class="tags-select">
-        <span class="skill-tag selected" onclick="toggleTag(this)">UI/UX Design</span>
-        <span class="skill-tag selected" onclick="toggleTag(this)">Frontend Dev</span>
-        <span class="skill-tag" onclick="toggleTag(this)">Backend Dev</span>
-        <span class="skill-tag" onclick="toggleTag(this)">Data Science</span>
-        <span class="skill-tag" onclick="toggleTag(this)">Project Mgmt</span>
-        <span class="skill-tag" onclick="toggleTag(this)">Cybersecurity</span>
-        <span class="skill-tag" onclick="toggleTag(this)">Cloud</span>
-        <span class="skill-tag" onclick="toggleTag(this)">Mobile Dev</span>
+      <div class="btn-row">
+        <button class="btn-cancel" onclick="toggleEdit()">Cancel</button>
+        <button class="btn-save" onclick="saveProfile()">Save changes</button>
       </div>
     </div>
 
-    <div class="btn-row">
-      <button class="btn-outline" onclick="toggleEdit()" style="width:auto; padding:13px 24px;">Cancel</button>
-      <button class="btn-primary" onclick="saveProfile()" style="flex:1;">Save Changes</button>
+    <!-- Bio -->
+    <div class="card-divider"></div>
+    <div class="card-section" id="bio-section">
+      <div class="section-label">About me</div>
+      <p class="bio-text" id="display-bio">
+        Passionate about building beautiful interfaces and empowering women in tech.
+      </p>
     </div>
-  </div>
 
-  <!-- BIO SECTION (visible when not editing) -->
-  <div class="section" id="bio-section">
-    <h2>About me</h2>
-    <p class="bio-text" id="display-bio">
-      Passionate about building beautiful interfaces and empowering women in tech.
-    </p>
-  </div>
-
-  <!-- SKILLS SECTION -->
-  <div class="section" id="skills-section">
-    <h2>Skills</h2>
-    <div class="skills-display">
-      <span class="tag">UI/UX Design</span>
-      <span class="tag">Frontend Dev</span>
+    <!-- Skills -->
+    <div class="card-divider"></div>
+    <div class="card-section" id="skills-section">
+      <div class="section-label">Skills</div>
+      <div class="skills-wrap" id="skills-display">
+        <span class="skill-pill">UI/UX Design</span>
+        <span class="skill-pill">Frontend Dev</span>
+      </div>
     </div>
-  </div>
 
-  <!-- SETTINGS SECTION -->
-  <div class="section">
-    <h2>Settings</h2>
-
-    <div class="settings-list">
+    <!-- Preferences -->
+    <div class="card-divider"></div>
+    <div class="card-section">
+      <div class="section-label">Preferences</div>
 
       <div class="settings-item">
         <div>
@@ -174,166 +181,189 @@
           <span class="toggle-slider"></span>
         </label>
       </div>
-
     </div>
-  </div>
 
-  <!-- ACCOUNT ACTIONS -->
-  <div class="section">
-    <h2>Account</h2>
-    <div class="account-links">
-      <a href="#" class="account-link">🔒 Change password</a>
-      <a href="#" class="account-link">📧 Change email address</a>
-      <a href="#" class="account-link danger">🗑️ Delete account</a>
+    <!-- Account -->
+    <div class="card-divider"></div>
+    <div class="card-section">
+      <div class="section-label">Account</div>
+
+      <a href="#" class="account-link">
+        <span class="link-icon"><i class="ti ti-lock link-icon-glyph"></i></span>
+        Change password
+        <i class="ti ti-chevron-right chevron"></i>
+      </a>
+      <a href="#" class="account-link">
+        <span class="link-icon"><i class="ti ti-mail link-icon-glyph"></i></span>
+        Change email address
+        <i class="ti ti-chevron-right chevron"></i>
+      </a>
+      <a href="#" class="account-link danger">
+        <span class="link-icon"><i class="ti ti-trash link-icon-glyph"></i></span>
+        Delete account
+        <i class="ti ti-chevron-right chevron"></i>
+      </a>
     </div>
-  </div>
 
-  <!-- LOGOUT -->
-  <div class="section">
-    <button class="btn-logout" onclick="logout()">Log Out</button>
-  </div>
+    <!-- Logout -->
+    <div class="card-divider"></div>
+    <div class="card-section">
+      <button class="btn-logout" onclick="logout()">
+        <i class="ti ti-logout"></i> Log out
+      </button>
+    </div>
 
-  <!-- BOTTOM SPACER -->
-  <div style="height: 20px;"></div>
+  </div><!-- end .profile-card -->
 
-  <!-- BOTTOM NAV -->
+  <!-- ═══ PROFESSIONAL BOTTOM NAV ═══ -->
   <nav class="bottom-nav">
-    <a href="dashboard.html" class="nav-item">
-      <span class="icon">🏠</span>
-      Home
-    </a>
-    <a href="#" class="nav-item">
-      <span class="icon">🌐</span>
-      Feed
-    </a>
-    <a href="#" class="nav-item">
-      <div class="nav-plus">+</div>
-    </a>
-    <a href="#" class="nav-item">
-      <span class="icon">💬</span>
-      Chats
-    </a>
-    <a href="profile.html" class="nav-item active">
-      <span class="icon">👤</span>
-      Profile
-    </a>
+    <div class="bottom-nav-inner">
+      <a href="dashboard.html" class="nav-item">
+        <i class="ti ti-home"></i>
+        Home
+      </a>
+      <a href="feed.html" class="nav-item">
+        <i class="ti ti-world"></i>
+        Feed
+      </a>
+      <div class="nav-action-wrap">
+        <div class="nav-action-btn"><i class="ti ti-plus"></i></div>
+      </div>
+      <a href="chats.html" class="nav-item">
+        <i class="ti ti-message"></i>
+        Chats
+      </a>
+      <a href="profile.html" class="nav-item active">
+        <i class="ti ti-user"></i>
+        Profile
+      </a>
+    </div>
   </nav>
-
-  </div><!-- end dash-content -->
 
 </div>
 
 <script>
-  // ── Load saved profile from localStorage on page open ──
-  function loadProfile() {
-    const saved = JSON.parse(localStorage.getItem('alumniProfile'));
-    if (!saved) return;
-
-    document.getElementById('display-name').textContent  = saved.name;
-    document.getElementById('display-role').textContent  = saved.role + ' · ' + saved.location;
-    document.getElementById('display-bio').textContent   = saved.bio;
-    document.getElementById('cohort-badge').textContent  = saved.cohort;
-
-    // Pre-fill edit form fields too
-    document.getElementById('edit-name').value     = saved.name;
-    document.getElementById('edit-role').value     = saved.role;
-    document.getElementById('edit-location').value = saved.location;
-    document.getElementById('edit-bio').value      = saved.bio;
-
-    // Update skills display
-    if (saved.skills && saved.skills.length) {
-      const display = document.querySelector('.skills-display');
-      display.innerHTML = saved.skills.map(s => `<span class="tag">${s}</span>`).join('');
-    }
-
-    // Restore photo
-    if (saved.photo) {
-      document.getElementById('profile-pic').src = saved.photo;
-    }
+  /* Menu */
+  function toggleMenu() {
+    var menu = document.getElementById('nav-menu');
+    var overlay = document.getElementById('nav-overlay');
+    var isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', !isHidden);
+    overlay.classList.toggle('show', isHidden);
+  }
+  function closeMenu() {
+    document.getElementById('nav-menu').classList.add('hidden');
+    document.getElementById('nav-overlay').classList.remove('show');
   }
 
-  // ── Show / hide the edit form ──
+  /* Edit form toggle */
   function toggleEdit() {
-    const form   = document.getElementById('edit-form');
-    const bio    = document.getElementById('bio-section');
-    const skills = document.getElementById('skills-section');
+    var form   = document.getElementById('edit-form');
+    var bio    = document.getElementById('bio-section');
+    var skills = document.getElementById('skills-section');
+    var isOpen = form.classList.contains('open');
 
-    const isHidden = form.classList.contains('hidden');
-    form.classList.toggle('hidden', !isHidden);
-    bio.classList.toggle('hidden', isHidden);
-    skills.classList.toggle('hidden', isHidden);
+    form.classList.toggle('open', !isOpen);
+    bio.classList.toggle('hidden', !isOpen);
+    skills.classList.toggle('hidden', !isOpen);
+
+    if (!isOpen) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // ── Save changes to display AND localStorage ──
+  /* Tag toggle */
+  function toggleTag(el) { el.classList.toggle('selected'); }
+
+  /* Save profile */
   function saveProfile() {
-    const name     = document.getElementById('edit-name').value;
-    const role     = document.getElementById('edit-role').value;
-    const location = document.getElementById('edit-location').value;
-    const bio      = document.getElementById('edit-bio').value;
-    const cohort   = document.getElementById('edit-cohort').value;
+    var name     = document.getElementById('edit-name').value.trim();
+    var role     = document.getElementById('edit-role').value.trim();
+    var location = document.getElementById('edit-location').value.trim();
+    var bio      = document.getElementById('edit-bio').value.trim();
+    var cohort   = document.getElementById('edit-cohort').value;
+    var skills   = [];
+    document.querySelectorAll('.skill-tag.selected').forEach(function(t) {
+      skills.push(t.textContent.trim());
+    });
 
-    // Collect selected skills
-    const selectedTags = [...document.querySelectorAll('.skill-tag.selected')]
-                          .map(t => t.textContent);
-
-    // Update the display
     document.getElementById('display-name').textContent = name;
-    document.getElementById('display-role').textContent = role + ' · ' + location;
+    document.getElementById('display-role').textContent = role + ' \u00b7 ' + location;
     document.getElementById('display-bio').textContent  = bio;
     document.getElementById('cohort-badge').textContent = cohort;
 
-    // Update skills display
-    const display = document.querySelector('.skills-display');
-    display.innerHTML = selectedTags.map(s => `<span class="tag">${s}</span>`).join('');
+    var parts = name.split(' ');
+    var initials = (parts[0] ? parts[0][0] : '') + (parts[1] ? parts[1][0] : '');
+    document.getElementById('avatar-initials').textContent = initials.toUpperCase();
 
-    // Save to localStorage so it persists on refresh
+    document.getElementById('skills-display').innerHTML =
+      skills.map(function(s) { return '<span class="skill-pill">' + s + '</span>'; }).join('');
+
     localStorage.setItem('alumniProfile', JSON.stringify({
-      name, role, location, bio, cohort,
-      skills: selectedTags,
-      photo: document.getElementById('profile-pic').src
+      name: name, role: role, location: location, bio: bio, cohort: cohort, skills: skills,
+      photo: document.getElementById('profile-pic').src || ''
     }));
 
     toggleEdit();
   }
 
-  // ── Preview uploaded photo ──
+  /* Photo preview */
   function previewPhoto(event) {
-    const file   = event.target.files[0];
-    const reader = new FileReader();
-
+    var file = event.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
     reader.onload = function(e) {
-      document.getElementById('profile-pic').src = e.target.result;
+      var pic = document.getElementById('profile-pic');
+      var initials = document.getElementById('avatar-initials');
+      pic.src = e.target.result;
+      pic.style.display = 'block';
+      initials.style.display = 'none';
     };
-
     reader.readAsDataURL(file);
   }
 
-  // ── Logout ──
+  /* Logout */
   function logout() {
-    const confirmed = confirm('Are you sure you want to log out?');
-    if (confirmed) {
+    if (confirm('Are you sure you want to log out?')) {
       window.location.href = 'login.html';
     }
   }
 
-  // Run on page load
+  /* Load saved profile */
+  function loadProfile() {
+    var raw = localStorage.getItem('alumniProfile');
+    if (!raw) return;
+    var saved = JSON.parse(raw);
+
+    if (saved.name)     document.getElementById('display-name').textContent = saved.name;
+    if (saved.role)     document.getElementById('display-role').textContent = saved.role + ' \u00b7 ' + (saved.location || '');
+    if (saved.bio)      document.getElementById('display-bio').textContent  = saved.bio;
+    if (saved.cohort)   document.getElementById('cohort-badge').textContent = saved.cohort;
+
+    if (saved.name) {
+      var parts = saved.name.split(' ');
+      document.getElementById('avatar-initials').textContent =
+        ((parts[0] ? parts[0][0] : '') + (parts[1] ? parts[1][0] : '')).toUpperCase();
+    }
+
+    if (saved.name)     document.getElementById('edit-name').value     = saved.name;
+    if (saved.role)     document.getElementById('edit-role').value     = saved.role;
+    if (saved.location) document.getElementById('edit-location').value = saved.location;
+    if (saved.bio)      document.getElementById('edit-bio').value      = saved.bio;
+
+    if (saved.skills && saved.skills.length) {
+      document.getElementById('skills-display').innerHTML =
+        saved.skills.map(function(s) { return '<span class="skill-pill">' + s + '</span>'; }).join('');
+    }
+
+    if (saved.photo) {
+      var pic = document.getElementById('profile-pic');
+      pic.src = saved.photo;
+      pic.style.display = 'block';
+      document.getElementById('avatar-initials').style.display = 'none';
+    }
+  }
+
   loadProfile();
 </script>
-
-<script>
-  function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('hidden');
-  }
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('nav-menu');
-    const btn  = document.querySelector('.menu-btn');
-    if (!menu.contains(e.target) && !btn.contains(e.target)) {
-      menu.classList.add('hidden');
-    }
-  });
-</script>
-
-<script src="app.js"></script>
 
 </body>
 </html>
