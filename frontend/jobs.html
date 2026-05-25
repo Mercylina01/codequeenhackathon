@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Exclusive Tech Jobs Console</title>
+  <link rel="stylesheet" href="jobs.css" />
+</head>
+<body>
+
+  <!-- GLOBAL IDENTITY NAVIGATION HEADER -->
+  <header class="global-navbar">
+    <div class="nav-brand-container">
+      <img src="logo.png" alt="AlumniArc logo" width="100px" height="100px">
+      <!-- <div class="nav-logo-emblem">👑</div> -->
+      <!-- <span class="nav-brand-name">AlumniArc</span> -->
+    </div>
+    
+    <nav class="nav-links-cluster">
+      <a href="index.html" class="nav-link-item">Home</a>
+      <a href="#" class="nav-link-item">Alumni Directory</a>
+      <a href="jobs.html" class="nav-link-item active-nav">Tech Jobs</a>
+    </nav>
+
+    <div class="nav-profile-widget">
+      <div class="nav-avatar">PN</div>
+      <span class="nav-username">Proscovia N.</span>
+    </div>
+  </header>
+
+  <!-- MASTER CONTENT FRAMEWORK CONTAINER -->
+  <div class="jobs-layout-wrapper">
+    
+    <!-- LEFT SIDE: ACTIVE FEED & SEARCH -->
+    <main class="jobs-feed-column">
+      <header class="jobs-header">
+        <h1>Exclusive Jobs Board</h1>
+        <p>High-tier technical roles curated directly for verified Code Queen network graduates.</p>
+        
+        <div class="filter-action-bar">
+          <input type="text" id="job-search-input" class="search-field" placeholder="Search by language, role title, or enterprise..." oninput="filterJobsListEngine()" />
+          <select id="filter-job-type" class="filter-dropdown" onchange="filterJobsListEngine()">
+            <option value="ALL">All Types</option>
+            <option value="Full-Time">Full-Time</option>
+            <option value="Remote">Remote Only</option>
+            <option value="Contract">Contract</option>
+          </select>
+        </div>
+      </header>
+
+      <div class="jobs-list-container" id="jobs-cards-target">
+        <!-- Rendered smoothly via JS script below -->
+      </div>
+    </main>
+
+    <!-- RIGHT SIDE: DETAILS PREVIEW CONTAINER -->
+    <aside class="job-preview-column" id="job-preview-target">
+      <div class="empty-preview-state">
+        <div class="empty-icon">💼</div>
+        <h3>Select an Active Role</h3>
+        <p>Click on any job posting in the feed layout to instantly display comprehensive requirements and submission pipelines.</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- INTERACTIVE APPLICATION DRAWER OVERLAY -->
+  <div class="drawer-overlay" id="application-drawer">
+    <div class="drawer-content">
+      <button class="close-drawer-btn" onclick="toggleApplicationDrawer(false)">✕</button>
+      
+      <div class="drawer-header">
+        <h2>Submit Your Application</h2>
+        <p id="drawer-job-title" class="drawer-subtitle">Role Title</p>
+      </div>
+
+      <form id="job-application-form" onsubmit="handleFormSubmission(event)">
+        <div class="form-group">
+          <label for="applicant-name">Full Name</label>
+          <input type="text" id="applicant-name" required placeholder="Proscovia Nakato" />
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-email">Email Address</label>
+          <input type="email" id="applicant-email" required placeholder="proscovia@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="resume-select">Select Saved CV / Portfolio</label>
+          <select id="resume-select" class="form-select">
+            <option value="default_cv">Proscovia_Nakato_CV_2026.pdf (Latest)</option>
+            <option value="frontend_portfolio">Frontend_Developer_Portfolio.pdf</option>
+            <option value="upload_new">Upload a new document...</option>
+          </select>
+        </div>
+
+        <!-- HIDDEN FILE INPUT THAT OPENS IF 'UPLOAD NEW' IS SELECTED -->
+        <div class="form-group" id="file-upload-wrapper" style="display: none;">
+          <label class="file-dropzone" for="file-upload-input">
+            <span>📎 Click to attach new CV document</span>
+            <input type="file" id="file-upload-input" accept=".pdf,.doc,.docx" onchange="updateFileNameDisplay(this)" />
+            <small id="file-name-display"></small>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-notes">Cover Note (Optional)</label>
+          <textarea id="applicant-notes" rows="4" placeholder="Briefly highlight why your background is a perfect match..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-apply">Dispatch Application Portfolio</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SUCCESS NOTIFICATION TOAST -->
+  <div class="toast-box" id="success-toast">
+    <span>✨</span> Your application has been successfully submitted to the recruiter!
+  </div>
+
+  <!-- INLINE DATA ENGINE -->
+  <script>
+    const JOBS_DATASET = [
+      { 
+        id: 1, 
+        title: "Frontend Developer (UI Specialist)", 
+        company: "Clarity Comms Agency", 
+        type: "Full-Time", 
+        location: "Kampala, UG (Hybrid)", 
+        salary: "Competitive",
+        desc: "We are seeking a precise frontend developer with an eye for luxurious visual styles, high-fidelity landing designs, and robust CSS variable management architectures.", 
+        reqs: ["Certified Code Queen graduate status or equivalent portfolio work", "Expert knowledge of pure HTML5, vanilla JS, and custom design tokens", "Familiarity with building responsive interactive interfaces"] 
+      },
+      { 
+        id: 2, 
+        title: "Junior Software Engineer", 
+        company: "National ICT Solutions", 
+        type: "Remote", 
+        location: "Nairobi Regional Node", 
+        salary: "$1,200 - $1,800/mo",
+        desc: "Collaborate on structural backend API integrations and optimize cloud application layers. Perfect career-accelerator position for high-performing recent cohort graduates.", 
+        reqs: ["Strong basic algorithm knowledge and database design foundations", "Experience handling Git collaboration structures and team pull requests", "Understanding of responsive asynchronous data loading layers"] 
+      },
+      { 
+        id: 3, 
+        title: "Product UX/UI Designer", 
+        company: "E-Education Labs", 
+        type: "Contract", 
+        location: "Kampala Main HQ", 
+        salary: "Negotiable",
+        desc: "Drive user flows and establish global aesthetic design tokens across our entire student tracking management ecosystems.", 
+        reqs: ["Advanced mastery of typography scaling configurations and Figma frameworks", "Ability to present interface prototypes and work directly with engineers", "High strategic communication skills and cross-department collaboration"] 
+      }
+    ];
+
+    let currentlySelectedJobTitle = "";
+
+    function filterJobsListEngine() {
+      const searchVal = document.getElementById('job-search-input').value.toLowerCase();
+      const typeVal = document.getElementById('filter-job-type').value;
+
+      const filtered = JOBS_DATASET.filter(job => {
+        const matchesSearch = job.title.toLowerCase().includes(searchVal) || job.company.toLowerCase().includes(searchVal);
+        const matchesType = (typeVal === 'ALL' || job.type === typeVal);
+        return matchesSearch && matchesType;
+      });
+
+      renderJobsList(filtered);
+    }
+
+    function renderJobsList(dataset) {
+      const container = document.getElementById('jobs-cards-target');
+      container.innerHTML = '';
+
+      if (dataset.length === 0) {
+        container.innerHTML = `<div class="no-results">No open tech roles match your current filter parameters.</div>`;
+        return;
+      }
+
+      dataset.forEach(job => {
+        let typeClass = job.type.toLowerCase().replace(' ', '-');
+        container.innerHTML += `
+          <div class="job-card" id="job-card-${job.id}" onclick="viewJobDetailsPreview(${job.id})">
+            <span class="job-badge badge-${typeClass}">${job.type}</span>
+            <h3 class="job-title">${job.title}</h3>
+            <div class="job-company">${job.company}</div>
+            <div class="job-meta-row">
+              <span>📍 ${job.location}</span>
+              <span>💰 ${job.salary}</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function viewJobDetailsPreview(id) {
+      document.querySelectorAll('.job-card').forEach(c => c.classList.remove('active-card'));
+      const activeCard = document.getElementById(`job-card-${id}`);
+      if (activeCard) activeCard.classList.add('active-card');
+
+      const job = JOBS_DATASET.find(j => j.id === id);
+      const target = document.getElementById('job-preview-target');
+      currentlySelectedJobTitle = `${job.title} at ${job.company}`;
+
+      const reqsMarkup = job.reqs.map(r => `<li>${r}</li>`).join('');
+
+      target.innerHTML = `
+        <div class="preview-container">
+          <div class="preview-header">
+            <h2>${job.title}</h2>
+            <div class="preview-company-name">${job.company}</div>
+            <div class="preview-tags">
+              <span class="tag">📍 ${job.location}</span>
+              <span class="tag">💰 ${job.salary}</span>
+            </div>
+          </div>
+          
+          <div class="preview-body">
+            <h4 class="section-heading">Role Summary</h4>
+            <p class="summary-text">${job.desc}</p>
+            
+            <h4 class="section-heading">Core Competencies Required</h4>
+            <ul class="reqs-list">${reqsMarkup}</ul>
+          </div>
+          
+          <button class="btn-apply" onclick="openApplicationForm()">Apply for this Position</button>
+        </div>
+      `;
+    }
+
+    function openApplicationForm() {
+      document.getElementById('drawer-job-title').innerText = currentlySelectedJobTitle;
+      toggleApplicationDrawer(true);
+    }
+
+    function toggleApplicationDrawer(isOpen) {
+      const drawer = document.getElementById('application-drawer');
+      if (isOpen) {
+        drawer.classList.add('active');
+      } else {
+        drawer.classList.remove('active');
+        document.getElementById('job-application-form').reset();
+        document.getElementById('file-upload-wrapper').style.display = 'none';
+        document.getElementById('file-name-display').innerText = '';
+      }
+    }
+
+    document.getElementById('resume-select').addEventListener('change', function() {
+      const uploadWrapper = document.getElementById('file-upload-wrapper');
+      uploadWrapper.style.display = this.value === 'upload_new' ? 'block' : 'none';
+    });
+
+    function updateFileNameDisplay(input) {
+      const nameDisplay = document.getElementById('file-name-display');
+      if(input.files && input.files[0]) {
+        nameDisplay.innerText = `Selected: ${input.files[0].name}`;
+      }
+    }
+
+    function handleFormSubmission(event) {
+      event.preventDefault();
+      toggleApplicationDrawer(false);
+      const toast = document.getElementById('success-toast');
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 4000);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => renderJobsList(JOBS_DATASET));
+  </script>
+</body>
+</html>
