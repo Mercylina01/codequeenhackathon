@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en)
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlumniArc – Super Admin</title>
-  <link rel="stylesheet" href="dashboard.css" />
-  <link rel="stylesheet" href="admin.css" />
   <link rel="stylesheet" href="superadmin.css" />
 </head>
 <body>
 
 <div class="page">
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
     <div class="superadmin-badge">Super Admin 👑</div>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </nav>
 
-  <!-- SIDEBAR -->
   <div class="nav-menu hidden" id="nav-menu">
     <a href="superadmin-dashboard.html" class="active">🏠 Dashboard</a>
     <a href="#" onclick="showSection('users')">👥 Manage Users</a>
@@ -31,19 +27,16 @@
     <a href="login.html" class="danger">🚪 Log Out</a>
   </div>
 
-  <!-- MAIN CONTENT -->
   <div class="dash-content">
 
-    <!-- WELCOME -->
     <div class="superadmin-welcome">
       <div>
-        <h2>Super Admin 👑</h2>
-        <p>Full platform control — AlumniArc Code Queen</p>
+        <h2>Super Admin Overview</h2>
+        <p>Complete workspace control & network operations — AlumniArc Code Queen</p>
       </div>
       <div class="sa-avatar">👑</div>
     </div>
 
-    <!-- STATS ROW -->
     <div class="sa-stats">
       <div class="sa-stat">
         <div class="sa-stat-icon">👥</div>
@@ -73,13 +66,12 @@
       <div class="sa-stat">
         <div class="sa-stat-icon">📅</div>
         <div class="sa-stat-num">12</div>
-        <div class="sa-stat-label">Events This Month</div>
+        <div class="sa-stat-label">Events Scheduled</div>
       </div>
     </div>
 
-    <!-- QUICK ACTIONS -->
     <div class="section">
-      <div class="row-header"><h2>Quick Actions</h2></div>
+      <div class="row-header"><h2>Quick Navigation</h2></div>
       <div class="action-grid">
         <div class="action-card" onclick="showSection('users')">
           <div class="icon">👥</div>
@@ -108,27 +100,24 @@
       </div>
     </div>
 
-    <!-- MANAGE USERS -->
     <div class="section" id="section-users">
       <div class="row-header">
         <h2>👥 Manage Users</h2>
-        <span class="badge-count">1,024 users</span>
+        <span class="badge-count">1,024 users registry</span>
       </div>
 
-      <!-- Search -->
       <div class="sa-search">
         <span>🔍</span>
         <input type="text" placeholder="Search by name, email or cohort..." oninput="filterUsers(this.value)" />
       </div>
 
-      <!-- Users Table -->
       <div class="users-table">
         <div class="table-header">
-          <span>User</span>
+          <span>User Profile</span>
           <span>Cohort</span>
-          <span>Role</span>
+          <span>Security Role</span>
           <span>Status</span>
-          <span>Actions</span>
+          <span>Management Actions</span>
         </div>
 
         <div class="table-row" id="user-1">
@@ -198,18 +187,15 @@
             <button class="btn-delete-sm" onclick="deactivate('user-4')">Activate</button>
           </div>
         </div>
-
       </div>
     </div>
 
-    <!-- MANAGE ADMINS -->
     <div class="section" id="section-admins">
       <div class="row-header">
         <h2>🛡️ Manage Admins</h2>
         <button class="btn-add" onclick="togglePromoteForm()">+ Promote to Admin</button>
       </div>
 
-      <!-- Promote form -->
       <div class="admin-form hidden" id="promote-form">
         <div class="form-group">
           <label>Select User to Promote</label>
@@ -221,18 +207,16 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Assign Role</label>
+          <label>Assign Role Access</label>
           <select>
             <option>Admin</option>
             <option>Super Admin</option>
           </select>
         </div>
-        <button class="btn-primary" onclick="togglePromoteForm()">Promote User</button>
+        <button class="btn-primary" onclick="togglePromoteForm()">Promote Account</button>
       </div>
 
-      <!-- Current Admins -->
       <div class="admin-list">
-
         <div class="admin-row">
           <span class="user-avatar">👩🏿</span>
           <div class="admin-info">
@@ -240,7 +224,7 @@
             <div class="user-email">Cohort 6 · fatuma@example.com</div>
           </div>
           <span class="role-tag admin">Admin</span>
-          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke</button>
+          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke Access</button>
         </div>
 
         <div class="admin-row">
@@ -250,7 +234,7 @@
             <div class="user-email">Cohort 4 · grace@example.com</div>
           </div>
           <span class="role-tag admin">Admin</span>
-          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke</button>
+          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke Access</button>
         </div>
 
         <div class="admin-row">
@@ -260,13 +244,11 @@
             <div class="user-email">Cohort 3 · sandra@example.com</div>
           </div>
           <span class="role-tag superadmin">Super Admin</span>
-          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke</button>
+          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke Access</button>
         </div>
-
       </div>
     </div>
 
-    <!-- MANAGE COHORTS -->
     <div class="section" id="section-cohorts">
       <div class="row-header">
         <h2>🎓 Manage Cohorts</h2>
@@ -275,18 +257,18 @@
 
       <div class="admin-form hidden" id="add-cohort-form">
         <div class="form-group">
-          <label>Cohort Name</label>
+          <label>Cohort Nomenclature</label>
           <input type="text" placeholder="e.g. Cohort 16" />
         </div>
         <div class="form-group">
-          <label>Start Date</label>
+          <label>Inauguration Date</label>
           <input type="date" />
         </div>
         <div class="form-group">
-          <label>Description</label>
-          <input type="text" placeholder="e.g. Web Development Track" />
+          <label>Specialization Description</label>
+          <input type="text" placeholder="e.g. Frontend Web Development Track" />
         </div>
-        <button class="btn-primary" onclick="toggleAddCohort()">Create Cohort</button>
+        <button class="btn-primary" onclick="toggleAddCohort()">Create Cohort Instance</button>
       </div>
 
       <div class="cohort-cards">
@@ -326,7 +308,6 @@
       </div>
     </div>
 
-    <!-- ANALYTICS -->
     <div class="section" id="section-analytics">
       <div class="row-header">
         <h2>📊 Platform Analytics</h2>
@@ -359,40 +340,38 @@
         </div>
       </div>
 
-      <!-- Top mentors -->
-      <div class="row-header" style="margin-top:20px;">
-        <h2>Top Mentors</h2>
+      <div class="row-header" style="margin-top:32px;">
+        <h2>Top Performing Mentors</h2>
       </div>
       <div class="top-mentors">
         <div class="mentor-rank">
           <span class="rank-num">1</span>
           <span class="user-avatar">👩🏽‍🏫</span>
-          <div>
+          <div class="mentor-details">
             <div class="user-name">Grace Nakato</div>
-            <div class="user-email">24 mentees · 4.9 ⭐</div>
+            <div class="user-email">24 active sessions · 4.9 ⭐ High Rating</div>
           </div>
         </div>
         <div class="mentor-rank">
           <span class="rank-num">2</span>
           <span class="user-avatar">👩🏿‍💼</span>
-          <div>
+          <div class="mentor-details">
             <div class="user-name">Sandra Akello</div>
-            <div class="user-email">18 mentees · 4.8 ⭐</div>
+            <div class="user-email">18 active sessions · 4.8 ⭐ High Rating</div>
           </div>
         </div>
         <div class="mentor-rank">
           <span class="rank-num">3</span>
           <span class="user-avatar">👩🏾</span>
-          <div>
+          <div class="mentor-details">
             <div class="user-name">Ruth Namukasa</div>
-            <div class="user-email">15 mentees · 4.7 ⭐</div>
+            <div class="user-email">15 active sessions · 4.7 ⭐ Rating</div>
           </div>
         </div>
       </div>
 
-      <!-- Cohort growth -->
-      <div class="row-header" style="margin-top:20px;">
-        <h2>Alumni by Cohort</h2>
+      <div class="row-header" style="margin-top:32px;">
+        <h2>Alumni Volume Matrix by Cohort</h2>
       </div>
       <div class="cohort-list">
         <div class="cohort-row">
@@ -418,55 +397,53 @@
       </div>
     </div>
 
-    <!-- BULK NOTIFICATIONS -->
     <div class="section" id="section-notifications">
       <div class="row-header">
-        <h2>🔔 Bulk Notifications</h2>
+        <h2>🔔 Bulk System Broadcast notifications</h2>
       </div>
 
       <div class="admin-form">
         <div class="form-group">
-          <label>Notification Type</label>
+          <label>Notification Deployment Vector</label>
           <select>
-            <option>In-app notification</option>
-            <option>Email</option>
-            <option>Both</option>
+            <option>In-app banner notification</option>
+            <option>Direct SMTP Email Delivery</option>
+            <option>Synchronized Dual Channel Delivery</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Send to</label>
+          <label>Target Demographics Audiences</label>
           <select>
-            <option>All Users</option>
-            <option>All Alumni</option>
-            <option>All Admins</option>
-            <option>Cohort 8</option>
-            <option>Cohort 7</option>
-            <option>Cohort 6</option>
+            <option>All Registered Accounts</option>
+            <option>Verified Alumni Circle Only</option>
+            <option>Administrative Team Matrix</option>
+            <option>Cohort 8 Hub</option>
+            <option>Cohort 7 Hub</option>
+            <option>Cohort 6 Hub</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Title</label>
-          <input type="text" placeholder="Notification title..." />
+          <label>Announcement Subject Header</label>
+          <input type="text" placeholder="e.g. Sisterhood Friday Kickoff!" />
         </div>
         <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Write your message..."></textarea>
+          <label>Notification Core Body Message Text</label>
+          <textarea placeholder="Write clear, formal or casual announcements details..."></textarea>
         </div>
-        <button class="btn-primary">Send Notification 🔔</button>
+        <button class="btn-primary">Dispatch Broadcast Notice 🔔</button>
       </div>
     </div>
 
-    <!-- PLATFORM SETTINGS -->
     <div class="section" id="section-settings">
       <div class="row-header">
-        <h2>⚙️ Platform Settings</h2>
+        <h2>⚙️ Platform Governance Settings</h2>
       </div>
 
       <div class="settings-list">
         <div class="settings-item">
           <div>
-            <div class="settings-label">Allow new registrations</div>
-            <div class="settings-sub">Let new users sign up to the platform</div>
+            <div class="settings-label">Open Network Self-Registration</div>
+            <div class="settings-sub">Enables outside profile onboarding signups directly</div>
           </div>
           <label class="toggle">
             <input type="checkbox" checked />
@@ -475,8 +452,8 @@
         </div>
         <div class="settings-item">
           <div>
-            <div class="settings-label">Post moderation</div>
-            <div class="settings-sub">Require admin approval before posts go live</div>
+            <div class="settings-label">Pre-Moderation Thread Architecture</div>
+            <div class="settings-sub">Requires administrative review before public platform timeline releases</div>
           </div>
           <label class="toggle">
             <input type="checkbox" checked />
@@ -485,8 +462,8 @@
         </div>
         <div class="settings-item">
           <div>
-            <div class="settings-label">Maintenance mode</div>
-            <div class="settings-sub">Take platform offline for maintenance</div>
+            <div class="settings-label">Global Maintenance Safe Mode</div>
+            <div class="settings-sub">Switches the active server nodes offline for configuration overhauls</div>
           </div>
           <label class="toggle">
             <input type="checkbox" />
@@ -495,8 +472,8 @@
         </div>
         <div class="settings-item">
           <div>
-            <div class="settings-label">Allow mentor requests</div>
-            <div class="settings-sub">Let alumni request mentorship connections</div>
+            <div class="settings-label">Active Connection Mentorship Matches</div>
+            <div class="settings-sub">Allows current entry students to request matching from registered mentors</div>
           </div>
           <label class="toggle">
             <input type="checkbox" checked />
@@ -506,11 +483,7 @@
       </div>
     </div>
 
-  </div><!-- end dash-content -->
-
-</div><!-- end page -->
-
-<script>
+  </div></div><script>
   function toggleMenu() {
     document.getElementById('nav-menu').classList.toggle('hidden');
   }
@@ -525,7 +498,8 @@
 
   function showSection(id) {
     document.getElementById('nav-menu').classList.add('hidden');
-    document.getElementById('section-' + id).scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('section-' + id);
+    if(el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
 
   function togglePromoteForm() {
