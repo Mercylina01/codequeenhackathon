@@ -1,153 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlumniArc – Dedicated Dashboard</title>
   <link rel="stylesheet" href="dashboard.css" />
 </head>
+
 <body>
 
-<div class="page">
+  <div class="page">
 
-  <nav class="navbar">
-    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
-    <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
-  </nav>
+    <nav class="navbar">
+      <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+      <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
+    </nav>
 
-  <div class="nav-menu hidden" id="sidebar-menu">
-    <a href="dashboard.html" class="active">🏠 Dashboard</a>
-    <a href="feed.html">🌐 Feed</a>
-    <a href="chats.html">💬 Chats</a>
-    <a href="profile.html">👤 My Profile</a>
-    <a href="mentors.html">🎓 Mentors</a>
-    <a href="eventscalendar.html">📅 Events</a>
-    <a href="jobs.html">💼 Jobs</a>
-    <a href="login.html" class="danger" style="margin-top: auto;" onclick="return confirmLogout(event)">🚪 Log Out</a>
+    <div class="nav-menu hidden" id="sidebar-menu">
+      <a href="dashboard.html" class="active">🏠 Dashboard</a>
+      <a href="feed.html">🌐 Feed</a>
+      <a href="chats.html">💬 Chats</a>
+      <a href="profile.html">👤 My Profile</a>
+      <a href="mentors.html">🎓 Mentors</a>
+      <a href="eventscalendar.html">📅 Events</a>
+      <a href="jobs.html">💼 Jobs</a>
+      <a href="login.html" class="danger" style="margin-top: auto;" onclick="return confirmLogout(event)">🚪 Log Out</a>
+    </div>
+
+    <main class="dash-content">
+
+      <div class="section">
+        <div class="welcome-card">
+          <div>
+            <h3>Welcome back, Aisha 👋</h3>
+            <p>Cohort 8 · Code Queen Alumni</p>
+          </div>
+          <div class="avatar-glow" id="dashboard-profile-avatar-container">
+            <img id="dashboard-profile-img" src="default-avatar.png" alt="User Avatar"
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: none;">
+            <span id="dashboard-fallback-emoji">👩🏾‍💻</span>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="num">1,500</div>
+            <div class="label">Alumni Network</div>
+          </div>
+          <div class="stat">
+            <div class="num">3</div>
+            <div class="label">Upcoming Events</div>
+          </div>
+          <div class="stat">
+            <div class="num">5</div>
+            <div class="label">Active Chats</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="row-header">
+          <h2>Quick Actions</h2>
+        </div>
+        <p class="section-sub">Jump right into your essential portals</p>
+
+        <div class="action-grid">
+          <a href="profile.html" class="action-card">
+            <div class="icon-wrapper">👤</div>
+            <span>Edit Profile</span>
+          </a>
+          <a href="feed.html" class="action-card">
+            <div class="icon-wrapper">🌐</div>
+            <span>Newsfeed</span>
+          </a>
+          <a href="chats.html" class="action-card">
+            <div class="icon-wrapper">💬</div>
+            <span>Chat Rooms</span>
+          </a>
+          <a href="mentors.html" class="action-card">
+            <div class="icon-wrapper">🎓</div>
+            <span>Find Mentors</span>
+          </a>
+          <a href="eventscalendar.html" class="action-card">
+            <div class="icon-wrapper">📅</div>
+            <span>Events</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="section" style="padding-top:0;">
+        <div class="row-header">
+          <h2>My Activity Alerts</h2>
+        </div>
+        <div class="feed-item" style="border-left: 4px solid var(--orange-main); background: #fffcf9;">
+          <div class="icon-wrapper" style="font-size:20px; margin-right:8px;">🎖️</div>
+          <div>
+            <div class="title" style="font-weight:700;">Role Promoted to Cohort Representative!</div>
+            <div class="meta">System Administration assigned you management access for Cohort 8.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="row-header">
+          <h2>My Arc Badges</h2>
+        </div>
+        <p class="section-sub">Earn visual rewards by participating in network calls, chats, and events.</p>
+
+        <div class="stats" style="grid-template-columns: repeat(3, 1fr); gap:12px;">
+          <div class="stat" style="background:#fdf9ff; border-color:var(--purple-light);">
+            <div style="font-size:32px;">🔥</div>
+            <div class="label" style="font-size:11px; color:var(--purple-text); font-weight:700; margin-top:6px;">Top
+              Contributor</div>
+          </div>
+          <div class="stat" style="background:#fffaf6; border-color:#ffe8da;">
+            <div style="font-size:32px;">🎟️</div>
+            <div class="label" style="font-size:11px; color:var(--purple-text); font-weight:700; margin-top:6px;">Event
+              Champion</div>
+          </div>
+          <div class="stat" style="opacity: 0.5; background:#f5f5f5;">
+            <div style="font-size:32px;">🌟</div>
+            <div class="label" style="font-size:11px; margin-top:6px;">Alumni Star</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="row-header">
+          <h2>Share a Story, Win or Job Opportunity</h2>
+        </div>
+        <p class="section-sub">Submit blogs, new job listings, or personal success metrics directly to our media stream.
+        </p>
+
+        <div
+          style="background:var(--purple-panel); border:1px solid var(--purple-light); border-radius:var(--radius-md); padding:20px; box-shadow:var(--card-shadow);">
+          <form id="contribution-submission-form" onsubmit="handleAlumniSubmission(event)"
+            style="display:flex; flex-direction:column; gap:12px;">
+            <div>
+              <label
+                style="font-size:12px; font-weight:700; text-transform:uppercase; color:#6b5875; display:block; margin-bottom:4px;">Submission
+                Type</label>
+              <select id="sub-type"
+                style="width:100%; padding:10px; border:1px solid var(--purple-light); border-radius:var(--radius-sm); font-family:inherit;">
+                <option value="story">✨ Personal Success Story / Career Win</option>
+                <option value="job">💼 Job Board Update Opportunity</option>
+                <option value="blog">📝 Community Blog Post / Resource Link</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                style="font-size:12px; font-weight:700; text-transform:uppercase; color:#6b5875; display:block; margin-bottom:4px;">Heading
+                Headline</label>
+              <input type="text" id="sub-title" placeholder="e.g., Secured a Frontend Engineer position at Safaricom!"
+                required
+                style="width:100%; padding:10px; border:1px solid var(--purple-light); border-radius:var(--radius-sm); font-family:inherit;">
+            </div>
+
+            <div>
+              <label
+                style="font-size:12px; font-weight:700; text-transform:uppercase; color:#6b5875; display:block; margin-bottom:4px;">Share
+                your context description</label>
+              <textarea id="sub-body" rows="3"
+                placeholder="Write details here... (Submissions are logged directly to the administration approval queue)"
+                required
+                style="width:100%; padding:10px; border:1px solid var(--purple-light); border-radius:var(--radius-sm); font-family:inherit; resize:none;"></textarea>
+            </div>
+
+            <button type="submit" class="new-chat-btn" style="width:100%; padding:12px; border-radius:30px;">Submit to
+              Community Queue</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="row-header">
+          <h2>Latest Updates</h2>
+          <a href="feed.html" class="see-all-link">See all feed posts</a>
+        </div>
+        <p class="section-sub">What's happening in the community right now</p>
+
+        <div class="feed-item">
+          <div class="pulse-dot"></div>
+          <div>
+            <div class="title">Sisterhood Friday meetup scheduled this week 🎉</div>
+            <div class="meta">Cohort Leaders · 2 hours ago</div>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="pulse-dot"></div>
+          <div>
+            <div class="title">New scholarship alert: Google for Africa Cohorts</div>
+            <div class="meta">Opportunities · 5 hours ago</div>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="pulse-dot read"></div>
+          <div>
+            <div class="title">Diana just secured a new Frontend Developer role! 🚀</div>
+            <div class="meta">Success Stories · Yesterday</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
   </div>
 
-  <main class="dash-content">
-
-    <div class="section">
-      <div class="welcome-card">
-        <div>
-          <h3>Welcome back, Aisha 👋</h3>
-          <p>Cohort 8 · Code Queen Alumni</p>
-        </div>
-        <div class="avatar-glow">👩🏾‍💻</div>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="num">1,500</div>
-          <div class="label">Alumni Network</div>
-        </div>
-        <div class="stat">
-          <div class="num">3</div>
-          <div class="label">Upcoming Events</div>
-        </div>
-        <div class="stat">
-          <div class="num">5</div>
-          <div class="label">Active Chats</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="row-header">
-        <h2>Quick Actions</h2>
-      </div>
-      <p class="section-sub">Jump right into your essential portals</p>
-
-      <div class="action-grid">
-        <a href="profile.html" class="action-card">
-          <div class="icon-wrapper">👤</div>
-          <span>Edit Profile</span>
-        </a>
-        <a href="feed.html" class="action-card">
-          <div class="icon-wrapper">🌐</div>
-          <span>Newsfeed</span>
-        </a>
-        <a href="chats.html" class="action-card">
-          <div class="icon-wrapper">💬</div>
-          <span>Chat Rooms</span>
-        </a>
-        <a href="mentors.html" class="action-card">
-          <div class="icon-wrapper">🎓</div>
-          <span>Find Mentors</span>
-        </a>
-        <a href="eventscalendar.html" class="action-card">
-          <div class="icon-wrapper">📅</div>
-          <span>Events</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="row-header">
-        <h2>Latest Updates</h2>
-        <a href="feed.html" class="see-all-link">See all feed posts</a>
-      </div>
-      <p class="section-sub">What's happening in the community right now</p>
-
-      <div class="feed-item">
-        <div class="pulse-dot"></div>
-        <div>
-          <div class="title">Sisterhood Friday meetup scheduled this week 🎉</div>
-          <div class="meta">Cohort Leaders · 2 hours ago</div>
-        </div>
-      </div>
-
-      <div class="feed-item">
-        <div class="pulse-dot"></div>
-        <div>
-          <div class="title">New scholarship alert: Google for Africa Cohorts</div>
-          <div class="meta">Opportunities · 5 hours ago</div>
-        </div>
-      </div>
-
-      <div class="feed-item">
-        <div class="pulse-dot read"></div>
-        <div>
-          <div class="title">Diana just secured a new Frontend Developer role! 🚀</div>
-          <div class="meta">Success Stories · Yesterday</div>
-        </div>
-      </div>
-    </div>
-
-  </main>
-</div>
-
-<script>
-  function toggleMobileMenu() {
-    document.getElementById('sidebar-menu').classList.toggle('hidden');
-  }
-
-  // Auto layout setup for loading pages smoothly
-  window.addEventListener('resize', () => {
-    const menu = document.getElementById('sidebar-menu');
-    if (window.innerWidth >= 768) {
-      menu.classList.remove('hidden');
-    } else {
-      menu.classList.add('hidden');
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('sidebar-menu').classList.toggle('hidden');
     }
-  });
 
-  // Run immediately on boot to handle screen check
-  if (window.innerWidth >= 768) {
-    document.getElementById('sidebar-menu').classList.remove('hidden');
-  }
+    // Auto layout setup for loading pages smoothly
+    window.addEventListener('resize', () => {
+      const menu = document.getElementById('sidebar-menu');
+      if (window.innerWidth >= 768) {
+        menu.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+      }
+    });
 
-  function confirmLogout(event) {
-  event.preventDefault(); 
-  
-  const choice = confirm("Are you sure you want to log out?");
-  
-  if (choice) {
-    window.location.href = event.currentTarget.href;
-  }
-}
-</script>
+    // Run immediately on boot to handle screen check
+    if (window.innerWidth >= 768) {
+      document.getElementById('sidebar-menu').classList.remove('hidden');
+    }
+
+    function confirmLogout(event) {
+      event.preventDefault();
+
+      const choice = confirm("Are you sure you want to log out?");
+
+      if (choice) {
+        window.location.href = event.currentTarget.href;
+      }
+    }
+
+    function handleAlumniSubmission(event) {
+      event.preventDefault();
+
+      const type = document.getElementById('sub-type').value;
+      const title = document.getElementById('sub-title').value;
+
+      // Alert confirms execution safely without revealing the underlying validation step
+      alert(`Thank you for your submission! Your entry has been received and logged.`);
+
+      document.getElementById('contribution-submission-form').reset();
+    }
+
+    function loadSavedProfileImage() {
+      // Pulls data saved by your 'profile.html' updates form pipeline
+      const savedImage = localStorage.getItem('alumniProfileImage');
+      const imgElement = document.getElementById('dashboard-profile-img');
+      const fallbackEmoji = document.getElementById('dashboard-fallback-emoji');
+
+      if (savedImage && imgElement && fallbackEmoji) {
+        imgElement.src = savedImage;
+        imgElement.style.display = 'block'; // Show the image frame
+        fallbackEmoji.style.display = 'none'; // Hide the default placeholder emoji
+      }
+    }
+
+    // Fire immediately when the dashboard is loaded or refreshed by the browser
+    window.addEventListener('DOMContentLoaded', loadSavedProfileImage);
+
+
+  </script>
 
 </body>
+
 </html>

@@ -187,10 +187,19 @@
     document.getElementById('skills-display').innerHTML =
       sk.map(function(s) { return '<span class="pill">' + s + '</span>'; }).join('');
 
+    // Safely capture the image source path
+    var photoSrc = document.getElementById('profile-pic').src || '';
+
+    // Save everything to the central storage object
     localStorage.setItem('alumniProfile', JSON.stringify({
-      name: name, role: role, location: loc, bio: bio, cohort: coh, skills: sk,
-      photo: document.getElementById('profile-pic').src || ''
+      name: name, role: role, location: loc, bio: bio, cohort: coh, skills: sk, photo: photoSrc
     }));
+    
+    // Explicitly update the profile image cache key for the dashboard to see
+    if(photoSrc && !photoSrc.endsWith('profile.html')) {
+      localStorage.setItem('alumniProfileImage', photoSrc);
+    }
+
     toggleEdit();
   }
 
@@ -199,9 +208,13 @@
     if (!file) return;
     var r = new FileReader();
     r.onload = function(ev) {
-      document.getElementById('profile-pic').src = ev.target.result;
+      var base64Img = ev.target.result;
+      document.getElementById('profile-pic').src = base64Img;
       document.getElementById('profile-pic').style.display = 'block';
       document.getElementById('avatar-initials').style.display = 'none';
+      
+      // Save the raw uploaded image directly into the image cache key
+      localStorage.setItem('alumniProfileImage', base64Img);
     };
     r.readAsDataURL(file);
   }
@@ -210,6 +223,7 @@
     if (confirm('Log out of AlumniArc?')) window.location.href = 'login.html';
   }
 
+  // Load everything cleanly from storage memory when page opens
   (function() {
     var raw = localStorage.getItem('alumniProfile');
     if (!raw) return;
@@ -230,8 +244,11 @@
     if (s.skills && s.skills.length)
       document.getElementById('skills-display').innerHTML =
         s.skills.map(function(x) { return '<span class="pill">' + x + '</span>'; }).join('');
-    if (s.photo) {
-      document.getElementById('profile-pic').src = s.photo;
+    
+    // Check if there is a saved profile image string active
+    var savedPhoto = localStorage.getItem('alumniProfileImage');
+    if (savedPhoto) {
+      document.getElementById('profile-pic').src = savedPhoto;
       document.getElementById('profile-pic').style.display = 'block';
       document.getElementById('avatar-initials').style.display = 'none';
     }

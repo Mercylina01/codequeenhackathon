@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlumniArc – Chats</title>
-  <link rel="stylesheet" href="dashboard.css" />
-  <link rel="stylesheet" href="chats.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlumniArc - Interactive Messaging</title>
+  <link rel="stylesheet" href="chats.css">
 </head>
 <body>
 
-<div class="page">
+<div class="app-container">
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-  </nav>
-
-  <!-- SIDEBAR -->
-  <div class="nav-menu hidden" id="nav-menu">
+  <aside class="sidebar">
+    <div class="logo-area"><img src="logo.png" alt="Logo"></div>
     <a href="dashboard.html">🏠 Dashboard</a>
     <a href="feed.html">🌐 Feed</a>
     <a href="chats.html" class="active">💬 Chats</a>
@@ -26,477 +19,262 @@
     <a href="mentors.html">🎓 Mentors</a>
     <a href="eventscalendar.html">📅 Events</a>
     <a href="jobs.html">💼 Jobs</a>
-    <a href="login.html" class="danger">🚪 Log Out</a>
-  </div>
+    <a href="login.html" class="danger" style="margin-top: auto;" onclick="return confirmLogout(event)">🚪 Log Out</a>
+  </aside>
 
-  <!-- MAIN CONTENT -->
-  <div class="dash-content" style="padding:0;">
-
-  
-  <!--  VIEW 1: CONVERSATION LIST  -->
-  
-  <div id="view-list">
-
-    <!-- HEADER -->
-    <div class="section" style="border-bottom: 6px solid #f4f4f4;">
-      <div class="row-header">
-        <h2>Chats</h2>
-        <button class="new-chat-btn" onclick="showNewChat()">✏️ New</button>
+  <main class="chats-workspace">
+    
+    <section class="conversations-sidebar" id="left-directory-panel">
+      <div class="search-header">
+        <div class="title-row">
+          <h1>Chats</h1>
+          <button class="new-chat-btn" onclick="toggleNewChatModal(false)">+ New</button>
+        </div>
+        <div class="search-box-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="directory-searcher" placeholder="Search conversations..." oninput="filterConversationsEngine()">
+        </div>
       </div>
 
-      <!-- SEARCH -->
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Search conversations..." oninput="searchChats(this.value)" />
-      </div>
-    </div>
+      <div class="conversations-scroll-area" id="chat-cards-list-container">
+        </div>
+    </section>
 
-    <!-- PINNED -->
-    <div id="chat-scroll-area">
-    <div class="chat-group-label">Pinned</div>
-    <div id="pinned-list">
-
-      <div class="chat-row pinned" onclick="openChat('cohort8')">
-        <div class="chat-avatar group">👩🏾‍💻</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Cohort 8 Group 📌</span>
-            <span class="chat-time">2m</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Esther: Who's coming to Friday's event?</span>
-            <span class="unread-badge">3</span>
+    <section class="active-chat-window hidden-mobile" id="right-chat-canvas">
+      
+      <div class="chat-window-header">
+        <div class="target-info">
+          <button class="back-nav-btn" onclick="closeActiveChatGoBack()">← Close</button>
+          <div class="avatar-box" id="active-chat-avatar">...</div>
+          <div>
+            <h2 id="active-chat-title">Select a Chat</h2>
+            <p id="active-chat-subtitle">Choose from the list to start messaging</p>
           </div>
         </div>
       </div>
 
-      <div class="chat-row pinned" onclick="openChat('grace')">
-        <div class="chat-avatar">👩🏽‍🏫</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Grace Nakato 📌</span>
-            <span class="chat-time">1h</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Let me know when you're free for a session!</span>
-            <span class="unread-badge">1</span>
-          </div>
-        </div>
+      <div class="chat-messages-canvas" id="chat-stream-box"></div>
+
+      <div class="emoji-popover-panel hidden" id="whatsapp-emoji-box">
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('😀')">😀</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('😂')">😂</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('🚀')">🚀</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('🎉')">🎉</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('👏🏾')">👏🏾</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('🔥')">🔥</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('❤️')">❤️</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('👩🏾‍💻')">👩🏾‍💻</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('🙌')">🙌</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('✨')">✨</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('💼')">💼</button>
+        <button class="emoji-grid-item" onclick="selectPickerEmoji('🎓')">🎓</button>
       </div>
 
-    </div>
-
-    <!-- ALL MESSAGES -->
-    <div class="chat-group-label">All Messages</div>
-    <div id="all-list">
-
-      <div class="chat-row" onclick="openChat('sandra')">
-        <div class="chat-avatar">👩🏿‍💼</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Sandra Akello</span>
-            <span class="chat-time">3h</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Here is the resource I mentioned earlier…</span>
-          </div>
+      <div class="chat-control-toolbar">
+        <div class="input-box-wrapper">
+          <input type="file" id="media-attachment-input" class="hidden-file-input" onchange="fileUploadedNotification(this)">
+          <button class="action-icon-btn" title="Attach file" onclick="triggerFileUploadClick()">📎</button>
+          
+          <button class="action-icon-btn" title="Toggle Emojis" onclick="toggleWhatsAppEmojiBox(event)">😊</button>
+          
+          <input type="text" id="chat-input-field" placeholder="Type a message..." onkeypress="handleKeySubmit(event)">
+          <button class="send-action-btn" onclick="submitMessage()">➔</button>
         </div>
       </div>
+    </section>
 
-      <div class="chat-row" onclick="openChat('alumni')">
-        <div class="chat-avatar group">🌐</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">AlumniArc General</span>
-            <span class="chat-time">Yesterday</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Diana: Congrats to everyone who graduated! 🎉</span>
-            <span class="unread-badge">7</span>
-          </div>
-        </div>
-      </div>
+  </main>
+</div>
 
-      <div class="chat-row" onclick="openChat('diana')">
-        <div class="chat-avatar">👩🏾</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Diana Namutebi</span>
-            <span class="chat-time">Yesterday</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">You: Congrats on the new role!! 🚀</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="chat-row" onclick="openChat('priya')">
-        <div class="chat-avatar">👩🏽</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Priya Ochieng</span>
-            <span class="chat-time">Mon</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Did you see the new scholarship post?</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="chat-row" onclick="openChat('fatuma')">
-        <div class="chat-avatar">👩🏿</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Fatuma Wanjiku</span>
-            <span class="chat-time">Sun</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Thanks so much for the referral 🙏</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- COMMUNITY CHANNELS -->
-    <div class="chat-group-label">Community Channels 🌐</div>
-    <div id="community-list">
-
-      <div class="chat-row" onclick="openChat('alumni')">
-        <div class="chat-avatar group">🌐</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">AlumniArc General</span>
-            <span class="chat-time">Yesterday</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Diana: Congrats to everyone who graduated! 🎉</span>
-            <span class="unread-badge">7</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="chat-row" onclick="openChat('cohort8')">
-        <div class="chat-avatar group">👩🏾‍💻</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Cohort 8 Group</span>
-            <span class="chat-time">2m</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Esther: Who's coming to Friday's event?</span>
-            <span class="unread-badge">3</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="chat-row" onclick="openChat('jobs-channel')">
-        <div class="chat-avatar group">💼</div>
-        <div class="chat-info">
-          <div class="chat-top">
-            <span class="chat-name">Jobs & Opportunities</span>
-            <span class="chat-time">Mon</span>
-          </div>
-          <div class="chat-bottom">
-            <span class="chat-preview">Admin: New internship at Andela posted!</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    </div><!-- end chat-scroll-area -->
-
-    <!-- BOTTOM NAV -->
-    <nav class="bottom-nav">
-      <a href="dashboard.html" class="nav-item">
-        <span class="icon">🏠</span>Home
-      </a>
-      <a href="feed.html" class="nav-item">
-        <span class="icon">🌐</span>Feed
-      </a>
-      <a href="#" class="nav-item">
-        <div class="nav-plus">+</div>
-      </a>
-      <a href="chats.html" class="nav-item active">
-        <span class="icon">💬</span>Chats
-      </a>
-      <a href="profile.html" class="nav-item">
-        <span class="icon">👤</span>Profile
-      </a>
-    </nav>
-
-  </div><!-- end view-list -->
-
-  <!-- NEW CHAT MODAL -->
-  <div class="modal-overlay hidden" id="new-chat-modal">
-    <div class="modal">
-      <div class="modal-header">
-        <h3>New Message</h3>
-        <button onclick="closeNewChat()">✕</button>
-      </div>
-      <div class="search-wrap" style="margin-bottom:14px;">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Search alumni by name..." />
-      </div>
-      <div class="modal-list">
-        <div class="modal-person" onclick="openChat('grace'); closeNewChat()">
-          <span class="chat-avatar" style="font-size:18px;width:36px;height:36px;">👩🏽‍🏫</span>
-          <div><div class="chat-name">Grace Nakato</div><div class="chat-preview">Mentor · Andela</div></div>
-        </div>
-        <div class="modal-person" onclick="openChat('diana'); closeNewChat()">
-          <span class="chat-avatar" style="font-size:18px;width:36px;height:36px;">👩🏾</span>
-          <div><div class="chat-name">Diana Namutebi</div><div class="chat-preview">Cohort 8 Alumni</div></div>
-        </div>
-        <div class="modal-person" onclick="openChat('priya'); closeNewChat()">
-          <span class="chat-avatar" style="font-size:18px;width:36px;height:36px;">👩🏽</span>
-          <div><div class="chat-name">Priya Ochieng</div><div class="chat-preview">Cohort 7 Alumni</div></div>
-        </div>
-        <div class="modal-person" onclick="openChat('fatuma'); closeNewChat()">
-          <span class="chat-avatar" style="font-size:18px;width:36px;height:36px;">👩🏿</span>
-          <div><div class="chat-name">Fatuma Wanjiku</div><div class="chat-preview">Cohort 6 Alumni</div></div>
-        </div>
-      </div>
+<div class="modal-overlay hidden" id="new-chat-modal-view">
+  <div class="modal-card">
+    <h3>Start a New Conversation</h3>
+    <input type="text" id="new-contact-name-field" placeholder="Enter contact name or cohort identity...">
+    <div class="modal-actions">
+      <button class="new-chat-btn" style="background:#6b5875;" onclick="toggleNewChatModal(true)">Cancel</button>
+      <button class="new-chat-btn" onclick="createNewChatSession()">Create</button>
     </div>
   </div>
-
-
-
-  <!--  VIEW 2: OPEN CONVERSATION  -->
-
-  <div id="view-chat" class="hidden">
-
-    <!-- CHAT TOPBAR -->
-    <div class="chat-topbar">
-      <button class="back-btn" onclick="closeChat()">← Back</button>
-      <div class="chat-topbar-info">
-        <div class="topbar-avatar" id="topbar-avatar">👩🏽‍🏫</div>
-        <div>
-          <div class="topbar-name" id="topbar-name">Grace Nakato</div>
-          <div class="topbar-status">Online</div>
-        </div>
-      </div>
-      <button class="icon-btn">⋯</button>
-    </div>
-
-    <!-- MESSAGES -->
-    <div class="messages-area" id="messages-area">
-      <!-- Messages are injected by JS -->
-    </div>
-
-    <!-- MESSAGE INPUT -->
-    <div class="message-input-bar">
-      <button class="icon-btn">📎</button>
-      <input
-        type="text"
-        id="msg-input"
-        placeholder="Type a message..."
-        onkeydown="if(event.key==='Enter') sendMessage()"
-      />
-      <button class="send-btn" onclick="sendMessage()">➤</button>
-    </div>
-
-  </div><!-- end view-chat -->
-
-  </div><!-- end dash-content -->
-
-</div><!-- end page -->
-
-
-<!--  CONVERSATION DATA  -->
+</div>
 
 <script>
-  const conversations = {
-    grace: {
-      name: 'Grace Nakato',
-      avatar: '👩🏽‍🏫',
-      status: 'Online',
-      messages: [
-        { from: 'them', text: 'Hi Aisha! How are you settling in at your new role?', time: '10:02 AM' },
-        { from: 'me',   text: 'Grace! It\'s going really well, thank you 😊', time: '10:15 AM' },
-        { from: 'them', text: 'That\'s wonderful to hear. Let me know when you\'re free for a mentorship session!', time: '10:16 AM' },
-        { from: 'me',   text: 'Definitely! Maybe next week Tuesday?', time: '10:20 AM' },
-        { from: 'them', text: 'Tuesday works perfectly. I\'ll send a calendar invite 📅', time: '10:22 AM' },
-      ]
-    },
-    sandra: {
-      name: 'Sandra Akello',
-      avatar: '👩🏿‍💼',
-      status: 'Last seen 3h ago',
-      messages: [
-        { from: 'me',   text: 'Hi Sandra, do you have any good product management resources?', time: 'Yesterday' },
-        { from: 'them', text: 'Yes! I have a great PM roadmap doc. Let me share it.', time: 'Yesterday' },
-        { from: 'them', text: 'Here is the resource I mentioned earlier… docs.google.com/pm-roadmap', time: '3h ago' },
-      ]
-    },
-    cohort8: {
-      name: 'Cohort 8 Group',
-      avatar: '👩🏾‍💻',
-      status: '12 members',
-      messages: [
-        { from: 'them', text: 'Ruth: Hey everyone! Reminder about Sisterhood Friday this week 🎉', time: 'Mon' },
-        { from: 'them', text: 'Amina: I\'ll be there! Who else?', time: 'Mon' },
-        { from: 'me',   text: 'Counting me in! 🙋🏾‍♀️', time: 'Mon' },
-        { from: 'them', text: 'Esther: Who\'s coming to Friday\'s event?', time: '2m ago' },
-      ]
-    },
-    alumni: {
-      name: 'AlumniArc General',
-      avatar: '🌐',
-      status: '50+ members',
-      messages: [
-        { from: 'them', text: 'Admin: Welcome all new members joining this week! 👋', time: 'Mon' },
-        { from: 'them', text: 'Zara: Anyone working on the Google hackathon this month?', time: 'Mon' },
-        { from: 'them', text: 'Diana: Congrats to everyone who graduated! 🎉', time: 'Yesterday' },
-      ]
-    },
-    diana: {
-      name: 'Diana Namutebi',
-      avatar: '👩🏾',
-      status: 'Last seen yesterday',
-      messages: [
-        { from: 'them', text: 'Aisha! I got the job at Andela 🎉🎉', time: 'Yesterday' },
-        { from: 'me',   text: 'NO WAY!! Congratulations Diana!! 🚀🔥', time: 'Yesterday' },
-        { from: 'me',   text: 'Congrats on the new role!! 🚀', time: 'Yesterday' },
-        { from: 'them', text: 'Thank you so much 🥹 Couldn\'t have done it without the community!', time: 'Yesterday' },
-      ]
-    },
-    priya: {
-      name: 'Priya Ochieng',
-      avatar: '👩🏽',
-      status: 'Last seen Monday',
-      messages: [
-        { from: 'them', text: 'Did you see the new scholarship post on the feed?', time: 'Mon' },
-        { from: 'me',   text: 'Not yet! Is it the Google Africa one?', time: 'Mon' },
-        { from: 'them', text: 'Yes! Deadline is end of month. You should apply!', time: 'Mon' },
-      ]
-    },
-    fatuma: {
-      name: 'Fatuma Wanjiku',
-      avatar: '👩🏿',
-      status: 'Last seen Sunday',
-      messages: [
-        { from: 'me',   text: 'Hey Fatuma, I mentioned your name to the hiring manager at Safaricom 😊', time: 'Sun' },
-        { from: 'them', text: 'Thanks so much for the referral 🙏', time: 'Sun' },
-        { from: 'them', text: 'They actually reached out! Interview next week 🤞', time: 'Sun' },
-        { from: 'me',   text: 'That\'s amazing!! Good luck!! 💪🏾', time: 'Sun' },
-      ]
-    }
+  let activeThreadId = 'cohort8';
+
+  const chatDatabase = {
+    cohort8: { title: "Cohort 8 Group", subtitle: "Alumni Hub · 48 Members", avatar: "👩‍💻", type: "community", messages: [{ sender: "Alumni Admin", text: "Hello Cohort 8! System updates post here.", isIncoming: true, isAdmin: true, time: "10:00 AM" }] },
+    alumni_general: { title: "AlumniArc General Hub", subtitle: "Global Community Announcement Space", avatar: "🌐", type: "community", messages: [{ sender: "Super Admin", text: "Welcome to the central Alumni Hub.", isIncoming: true, isAdmin: true, time: "Yesterday" }] },
+    grace: { title: "Grace Nakato", subtitle: "Senior Software Engineer", avatar: "👩🏽‍🏫", type: "direct", messages: [{ sender: "Grace Nakato", text: "Let me know when you are free.", isIncoming: true, isAdmin: false, time: "1h ago" }] }
   };
 
-  conversations['jobs-channel'] = {
-    name: 'Jobs & Opportunities',
-    avatar: '💼',
-    status: 'Community channel',
-    messages: [
-      { from: 'them', text: 'Admin: New internship at Andela posted! Check the Jobs page 💼', time: 'Mon' },
-      { from: 'them', text: 'Zara: I just applied! Thanks for sharing', time: 'Mon' },
-      { from: 'them', text: 'Admin: Google Africa scholarship deadline is end of month 📢', time: 'Tue' },
-    ]
-  };
+  function renderConversationCards() {
+    const container = document.getElementById('chat-cards-list-container');
+    if (!container) return;
+    container.innerHTML = '';
 
-  let currentChat = null;
+    const sections = { community: "Community Chats", direct: "One on One Chats" };
+    
+    Object.keys(sections).forEach(typeKey => {
+      const title = document.createElement('div');
+      title.className = 'list-section-title';
+      title.innerText = sections[typeKey];
+      container.appendChild(title);
 
-  function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('hidden');
+      Object.keys(chatDatabase).forEach(key => {
+        const item = chatDatabase[key];
+        if (item.type !== typeKey) return;
+
+        const card = document.createElement('div');
+        card.className = `chat-item-card ${activeThreadId === key ? 'active' : ''}`;
+        card.setAttribute('data-search-name', item.title.toLowerCase());
+        card.onclick = () => loadChatThread(key);
+
+        card.innerHTML = `
+          <div class="avatar-box">${item.avatar}</div>
+          <div class="chat-item-details">
+            <div class="chat-item-meta">
+              <span class="name">${item.title}</span>
+            </div>
+            <div class="preview-msg">${item.messages[item.messages.length - 1]?.text || 'No messages yet...'}</div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    });
   }
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('nav-menu');
-    const btn  = document.querySelector('.menu-btn');
-    if (menu && !menu.contains(e.target) && btn && !btn.contains(e.target)) {
-      menu.classList.add('hidden');
-    }
+
+  function filterConversationsEngine() {
+    const query = document.getElementById('directory-searcher').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.chat-item-card');
+    
+    cards.forEach(card => {
+      const name = card.getAttribute('data-search-name');
+      if (name.includes(query)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function toggleWhatsAppEmojiBox(e) {
+    e.stopPropagation();
+    document.getElementById('whatsapp-emoji-box').classList.toggle('hidden');
+  }
+
+  // Inserts chosen picker icon into input field natively
+  function selectPickerEmoji(emoji) {
+    const field = document.getElementById('chat-input-field');
+    field.value += emoji;
+    document.getElementById('whatsapp-emoji-box').classList.add('hidden');
+    field.focus();
+  }
+
+  document.addEventListener('click', () => {
+    document.getElementById('whatsapp-emoji-box').classList.add('hidden');
   });
-    document.getElementById('new-chat-modal').classList.remove('hidden');
 
-  function closeNewChat() {
-    document.getElementById('new-chat-modal').classList.add('hidden');
+  function loadChatThread(id) {
+    activeThreadId = id;
+    renderConversationCards();
+    renderMessages();
+    
+    document.getElementById('left-directory-panel').classList.add('hidden-mobile');
+    document.getElementById('right-chat-canvas').classList.remove('hidden-mobile');
   }
 
-  // Open a conversation
-  function openChat(id) {
-    currentChat = id;
-    const convo = conversations[id];
-    if (!convo) return;
-
-    document.getElementById('topbar-name').textContent   = convo.name;
-    document.getElementById('topbar-avatar').textContent = convo.avatar;
-    document.querySelector('.topbar-status').textContent  = convo.status;
-
-    renderMessages(convo.messages);
-
-    document.getElementById('view-list').classList.add('hidden');
-    document.getElementById('view-chat').classList.remove('hidden');
+  function closeActiveChatGoBack() {
+    document.getElementById('left-directory-panel').classList.remove('hidden-mobile');
+    document.getElementById('right-chat-canvas').classList.add('hidden-mobile');
   }
 
-  // Render messages into the messages area
-  function renderMessages(messages) {
-    const area = document.getElementById('messages-area');
-    area.innerHTML = '';
+  function toggleNewChatModal(shouldClose) {
+    const modal = document.getElementById('new-chat-modal-view');
+    modal.classList.toggle('hidden', shouldClose);
+    document.getElementById('new-contact-name-field').value = '';
+  }
 
-    messages.forEach(msg => {
-      const div = document.createElement('div');
-      div.className = 'message ' + (msg.from === 'me' ? 'mine' : 'theirs');
-      div.innerHTML = `
-        <div class="bubble">${msg.text}</div>
-        <div class="msg-time">${msg.time}</div>
-      `;
-      area.appendChild(div);
+  function createNewChatSession() {
+    const nameInput = document.getElementById('new-contact-name-field').value.trim();
+    if (!nameInput) return;
+
+    const sessionKey = 'custom_' + Date.now();
+    chatDatabase[sessionKey] = {
+      title: nameInput,
+      subtitle: "Direct Message Session Channel",
+      avatar: "👤",
+      type: "direct",
+      messages: []
+    };
+
+    toggleNewChatModal(true);
+    loadChatThread(sessionKey);
+  }
+
+  function renderMessages() {
+    const streamBox = document.getElementById('chat-stream-box');
+    const activeData = chatDatabase[activeThreadId];
+    if (!streamBox || !activeData) return;
+
+    streamBox.innerHTML = '';
+    document.getElementById('active-chat-title').innerText = activeData.title;
+    document.getElementById('active-chat-subtitle').innerText = activeData.subtitle;
+    document.getElementById('active-chat-avatar').innerText = activeData.avatar;
+
+    activeData.messages.forEach(msg => {
+      const row = document.createElement('div');
+      row.className = `msg-bubble-row ${msg.isIncoming ? 'incoming' : 'outgoing'}`;
+
+      if (msg.isIncoming) {
+        const identity = document.createElement('div');
+        identity.className = 'sender-identity';
+        identity.innerText = msg.sender;
+        if (msg.isAdmin) identity.innerHTML += ` <span class="org-tag">ORG</span>`;
+        row.appendChild(identity);
+      }
+
+      const bubble = document.createElement('div');
+      bubble.className = 'msg-text-bubble';
+      bubble.innerText = msg.text;
+      row.appendChild(bubble);
+
+      const footer = document.createElement('div');
+      footer.className = 'msg-status-footer';
+      footer.innerText = msg.time + " ";
+
+      if (!msg.isIncoming) {
+        footer.innerHTML += ` <span class="status-tick">✓✓</span>`;
+      }
+
+      row.appendChild(footer);
+      streamBox.appendChild(row);
     });
-
-    // Scroll to bottom
-    area.scrollTop = area.scrollHeight;
+    streamBox.scrollTop = streamBox.scrollHeight;
   }
 
-  // Send a new message
-  function sendMessage() {
-    const input = document.getElementById('msg-input');
-    const text  = input.value.trim();
-    if (!text) return;
+  function submitMessage() {
+    const field = document.getElementById('chat-input-field');
+    const txt = field.value.trim();
+    if (!txt) return;
 
-    // Add to data
-    conversations[currentChat].messages.push({
-      from: 'me',
-      text: text,
-      time: 'Just now'
-    });
-
-    // Re-render
-    renderMessages(conversations[currentChat].messages);
-    input.value = '';
+    chatDatabase[activeThreadId].messages.push({ sender: "You", text: txt, isIncoming: false, time: "Just now" });
+    field.value = '';
+    renderMessages();
+    renderConversationCards();
   }
 
-  // Go back to list
-  function closeChat() {
-    document.getElementById('view-chat').classList.add('hidden');
-    document.getElementById('view-list').classList.remove('hidden');
-    currentChat = null;
-  }
-
-  // Search conversations
-  function searchChats(query) {
-    const rows = document.querySelectorAll('.chat-row');
-    rows.forEach(row => {
-      const name = row.querySelector('.chat-name').textContent.toLowerCase();
-      row.style.display = name.includes(query.toLowerCase()) ? 'flex' : 'none';
-    });
-  }
-
-  // Hamburger menu
-  function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('hidden');
-  }
-
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('nav-menu');
-    const btn  = document.querySelector('.menu-btn');
-    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-      menu.classList.add('hidden');
+  function handleKeySubmit(e) { if (e.key === 'Enter') submitMessage(); }
+  function triggerFileUploadClick() { document.getElementById('media-attachment-input').click(); }
+  function fileUploadedNotification(input) {
+    if(input.files[0]) {
+      document.getElementById('chat-input-field').value += ` 📎 [File: ${input.files[0].name}]`;
     }
+  }
+  function confirmLogout(e) { if(!confirm("Are you sure you want to log out?")) e.preventDefault(); }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    renderConversationCards();
+    renderMessages();
   });
 </script>
-
-<script src="app.js"></script>
-
 </body>
 </html>
