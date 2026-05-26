@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlumniArc – Dashboard</title>
+  <title>AlumniArc – Dedicated Dashboard</title>
   <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
 
 <div class="page">
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
   </nav>
 
-  <!-- SIDEBAR NAV (becomes hamburger dropdown on mobile) -->
-  <div class="nav-menu hidden" id="nav-menu">
+  <div class="nav-menu hidden" id="sidebar-menu">
     <a href="dashboard.html" class="active">🏠 Dashboard</a>
     <a href="feed.html">🌐 Feed</a>
     <a href="chats.html">💬 Chats</a>
@@ -25,237 +23,131 @@
     <a href="mentors.html">🎓 Mentors</a>
     <a href="eventscalendar.html">📅 Events</a>
     <a href="jobs.html">💼 Jobs</a>
-    <a href="login.html" class="danger">🚪 Log Out</a>
+    <a href="login.html" class="danger" style="margin-top: auto;" onclick="return confirmLogout(event)">🚪 Log Out</a>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="dash-content">
+  <main class="dash-content">
 
-  <!-- WELCOME & STATS -->
-  <div class="section">
-    <h2>Alumni Dashboard</h2>
-    <p class="section-sub">Access your profile, feed and personalized chats</p>
-
-    <div class="welcome-card">
-      <div>
-        <h3>Welcome back, Aisha 👋</h3>
-        <p>Cohort 8 · Code Queen Alumni</p>
+    <div class="section">
+      <div class="welcome-card">
+        <div>
+          <h3>Welcome back, Aisha 👋</h3>
+          <p>Cohort 8 · Code Queen Alumni</p>
+        </div>
+        <div class="avatar-glow">👩🏾‍💻</div>
       </div>
-      <div class="avatar">👩🏾‍💻</div>
-    </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="num">12</div>
-        <div class="label">Connections</div>
-      </div>
-      <div class="stat">
-        <div class="num">3</div>
-        <div class="label">Events</div>
-      </div>
-      <div class="stat">
-        <div class="num">5</div>
-        <div class="label">Chats</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- QUICK ACTIONS -->
-  <div class="section">
-    <div class="row-header">
-      <h2>Quick Actions</h2>
-    </div>
-
-    <div class="action-grid">
-      <a href="profile.html" class="action-card">
-        <div class="icon">👤</div>
-        <span>Profile / Edit</span>
-      </a>
-      <a href="#" class="action-card">
-        <div class="icon">🌐</div>
-        <span>Newsfeed</span>
-      </a>
-      <a href="chats.html" class="action-card">
-        <div class="icon">💬</div>
-        <span>Active Chat Panel</span>
-      </a>
-      <a href="#" class="action-card">
-        <div class="icon">🎓</div>
-        <span>My Cohort</span>
-      </a>
-      <a href="#" class="action-card">
-        <div class="icon">📋</div>
-        <span>Resources</span>
-      </a>
-    </div>
-
-  </div>
-
-  <!-- NEWSFEED -->
-  <div class="section">
-    <div class="row-header">
-      <h2>Newsfeed</h2>
-      <a href="#">See all</a>
-    </div>
-
-    <div class="feed-item">
-      <div class="dot"></div>
-      <div>
-        <div class="title">Sisterhood Friday this week 🎉</div>
-        <div class="meta">Cohort Leaders · 2 hrs ago</div>
+      <div class="stats">
+        <div class="stat">
+          <div class="num">1,500</div>
+          <div class="label">Alumni Network</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="label">Upcoming Events</div>
+        </div>
+        <div class="stat">
+          <div class="num">5</div>
+          <div class="label">Active Chats</div>
+        </div>
       </div>
     </div>
 
-    <div class="feed-item">
-      <div class="dot"></div>
-      <div>
-        <div class="title">New scholarship: Google for Africa 2025</div>
-        <div class="meta">Opportunities · 5 hrs ago</div>
+    <div class="section">
+      <div class="row-header">
+        <h2>Quick Actions</h2>
+      </div>
+      <p class="section-sub">Jump right into your essential portals</p>
+
+      <div class="action-grid">
+        <a href="profile.html" class="action-card">
+          <div class="icon-wrapper">👤</div>
+          <span>Edit Profile</span>
+        </a>
+        <a href="feed.html" class="action-card">
+          <div class="icon-wrapper">🌐</div>
+          <span>Newsfeed</span>
+        </a>
+        <a href="chats.html" class="action-card">
+          <div class="icon-wrapper">💬</div>
+          <span>Chat Rooms</span>
+        </a>
+        <a href="mentors.html" class="action-card">
+          <div class="icon-wrapper">🎓</div>
+          <span>Find Mentors</span>
+        </a>
+        <a href="eventscalendar.html" class="action-card">
+          <div class="icon-wrapper">📅</div>
+          <span>Events</span>
+        </a>
       </div>
     </div>
 
-    <div class="feed-item">
-      <div class="dot read"></div>
-      <div>
-        <div class="title">Diana secured a role at Andela 🚀</div>
-        <div class="meta">Community · Yesterday</div>
+    <div class="section">
+      <div class="row-header">
+        <h2>Latest Updates</h2>
+        <a href="feed.html" class="see-all-link">See all feed posts</a>
       </div>
-    </div>
-  </div>
+      <p class="section-sub">What's happening in the community right now</p>
 
-  <!-- MENTORS -->
-  <div class="section">
-    <div class="row-header">
-      <h2>Mentors</h2>
-      <a href="mentors.html">See all</a>
-    </div>
-    <p class="section-sub">Guided professional growth from experienced leaders</p>
-
-    <div class="mentor-card">
-      <div class="avatar">👩🏽‍🏫</div>
-      <div>
-        <div class="name">Grace Nakato</div>
-        <div class="role">Senior Software Engineer · Andela</div>
-        <span class="tag">Backend</span>
-        <span class="tag">Python</span>
+      <div class="feed-item">
+        <div class="pulse-dot"></div>
+        <div>
+          <div class="title">Sisterhood Friday meetup scheduled this week 🎉</div>
+          <div class="meta">Cohort Leaders · 2 hours ago</div>
+        </div>
       </div>
-    </div>
 
-    <div class="mentor-card">
-      <div class="avatar">👩🏿‍💼</div>
-      <div>
-        <div class="name">Sandra Akello</div>
-        <div class="role">Product Manager · Safaricom</div>
-        <span class="tag">Product</span>
-        <span class="tag">Leadership</span>
+      <div class="feed-item">
+        <div class="pulse-dot"></div>
+        <div>
+          <div class="title">New scholarship alert: Google for Africa Cohorts</div>
+          <div class="meta">Opportunities · 5 hours ago</div>
+        </div>
+      </div>
+
+      <div class="feed-item">
+        <div class="pulse-dot read"></div>
+        <div>
+          <div class="title">Diana just secured a new Frontend Developer role! 🚀</div>
+          <div class="meta">Success Stories · Yesterday</div>
+        </div>
       </div>
     </div>
 
-    <a href="mentors.html" class="btn-outline">Connect with a Mentor</a>
-  </div>
-
-  <!-- EVENT CALENDAR -->
-  <div class="section">
-    <div class="row-header">
-      <h2>Event Calendar</h2>
-      <a href="eventscalendar.html">View all</a>
-    </div>
-    <p class="section-sub">Upcoming community meetups and tech workshops</p>
-
-    <div class="event-card">
-      <div class="date-box">
-        <div class="day">28</div>
-        <div class="month">MAY</div>
-      </div>
-      <div>
-        <div class="title">End-of-month alumni social meetup</div>
-        <div class="location">📍 Downtown Tech Hub</div>
-      </div>
-    </div>
-
-    <div class="event-card">
-      <div class="date-box">
-        <div class="day">05</div>
-        <div class="month">JUNE</div>
-      </div>
-      <div>
-        <div class="title">Navigating Tech-space Center Seminar</div>
-        <div class="location">📍 National ICT Hub, UG</div>
-      </div>
-    </div>
-
-    <a href="eventscalendar.html" class="btn-outline">View All Events</a>
-  </div>
-
-  <!-- JOBS -->
-  <div class="section">
-    <div class="row-header">
-      <h2>Jobs</h2>
-      <a href="#">View more</a>
-    </div>
-    <p class="section-sub">Exclusive opportunities for the AlumniArc network</p>
-
-    <div class="jobs-row">
-      <div class="job-card">
-        <span class="job-badge full-time">Full-time</span>
-        <div class="title">UI/UX Designer</div>
-        <div class="location">📍 Kampala, UG</div>
-        <button class="btn-apply">Apply Now</button>
-      </div>
-      <div class="job-card">
-        <span class="job-badge remote">Remote</span>
-        <div class="title">Software Engineer</div>
-        <div class="location">📍 Nairobi, KE</div>
-        <button class="btn-apply">Apply Now</button>
-      </div>
-    </div>
-
-    <a href="#" class="btn-outline">View more Jobs</a>
-  </div>
-
-  </div><!-- end dash-content -->
-
-  <!-- BOTTOM NAV (mobile only) -->
-  <nav class="bottom-nav">
-    <a href="dashboard.html" class="nav-item active">
-      <span class="icon">🏠</span>
-      Home
-    </a>
-    <a href="feed.html" class="nav-item">
-      <span class="icon">🌐</span>
-      Feed
-    </a>
-    <a href="#" class="nav-item">
-      <div class="nav-plus">+</div>
-    </a>
-    <a href="chats.html" class="nav-item">
-      <span class="icon">💬</span>
-      Chats
-    </a>
-    <a href="profile.html" class="nav-item">
-      <span class="icon">👤</span>
-      Profile
-    </a>
-  </nav>
-
+  </main>
 </div>
 
 <script>
-  function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('hidden');
+  function toggleMobileMenu() {
+    document.getElementById('sidebar-menu').classList.toggle('hidden');
   }
 
-  // Close menu when clicking outside
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('nav-menu');
-    const btn  = document.querySelector('.menu-btn');
-    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+  // Auto layout setup for loading pages smoothly
+  window.addEventListener('resize', () => {
+    const menu = document.getElementById('sidebar-menu');
+    if (window.innerWidth >= 768) {
+      menu.classList.remove('hidden');
+    } else {
       menu.classList.add('hidden');
     }
   });
-</script>
 
-<script src="app.js"></script>
+  // Run immediately on boot to handle screen check
+  if (window.innerWidth >= 768) {
+    document.getElementById('sidebar-menu').classList.remove('hidden');
+  }
+
+  function confirmLogout(event) {
+  event.preventDefault(); 
+  
+  const choice = confirm("Are you sure you want to log out?");
+  
+  if (choice) {
+    window.location.href = event.currentTarget.href;
+  }
+}
+</script>
 
 </body>
 </html>
