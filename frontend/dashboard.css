@@ -1,20 +1,21 @@
 /* ===== ARCHITECTURAL BRAND FONTS ===== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
  
-/* ===== THE THREE-COLOR MASTER PALETTE ===== */
+/* ===== THE LIGHT & LUXURIOUS SYSTEM PALETTE ===== */
 :root {
-  --purple-deep:      #1c0d24; 
-  --purple-panel:     #2e183b; 
-  --purple-light:     #f4ebf8; 
-  --purple-accent:    #9b5de5; 
+  /* High-end clean light branding accents */
+  --purple-deep:      #fdfbfe; /* Bright, luxurious porcelain surface container background */
+  --purple-panel:     #ffffff; /* Pristine solid white canvas panels */
+  --purple-light:     #f5edf8; /* Very soft lavender gray background tint */
+  --purple-accent:    #5c2a80; /* Premium deep violet for rich typography and lines */
   
-  --orange-main:      #f3722c; 
+  --orange-main:      #f3722c; /* Vibrant Solar Orange action states */
   --orange-hover:     #f8961e; 
   
-  --white-pure:       #ffffff;
-  --white-glass:      rgba(255, 255, 255, 0.06);
-  --white-border:     rgba(255, 255, 255, 0.12);
-  --text-muted:       #d2c4d8; 
+  --white-pure:       #231132; /* Inverted: Clear, dark premium purple text color for visibility */
+  --white-glass:      #f7f4f9; /* Subtle item foundations */
+  --white-border:     #e2d9e6; /* Delicate structural border frame grid lines */
+  --text-muted:       #6c5a77; /* Soft readable secondary summary gray-purple */
   
   --radius-lg:        16px;
   --radius-md:        12px;
@@ -35,7 +36,7 @@ body {
   width: 100%;
   max-width: 430px; 
   margin: 0 auto;
-  background: linear-gradient(180deg, var(--purple-deep) 0%, #251130 100%);
+  background: linear-gradient(180deg, var(--purple-deep) 0%, #f6f0fa 100%);
   min-height: 100vh;
   padding-bottom: 90px;
   position: relative;
@@ -47,7 +48,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  background: rgba(28, 13, 36, 0.85);
+  background: rgba(253, 251, 254, 0.9);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--white-border);
   position: sticky;
@@ -57,7 +58,7 @@ body {
  
 .nav-logo {
   height: 38px;
-  background: var(--white-pure);
+  background: #231132; /* Contrast logo container */
   padding: 4px 10px;
   border-radius: 6px;
 }
@@ -66,7 +67,7 @@ body {
   background: none;
   border: none;
   font-size: 24px;
-  color: var(--white-pure);
+  color: var(--purple-accent);
   cursor: pointer;
 }
  
@@ -84,6 +85,7 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   font-weight: 700;
+  color: var(--purple-accent);
   letter-spacing: -0.01em;
 }
  
@@ -102,16 +104,37 @@ body {
 }
  
 .row-header a,
-.see-all-link {
+.see-all-link, .workspace-link {
   font-size: 13px;
   color: var(--orange-main);
   text-decoration: none;
   font-weight: 600;
 }
+
+.chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Close Chat Feature Styles */
+.close-chat-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #ff4d4d;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: opacity 0.2s;
+}
+.close-chat-btn:hover {
+  opacity: 0.8;
+}
  
 /* ===== CLASSY BANNER COMPONENT ===== */
 .welcome-card {
-  background: linear-gradient(135deg, var(--purple-panel) 0%, var(--orange-main) 100%);
+  background: linear-gradient(135deg, var(--purple-accent) 0%, var(--orange-main) 100%);
   border-radius: var(--radius-lg);
   padding: 24px;
   display: flex;
@@ -119,23 +142,25 @@ body {
   align-items: center;
   margin-bottom: 16px;
   border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(92, 42, 128, 0.08);
 }
  
 .welcome-card h3 {
   font-family: 'Playfair Display', serif;
   font-size: 24px;
+  color: #ffffff;
 }
  
 .welcome-card p {
   font-size: 13px;
   opacity: 0.9;
   margin-top: 4px;
+  color: #ffffff;
 }
  
 .avatar-glow {
   font-size: 36px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   width: 64px;
   height: 64px;
   display: grid;
@@ -156,6 +181,7 @@ body {
   border-radius: var(--radius-md);
   padding: 14px;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
  
 .stat .num {
@@ -190,6 +216,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
   transition: all 0.2s ease;
 }
  
@@ -200,7 +227,7 @@ body {
  
 .action-card .icon-wrapper {
   font-size: 22px;
-  background: var(--white-glass);
+  background: var(--purple-light);
   width: 44px;
   height: 44px;
   display: grid;
@@ -222,12 +249,12 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
 }
  
 .chat-tabs {
   display: flex;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--purple-light);
   border-bottom: 1px solid var(--white-border);
 }
  
@@ -246,9 +273,9 @@ body {
 }
  
 .chat-tab-btn.active {
-  color: var(--orange-main);
+  color: var(--purple-accent);
   background: var(--purple-panel);
-  border-bottom: 2px solid var(--orange-main);
+  border-bottom: 2px solid var(--purple-accent);
 }
  
 .chat-messages-container {
@@ -258,7 +285,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background: rgba(0, 0, 0, 0.08);
+  background: #fffcfd;
 }
  
 .msg-row {
@@ -273,7 +300,7 @@ body {
 .msg-sender-tag {
   font-size: 11px;
   font-weight: 600;
-  color: var(--orange-main);
+  color: var(--purple-accent);
   margin-bottom: 4px;
   margin-left: 4px;
 }
@@ -281,8 +308,8 @@ body {
 .msg-sender-tag.admin-badge::after {
   content: "ORG ANNOUNCEMENT";
   font-size: 8px;
-  background: var(--white-pure);
-  color: var(--purple-deep);
+  background: var(--purple-accent);
+  color: #ffffff;
   padding: 2px 6px;
   border-radius: 4px;
   margin-left: 6px;
@@ -298,7 +325,7 @@ body {
 }
  
 .incoming .msg-bubble {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--purple-light);
   color: var(--white-pure);
   border-bottom-left-radius: 4px;
   border: 1px solid var(--white-border);
@@ -306,7 +333,7 @@ body {
  
 .outgoing .msg-bubble {
   background: var(--orange-main);
-  color: var(--white-pure);
+  color: #ffffff;
   border-bottom-right-radius: 4px;
 }
  
@@ -319,17 +346,17 @@ body {
   margin-top: 4px;
   padding: 0 4px;
 }
-.outgoing .msg-meta-info { color: rgba(255, 255, 255, 0.7); }
+.outgoing .msg-meta-info { color: rgba(255, 255, 255, 0.9); }
  
 .delivery-tick {
   font-size: 12px;
-  color: var(--white-pure);
+  color: #ffffff;
   font-weight: bold;
 }
-.delivery-tick.read { color: #81c784; }
+.delivery-tick.read { color: #2e7d32; }
  
 .chat-input-bar {
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--purple-light);
   border-top: 1px solid var(--white-border);
   padding: 12px;
 }
@@ -342,7 +369,7 @@ body {
  
 .chat-input-row input {
   flex: 1;
-  background: var(--purple-deep);
+  background: var(--purple-panel);
   border: 1px solid var(--white-border);
   border-radius: 50px;
   padding: 10px 16px;
@@ -353,9 +380,9 @@ body {
 .chat-input-row input:focus { outline: 1px solid var(--orange-main); }
  
 .chat-action-btn {
-  background: var(--white-glass);
+  background: var(--purple-panel);
   border: 1px solid var(--white-border);
-  color: var(--white-pure);
+  color: var(--purple-accent);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -365,12 +392,12 @@ body {
   font-size: 16px;
   transition: all 0.15s;
 }
-.chat-action-btn:hover { background: rgba(255,255,255,0.15); }
+.chat-action-btn:hover { background: #fffcfd; }
  
 .chat-submit-send {
   background: var(--orange-main);
   border: none;
-  color: var(--white-pure);
+  color: #ffffff;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -394,6 +421,7 @@ body {
   border-radius: var(--radius-md);
   margin-bottom: 10px;
   align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
  
 .pulse-dot {
@@ -403,7 +431,7 @@ body {
   background: var(--orange-main);
   flex-shrink: 0;
 }
-.pulse-dot.read { background: rgba(255,255,255,0.2); }
+.pulse-dot.read { background: #cccccc; }
  
 .feed-item .title { font-size: 14px; font-weight: 600; }
 .feed-item .meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
@@ -419,16 +447,17 @@ body {
   border-radius: var(--radius-md);
   padding: 14px;
   margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
  
 .mentor-card .avatar { font-size: 30px; }
-.mentor-card .name { font-size: 15px; font-weight: 700; }
+.mentor-card .name { font-size: 15px; font-weight: 700; color: var(--purple-accent); }
 .mentor-card .role { font-size: 12px; color: var(--text-muted); margin: 2px 0 6px; }
  
 .tag {
   display: inline-block;
-  background: rgba(243, 114, 44, 0.12);
-  color: var(--orange-main);
+  background: var(--purple-light);
+  color: var(--purple-accent);
   font-size: 11px;
   font-weight: 600;
   padding: 3px 8px;
@@ -438,7 +467,7 @@ body {
  
 .date-box {
   background: var(--orange-main);
-  color: var(--white-pure);
+  color: #ffffff;
   border-radius: 8px;
   text-align: center;
   padding: 8px;
@@ -447,8 +476,8 @@ body {
 .date-box .day { font-size: 20px; font-weight: 700; line-height: 1; }
 .date-box .month { font-size: 10px; font-weight: 700; margin-top: 2px; }
  
-.event-card .title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-.event-card .location { font-size: 12px; color: var(--text-muted); }
+.event-card .title { font-size: 14px; font-weight: 600; }
+.event-card .location { font-size: 12px; color: var(--text-muted); basic-link: none; }
  
 /* ===== CURATED JOB FRAMEWORKS ===== */
 .jobs-row {
@@ -463,6 +492,7 @@ body {
   border: 1px solid var(--white-border);
   border-radius: var(--radius-md);
   padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
  
 .job-badge {
@@ -473,16 +503,16 @@ body {
   border-radius: 4px;
   margin-bottom: 8px;
 }
-.full-time { background: rgba(255,255,255,0.1); color: var(--white-pure); border: 1px solid var(--white-border); }
-.remote    { background: rgba(243, 114, 44, 0.15); color: var(--orange-main); }
+.full-time { background: var(--purple-light); color: var(--purple-accent); }
+.remote    { background: rgba(243, 114, 44, 0.1); color: var(--orange-main); }
  
-.job-card .title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.job-card .title { font-size: 14px; font-weight: 700; color: var(--purple-accent); }
 .job-card .location { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
  
 .btn-apply {
   width: 100%;
   background: var(--orange-main);
-  color: var(--white-pure);
+  color: #ffffff;
   border: none;
   border-radius: 50px;
   padding: 10px;
@@ -497,8 +527,8 @@ body {
   padding: 14px;
   border-radius: 50px;
   background: transparent;
-  color: var(--white-pure);
-  border: 2px solid var(--orange-main);
+  color: var(--purple-accent);
+  border: 2px solid var(--purple-accent);
   font-size: 14px;
   font-weight: 600;
   text-align: center;
@@ -506,7 +536,7 @@ body {
   margin-top: 10px;
   transition: all 0.2s;
 }
-.btn-outline:hover { background: var(--orange-main); }
+.btn-outline:hover { background: var(--purple-accent); color: #ffffff; }
  
 /* ===== RESPONSIVE FLOATING BOTTOM NAVIGATION BAR ===== */
 .bottom-nav {
@@ -514,7 +544,7 @@ body {
   grid-template-columns: repeat(5, 1fr);
   padding: 12px 0 20px;
   border-top: 1px solid var(--white-border);
-  background: rgba(28, 13, 36, 0.94);
+  background: rgba(253, 251, 254, 0.94);
   backdrop-filter: blur(12px);
   position: fixed;
   bottom: 0;
@@ -536,11 +566,11 @@ body {
 }
  
 .bottom-nav .nav-item .icon { font-size: 20px; }
-.bottom-nav .nav-item.active { color: var(--orange-main); }
+.bottom-nav .nav-item.active { color: var(--purple-accent); }
  
 .nav-plus {
   background: var(--orange-main);
-  color: var(--white-pure);
+  color: #ffffff;
   border-radius: 50%;
   width: 44px;
   height: 44px;
@@ -558,13 +588,12 @@ body {
   background: var(--purple-panel);
   border: 1px solid var(--white-border);
   border-radius: var(--radius-md);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(92, 42, 128, 0.08);
   width: 200px;
   z-index: 2000;
   overflow: hidden;
 }
 
-/* CRITICAL FIX: Keep the sidebar responsive panel visible on desktop even if 'hidden' mobile toggle class is present */
 .nav-menu.hidden {
   display: none; 
 }
@@ -578,9 +607,9 @@ body {
   font-weight: 600;
   color: var(--white-pure);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid var(--white-border);
 }
-.nav-menu a:hover { background: rgba(255,255,255,0.05); color: var(--orange-main); }
+.nav-menu a:hover { background: var(--purple-light); color: var(--purple-accent); }
 .nav-menu a.danger { color: #ff4d4d; }
  
 /* ===== 🖥️ HIGH-END TABLET & DESKTOP ARCHITECTURE (768px+) ===== */
@@ -605,7 +634,6 @@ body {
  
   .menu-btn { display: none; }
  
-  /* Transform mobile hamburger dropdown into permanent elegant sidebar panel */
   .nav-menu, .nav-menu.hidden {
     position: sticky !important;
     top: 64px !important;
@@ -631,14 +659,14 @@ body {
   }
  
   .nav-menu a:hover {
-    background: rgba(255,255,255,0.03);
-    color: var(--white-pure);
+    background: var(--purple-light);
+    color: var(--purple-accent);
   }
  
   .nav-menu a.active {
-    background: rgba(255,255,255,0.05);
+    background: var(--purple-light);
     border-left-color: var(--orange-main);
-    color: var(--orange-main);
+    color: var(--purple-accent);
   }
  
   .dash-content {

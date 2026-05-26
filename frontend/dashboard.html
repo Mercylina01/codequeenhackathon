@@ -1,410 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlumniArc – Dashboard</title>
   <link rel="stylesheet" href="dashboard.css" />
 </head>
-
 <body>
-
-  <div class="page">
-
-    <nav class="navbar">
-      <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
-      <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </nav>
-
-    <div class="nav-menu hidden" id="nav-menu">
-      <a href="dashboard.html" class="active">🏠 Dashboard</a>
-      <a href="feed.html">🌐 Feed</a>
-      <a href="chats.html">💬 Chats</a>
-      <a href="profile.html">👤 My Profile</a>
-      <a href="mentors.html">🎓 Mentors</a>
-      <a href="eventscalendar.html">📅 Events</a>
-      <a href="jobs.html">💼 Jobs</a>
-      <a href="login.html" class="danger">🚪 Log Out</a>
+ 
+<div class="page">
+ 
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+ 
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="feed.html">🌐 Feed</a>
+    <a href="chats.html">💬 Chats</a>
+    <a href="profile.html">👤 My Profile</a>
+    <a href="mentors.html">🎓 Mentors</a>
+    <a href="eventscalendar.html">📅 Events</a>
+    <a href="jobs.html">💼 Jobs</a>
+    <a href="login.html" class="danger">🚪 Log Out</a>
+  </div>
+ 
+  <div class="dash-content">
+ 
+    <div class="section">
+      <h2>Alumni Dashboard</h2>
+      <p class="section-sub">Access your profile, feed and personalized chats</p>
+ 
+      <div class="welcome-card">
+        <div>
+          <h3>Welcome back, Aisha 👋</h3>
+          <p class="cohort-tag">Cohort 8 · Code Queen Alumni</p>
+        </div>
+        <div class="avatar-glow">👩🏾‍💻</div>
+      </div>
+ 
+      <div class="stats">
+        <div class="stat">
+          <div class="num">12</div>
+          <div class="label">Connections</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="label">Events</div>
+        </div>
+        <div class="stat">
+          <div class="num">5</div>
+          <div class="label">Chats</div>
+        </div>
+      </div>
     </div>
-
-    <div class="dash-content">
-
-      <div class="section">
-        <h2>Alumni Dashboard</h2>
-        <p class="section-sub">Access your profile, feed and personalized chats</p>
-
-        <div class="welcome-card">
-          <div>
-            <h3>Welcome back, Aisha 👋</h3>
-            <p>Cohort 8 · Code Queen Alumni</p>
-          </div>
-          <div class="avatar-glow" id="dashboard-profile-avatar-container">
-            <img id="dashboard-profile-img" src="default-avatar.png" alt="User Avatar"
-              style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: none;">
-            <span id="dashboard-fallback-emoji">👩🏾‍💻</span>
-          </div>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <div class="num">12</div>
-            <div class="label">Connections</div>
-          </div>
-          <div class="stat">
-            <div class="num">3</div>
-            <div class="label">Events</div>
-          </div>
-          <div class="stat">
-            <div class="num">5</div>
-            <div class="label">Chats</div>
-          </div>
-        </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Quick Actions</h2>
       </div>
-
-      <div class="section">
-        <div class="row-header">
-          <h2>Quick Actions</h2>
-        </div>
-
-        <div class="action-grid">
-          <a href="profile.html" class="action-card">
-            <div class="icon-wrapper">👤</div>
-            <span>Profile / Edit</span>
-          </a>
-          <a href="#" class="action-card">
-            <div class="icon-wrapper">🌐</div>
-            <span>Newsfeed</span>
-          </a>
-          <a href="chats.html" class="action-card">
-            <div class="icon-wrapper">💬</div>
-            <span>Active Chat</span>
-          </a>
-          <a href="#" class="action-card">
-            <div class="icon-wrapper">🎓</div>
-            <span>My Cohort</span>
-          </a>
-          <a href="#" class="action-card">
-            <div class="icon-wrapper">📋</div>
-            <span>Resources</span>
-          </a>
-        </div>
+ 
+      <div class="action-grid">
+        <a href="profile.html" class="action-card">
+          <div class="icon-wrapper">👤</div>
+          <span>Profile / Edit</span>
+        </a>
+        <a href="#" class="action-card">
+          <div class="icon-wrapper">🌐</div>
+          <span>Newsfeed</span>
+        </a>
+        <a href="chats.html" class="action-card">
+          <div class="icon-wrapper">💬</div>
+          <span>Active Chat</span>
+        </a>
+        <a href="#" class="action-card">
+          <div class="icon-wrapper">🎓</div>
+          <span>My Cohort</span>
+        </a>
+        <a href="#" class="action-card">
+          <div class="icon-wrapper">📋</div>
+          <span>Resources</span>
+        </a>
       </div>
-
-      <div class="section">
-        <div class="row-header">
-          <h2>Active Chat Hub</h2>
-          <a href="chats.html">Open Full Workspace</a>
-        </div>
-        <p class="section-sub">Connect directly with peers or view live announcements from organization admins.</p>
-
-        <div class="chat-workspace-card">
-          <div class="chat-tabs">
-            <button class="chat-tab-btn active" id="tab-community" onclick="switchChatTab('community')">🌐 Community
-              Hubs</button>
-            <button class="chat-tab-btn" id="tab-direct" onclick="switchChatTab('direct')">👤 Direct Messages
-              (1:1)</button>
-          </div>
-
-          <div class="chat-messages-container" id="chat-messages-box"></div>
-
-          <div class="chat-input-bar">
-            <div class="chat-input-row">
-              <input type="file" id="chat-file-handler" class="file-input-hidden" onchange="handleFileAttachment(this)">
-              <button class="chat-action-btn" title="Attach Files" onclick="triggerFileInput()">📎</button>
-              <button class="chat-action-btn" title="Add Emoji" onclick="insertQuickEmoji('🚀')">🚀</button>
-              <input type="text" id="chat-text-input" placeholder="Type your response to the network..."
-                onkeypress="handleChatEnter(event)">
-              <button class="chat-submit-send" onclick="sendLiveMessage()">➔</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="row-header">
-          <h2>Newsfeed</h2>
-          <a href="#">See all</a>
-        </div>
-
-        <div class="feed-item">
-          <div class="pulse-dot"></div>
-          <div>
-            <div class="title">Sisterhood Friday this week 🎉</div>
-            <div class="meta">Cohort Leaders · 2 hrs ago</div>
-          </div>
-        </div>
-
-        <div class="feed-item">
-          <div class="pulse-dot"></div>
-          <div>
-            <div class="title">New scholarship: Google for Africa 2026</div>
-            <div class="meta">Opportunities · 5 hrs ago</div>
-          </div>
-        </div>
-
-        <div class="feed-item">
-          <div class="pulse-dot read"></div>
-          <div>
-            <div class="title">Diana secured a role at Andela🚀</div>
-            <div class="meta">Community · Yesterday</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="row-header">
-          <h2>Mentors</h2>
-          <a href="mentors.html">See all</a>
-        </div>
-        <p class="section-sub">Guided professional growth from experienced leaders</p>
-
-        <div class="mentor-cards-row">
-          <div class="mentor-card">
-            <div class="avatar">👩🏽‍🏫</div>
-            <div>
-              <div class="name">Grace Nakato</div>
-              <div class="role">Senior Software Engineer · Andela</div>
-              <span class="tag">Backend</span>
-              <span class="tag">Python</span>
-            </div>
-          </div>
-
-          <div class="mentor-card">
-            <div class="avatar">👩🏿‍💼</div>
-            <div>
-              <div class="name">Sandra Akello</div>
-              <div class="role">Product Manager · Safaricom</div>
-              <span class="tag">Product</span>
-              <span class="tag">Leadership</span>
-            </div>
-          </div>
-        </div>
-
-        <a href="mentors.html" class="btn-outline">Connect with a Mentor</a>
-      </div>
-
-      <div class="section">
-        <div class="row-header">
-          <h2>Event Calendar</h2>
-          <a href="eventscalendar.html">View all</a>
-        </div>
-        <p class="section-sub">Upcoming community meetups and tech workshops</p>
-
-        <div class="events-grid">
-          <div class="event-card">
-            <div class="date-box">
-              <div class="day">28</div>
-              <div class="month">MAY</div>
-            </div>
-            <div>
-              <div class="title">End-of-month alumni social meetup</div>
-              <div class="location">📍 Downtown Tech Hub</div>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="date-box">
-              <div class="day">05</div>
-              <div class="month">JUNE</div>
-            </div>
-            <div>
-              <div class="title">Navigating Tech-space Center Seminar</div>
-              <div class="location">📍 National ICT Hub, UG</div>
-            </div>
-          </div>
-        </div>
-
-        <a href="eventscalendar.html" class="btn-outline">View All Events</a>
-      </div>
-
-      <div class="section">
-        <div class="row-header">
-          <h2>Jobs</h2>
-          <a href="#">View more</a>
-        </div>
-        <p class="section-sub">Exclusive opportunities for the AlumniArc network</p>
-
-        <div class="jobs-row">
-          <div class="job-card">
-            <span class="job-badge full-time">Full-time</span>
-            <div class="title">UI/UX Designer</div>
-            <div class="location">📍 Kampala, UG</div>
-            <button class="btn-apply">Apply Now</button>
-          </div>
-
-          <div class="job-card">
-            <span class="job-badge remote">Remote</span>
-            <div class="title">Software Engineer</div>
-            <div class="location">📍 Nairobi, KE</div>
-            <button class="btn-apply">Apply Now</button>
-          </div>
-        </div>
-
-        <a href="#" class="btn-outline">View more Jobs</a>
-      </div>
-
     </div>
-
-    <nav class="bottom-nav">
-      <a href="dashboard.html" class="nav-item active">
-        <span class="icon">🏠</span> Home
-      </a>
-      <a href="feed.html" class="nav-item">
-        <span class="icon">🌐</span> Feed
-      </a>
-      <a href="#" class="nav-item">
-        <div class="nav-plus">+</div>
-      </a>
-      <a href="chats.html" class="nav-item">
-        <span class="icon">💬</span> Chats
-      </a>
-      <a href="profile.html" class="nav-item">
-        <span class="icon">👤</span> Profile
-      </a>
-    </nav>
-
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Newsfeed</h2>
+        <a href="#">See all</a>
+      </div>
+ 
+      <div class="feed-item">
+        <div class="pulse-dot"></div>
+        <div>
+          <div class="title">Sisterhood Friday this week 🎉</div>
+          <div class="meta">Cohort Leaders · 2 hrs ago</div>
+        </div>
+      </div>
+ 
+      <div class="feed-item">
+        <div class="pulse-dot"></div>
+        <div>
+          <div class="title">New scholarship: Google for Africa 2026</div>
+          <div class="meta">Opportunities · 5 hrs ago</div>
+        </div>
+      </div>
+ 
+      <div class="feed-item">
+        <div class="pulse-dot read"></div>
+        <div>
+          <div class="title">Diana secured a role at Andela🚀</div>
+          <div class="meta">Community · Yesterday</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Mentors</h2>
+        <a href="mentors.html">See all</a>
+      </div>
+      <p class="section-sub">Guided professional growth from experienced leaders</p>
+ 
+      <div class="mentor-cards-row">
+        <div class="mentor-card">
+          <div class="avatar">👩🏽‍🏫</div>
+          <div>
+            <div class="name">Grace Nakato</div>
+            <div class="role">Senior Software Engineer · Andela</div>
+            <span class="tag">Backend</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+ 
+        <div class="mentor-card">
+          <div class="avatar">👩🏿‍💼</div>
+          <div>
+            <div class="name">Sandra Akello</div>
+            <div class="role">Product Manager · Safaricom</div>
+            <span class="tag">Product</span>
+            <span class="tag">Leadership</span>
+          </div>
+        </div>
+      </div>
+ 
+      <a href="mentors.html" class="btn-outline">Connect with a Mentor</a>
+    </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Event Calendar</h2>
+        <a href="eventscalendar.html">View all</a>
+      </div>
+      <p class="section-sub">Upcoming community meetups and tech workshops</p>
+ 
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="date-box">
+            <div class="day">28</div>
+            <div class="month">MAY</div>
+          </div>
+          <div>
+            <div class="title">End-of-month alumni social meetup</div>
+            <div class="location">📍 Downtown Tech Hub</div>
+          </div>
+        </div>
+ 
+        <div class="event-card">
+          <div class="date-box">
+            <div class="day">05</div>
+            <div class="month">JUNE</div>
+          </div>
+          <div>
+            <div class="title">Navigating Tech-space Center Seminar</div>
+            <div class="location">📍 National ICT Hub, UG</div>
+          </div>
+        </div>
+      </div>
+ 
+      <a href="eventscalendar.html" class="btn-outline">View All Events</a>
+    </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Jobs</h2>
+        <a href="#">View more</a>
+      </div>
+      <p class="section-sub">Exclusive opportunities for the AlumniArc network</p>
+ 
+      <div class="jobs-row">
+        <div class="job-card">
+          <span class="job-badge full-time">Full-time</span>
+          <div class="title">UI/UX Designer</div>
+          <div class="location">📍 Kampala, UG</div>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+ 
+        <div class="job-card">
+          <span class="job-badge remote">Remote</span>
+          <div class="title">Software Engineer</div>
+          <div class="location">📍 Nairobi, KE</div>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+      </div>
+ 
+      <a href="#" class="btn-outline">View more Jobs</a>
+    </div>
+ 
   </div>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('nav-menu').classList.toggle('hidden');
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item active">
+      <span class="icon">🏠</span> Home
+    </a>
+    <a href="feed.html" class="nav-item">
+      <span class="icon">🌐</span> Feed
+    </a>
+    <a href="#" class="nav-item">
+      <div class="nav-plus">+</div>
+    </a>
+    <a href="chats.html" class="nav-item">
+      <span class="icon">💬</span> Chats
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="icon">👤</span> Profile
+    </a>
+  </nav>
+ 
+</div>
+ 
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+  }
+ 
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('nav-menu');
+    const btn  = document.querySelector('.menu-btn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.add('hidden');
     }
-
-    document.addEventListener('click', function (e) {
-      const menu = document.getElementById('nav-menu');
-      const btn = document.querySelector('.menu-btn');
-      if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.classList.add('hidden');
+  });
+ 
+  /* LIVE CHATS ENGINE INTERACTION CODE */
+  let currentActiveTab = 'community';
+  let chatIsClosed = false;
+ 
+  const mockChatsData = {
+    community: [
+      { sender: "Alumni Admin", message: "Welcome to the official AlumniArc Global Network thread! Cohort members can reply directly below.", timestamp: "10:14 AM", incoming: true, isAdmin: true },
+      { sender: "Daphne Joy", message: "Thanks for setting this up! Super excited to monitor updates here.", timestamp: "10:30 AM", incoming: true, isAdmin: false },
+      { sender: "You", message: "Glad to connect! Testing out the thread reply mechanics.", timestamp: "11:02 AM", incoming: false, isAdmin: false }
+    ],
+    direct: [
+      { sender: "Sandra Nanteza", message: "Hey Aisha! I just looked over your updated UI/UX wireframes on Canva. They look incredibly polished.", timestamp: "Yesterday", incoming: true, isAdmin: false },
+      { sender: "You", message: "Thank you Sandra! That means a lot coming from you. I cleaned up the contrast lines.", timestamp: "Yesterday", incoming: false, isAdmin: false }
+    ]
+  };
+ 
+  function renderActiveThread() {
+    const chatContainer = document.getElementById('chat-messages-box');
+    if (!chatContainer) return;
+    
+    // If user closed the chat window, display a clean fallback placeholder instead of empty space
+    if (chatIsClosed) {
+      chatContainer.innerHTML = `
+        <div style="text-align: center; color: #8a7a93; margin: auto; padding: 20px; font-size: 14px;">
+          <p>Chat window minimized. Select a tab above to reopen the workspace thread.</p>
+        </div>
+      `;
+      return;
+    }
+     
+    chatContainer.innerHTML = '';
+    const messages = mockChatsData[currentActiveTab];
+     
+    messages.forEach(msg => {
+      const rowDiv = document.createElement('div');
+      rowDiv.className = `msg-row ${msg.incoming ? 'incoming' : 'outgoing'}`;
+       
+      if (msg.incoming || currentActiveTab === 'community') {
+        const senderLabel = document.createElement('span');
+        senderLabel.className = `msg-sender-tag ${msg.isAdmin ? 'admin-badge' : ''}`;
+        senderLabel.innerText = msg.sender;
+        rowDiv.appendChild(senderLabel);
       }
+       
+      const bubble = document.createElement('div');
+      bubble.className = 'msg-bubble';
+      bubble.innerHTML = msg.message;
+      rowDiv.appendChild(bubble);
+       
+      const meta = document.createElement('div');
+      meta.className = 'msg-meta-info';
+      meta.innerText = msg.timestamp + " ";
+       
+      if (!msg.incoming) {
+        const tick = document.createElement('span');
+        tick.className = 'delivery-tick';
+        tick.innerText = ' ✓✓';
+        meta.appendChild(tick);
+      }
+       
+      rowDiv.appendChild(meta);
+      chatContainer.appendChild(rowDiv);
     });
+     
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+ 
+  function switchChatTab(tabTarget) {
+    chatIsClosed = false; // Automatically reveal thread panel again when shifting tabs
+    currentActiveTab = tabTarget;
+    document.getElementById('tab-community').classList.toggle('active', tabTarget === 'community');
+    document.getElementById('tab-direct').classList.toggle('active', tabTarget === 'direct');
+    renderActiveThread();
+  }
 
-    /* ========================================================
-       👑 LIVE CHATS ENGINE INTERACTION CODE 
-       ======================================================== */
-    let currentActiveTab = 'community';
-
-    const mockChatsData = {
-      community: [
-        { sender: "Alumni Admin", message: "Welcome to the official AlumniArc Global Network thread! Cohort members can reply directly below.", timestamp: "10:14 AM", incoming: true, isAdmin: true },
-        { sender: "Daphne Joy", message: "Thanks for setting this up! Super excited to monitor updates here.", timestamp: "10:30 AM", incoming: true, isAdmin: false },
-        { sender: "You", message: "Glad to connect! Testing out the thread reply mechanics.", timestamp: "11:02 AM", incoming: false, isAdmin: false }
-      ],
-      direct: [
-        { sender: "Sandra Nanteza", message: "Hey Aisha! I just looked over your updated UI/UX wireframes on Canva. They look incredibly polished.", timestamp: "Yesterday", incoming: true, isAdmin: false },
-        { sender: "You", message: "Thank you Sandra! That means a lot coming from you. I cleaned up the contrast lines.", timestamp: "Yesterday", incoming: false, isAdmin: false }
-      ]
-    };
-
-    function renderActiveThread() {
-      const chatContainer = document.getElementById('chat-messages-box');
-      if (!chatContainer) return;
-
-      chatContainer.innerHTML = '';
-      const messages = mockChatsData[currentActiveTab];
-
-      messages.forEach(msg => {
-        const rowDiv = document.createElement('div');
-        rowDiv.className = `msg-row ${msg.incoming ? 'incoming' : 'outgoing'}`;
-
-        if (msg.incoming || currentActiveTab === 'community') {
-          const senderLabel = document.createElement('span');
-          senderLabel.className = `msg-sender-tag ${msg.isAdmin ? 'admin-badge' : ''}`;
-          senderLabel.innerText = msg.sender;
-          rowDiv.appendChild(senderLabel);
-        }
-
-        const bubble = document.createElement('div');
-        bubble.className = 'msg-bubble';
-        bubble.innerHTML = msg.message;
-        rowDiv.appendChild(bubble);
-
-        const meta = document.createElement('div');
-        meta.className = 'msg-meta-info';
-        meta.innerText = msg.timestamp + " ";
-
-        if (!msg.incoming) {
-          const tick = document.createElement('span');
-          tick.className = 'delivery-tick';
-          tick.innerText = ' ✓✓';
-          meta.appendChild(tick);
-        }
-
-        rowDiv.appendChild(meta);
-        chatContainer.appendChild(rowDiv);
-      });
-
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-
-    function switchChatTab(tabTarget) {
-      currentActiveTab = tabTarget;
-      document.getElementById('tab-community').classList.toggle('active', tabTarget === 'community');
-      document.getElementById('tab-direct').classList.toggle('active', tabTarget === 'direct');
-      renderActiveThread();
-    }
-
-    function triggerFileInput() {
-      document.getElementById('chat-file-handler').click();
-    }
-
-    function handleFileAttachment(inputElement) {
-      if (inputElement.files && inputElement.files[0]) {
-        const fileName = inputElement.files[0].name;
-        const inputField = document.getElementById('chat-text-input');
-        inputField.value += ` 📄 [Attached: ${fileName}]`;
-      }
-    }
-
-    function insertQuickEmoji(emojiCode) {
+  /* Close Chat Feature Fix */
+  function closeActiveChat() {
+    chatIsClosed = true;
+    renderActiveThread();
+  }
+ 
+  function triggerFileInput() {
+    document.getElementById('chat-file-handler').click();
+  }
+ 
+  function handleFileAttachment(inputElement) {
+    if (inputElement.files && inputElement.files[0]) {
+      const fileName = inputElement.files[0].name;
       const inputField = document.getElementById('chat-text-input');
-      inputField.value += emojiCode;
-      inputField.focus();
+      inputField.value += ` 📄 [Attached: ${fileName}]`;
     }
-
-    function sendLiveMessage() {
-      const inputField = document.getElementById('chat-text-input');
-      const msgText = inputField.value.trim();
-      if (!msgText) return;
-
-      mockChatsData[currentActiveTab].push({
-        sender: "You",
-        message: msgText,
-        timestamp: "Just now",
-        incoming: false,
-        isAdmin: false
-      });
-
-      inputField.value = '';
-      renderActiveThread();
-    }
-
-    function handleChatEnter(event) {
-      if (event.key === 'Enter') {
-        sendLiveMessage();
-      }
-    }
-
-    function loadSavedProfileImage() {
-      const savedImage = localStorage.getItem('alumniProfileImage');
-      const imgElement = document.getElementById('dashboard-profile-img');
-      const fallbackEmoji = document.getElementById('dashboard-fallback-emoji');
-
-      if (savedImage && imgElement && fallbackEmoji) {
-        imgElement.src = savedImage;
-        imgElement.style.display = 'block';     // Make the photo visible
-        fallbackEmoji.style.display = 'none';   // Hide the default placeholder text emoji
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', loadSavedProfileImage);
-
-
-    window.addEventListener('DOMContentLoaded', () => {
-      renderActiveThread();
+  }
+ 
+  function insertQuickEmoji(emojiCode) {
+    const inputField = document.getElementById('chat-text-input');
+    inputField.value += emojiCode;
+    inputField.focus();
+  }
+ 
+  function sendLiveMessage() {
+    const inputField = document.getElementById('chat-text-input');
+    const msgText = inputField.value.trim();
+    if (!msgText) return;
+ 
+    mockChatsData[currentActiveTab].push({
+      sender: "You",
+      message: msgText,
+      timestamp: "Just now",
+      incoming: false,
+      isAdmin: false
     });
-  </script>
-
+ 
+    inputField.value = '';
+    renderActiveThread();
+  }
+ 
+  function handleChatEnter(event) {
+    if (event.key === 'Enter') {
+      sendLiveMessage();
+    }
+  }
+ 
+  window.addEventListener('DOMContentLoaded', () => {
+    renderActiveThread();
+  });
+</script>
+ 
 </body>
-
 </html>
