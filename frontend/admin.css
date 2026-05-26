@@ -1,250 +1,232 @@
-/* admin.css — styles for admin-dashboard.html */
-/* Requires dashboard.css */
+/* admin.css — Luxury operational theme deck overrides */
 
-/* ===== ADMIN BADGE IN NAVBAR ===== */
-.admin-badge {
-  background: var(--orange);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-left: auto;
-  margin-right: 10px;
+:root {
+  --admin-purple-dark:  #1f0b2a; 
+  --admin-purple-light: #3d1c52; 
+  --brand-orange:       #f3722c;
+  --brand-orange-light: #fff3ec;
+  --brand-orange-dark:  #d95d1a;
+  --bg-subtle:          #f6f4f8;
 }
 
-/* ===== WELCOME BANNER ===== */
-.admin-welcome {
-  background: linear-gradient(135deg, #f103d2, #f103d2);
+/* ===== MAIN SECTION BLOCKS ===== */
+.section-block {
+  background: #fff;
+  border: 1.5px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* ===== ADMIN CONTROL CHIP ON TOP BAR ===== */
+.admin-badge {
+  background: var(--admin-purple-light);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 30px;
+  margin-left: auto;
+  margin-right: 14px;
+  border: 1px solid var(--brand-orange);
+}
+
+/* ===== WELCOME DECK GRADIENT ===== */
+.admin-welcome {
+  background: linear-gradient(135deg, var(--admin-purple-dark), var(--admin-purple-light));
+  border-radius: var(--radius);
+  padding: 28px;
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 4px solid var(--brand-orange);
 }
+.admin-welcome h2 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.admin-welcome p  { font-size: 13px; opacity: 0.8; }
+.admin-avatar     { font-size: 46px; }
 
-.admin-welcome h2 { font-size: 20px; margin-bottom: 4px; }
-.admin-welcome p  { font-size: 13px; opacity: 0.85; }
-.admin-avatar     { font-size: 42px; }
+/* ===== QUICK ACTIONS RESPONSIVE TILES ===== */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.action-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.action-card:hover {
+  border-color: var(--brand-orange);
+  background: var(--brand-orange-light);
+  transform: translateY(-2px);
+}
+.action-icon { font-size: 24px; margin-bottom: 8px; }
+.action-card span { font-size: 13px; font-weight: 600; color: var(--text); }
 
 /* ===== ADD BUTTON ===== */
 .btn-add {
-  background: var(--orange-light);
-  color: var(--orange-dark);
-  border: 1.5px solid var(--orange);
+  background: #fff;
+  color: var(--brand-orange);
+  border: 1.5px solid var(--brand-orange);
   border-radius: 50px;
   padding: 6px 16px;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
 }
-
-/* ===== POST REVIEW CARD ===== */
-.post-review-card {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin-bottom: 12px;
-  transition: all 0.2s;
-}
-
-.post-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.post-author { font-size: 13px; font-weight: 700; color: var(--text); }
-.post-time   { font-size: 11px; color: var(--muted); }
-
-.post-content {
-  font-size: 13px;
-  color: var(--text);
-  line-height: 1.5;
-  margin-bottom: 12px;
-  font-style: italic;
-}
-
-.post-actions { display: flex; gap: 10px; }
-
-.btn-approve {
-  background: #E6F4EA;
-  color: #2E7D32;
-  border: 1.5px solid #2E7D32;
-  border-radius: 50px;
-  padding: 7px 16px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.btn-reject {
-  background: #FDECEA;
-  color: #C0392B;
-  border: 1.5px solid #C0392B;
-  border-radius: 50px;
-  padding: 7px 16px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-}
-
-/* ===== ADMIN FORM ===== */
-.admin-form {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.admin-form .form-group {
-  margin-bottom: 12px;
-}
-
-.admin-form label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 5px;
-}
-
-.admin-form input,
-.admin-form select,
-.admin-form textarea {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: var(--text);
-  background: #fff;
-  outline: none;
-}
-
-.admin-form input:focus,
-.admin-form select:focus,
-.admin-form textarea:focus {
-  border-color: var(--orange);
-}
-
-.admin-form textarea { height: 80px; resize: none; }
-
-/* ===== EDIT & DELETE BUTTONS ===== */
-.event-manage-btns,
-.job-manage-btns {
-  display: flex;
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.btn-edit-sm {
-  background: var(--orange-light);
-  color: var(--orange-dark);
-  border: none;
-  border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.btn-delete-sm {
-  background: #FDECEA;
-  color: #C0392B;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-/* ===== BADGE COUNT ===== */
-.badge-count {
-  background: var(--orange);
+.btn-add:hover {
+  background: var(--brand-orange);
   color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 20px;
 }
 
-/* ===== REPORTS GRID ===== */
-.reports-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.report-card {
-  background: var(--card);
-  border: 1px solid var(--border);
+/* ===== POST REVIEW CARDS ===== */
+.post-review-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px;
-  text-align: center;
+  padding: 20px;
+  margin-top: 14px;
 }
+.post-meta { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.post-author { font-size: 14px; font-weight: 700; color: var(--text); }
+.post-time   { font-size: 12px; color: var(--muted); }
+.post-content { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+.post-actions { display: flex; gap: 12px; }
 
-.report-icon  { font-size: 24px; margin-bottom: 6px; }
-.report-num   { font-size: 24px; font-weight: 700; color: var(--orange-dark); }
-.report-label { font-size: 11px; color: var(--muted); margin: 2px 0 6px; }
+.btn-approve { background: #E6F4EA; color: #2E7D32; border: 1.5px solid #2E7D32; border-radius: 50px; padding: 8px 18px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.btn-reject { background: #FDECEA; color: #C0392B; border: 1.5px solid #C0392B; border-radius: 50px; padding: 8px 18px; font-size: 12px; font-weight: 700; cursor: pointer; }
 
-.report-change { font-size: 11px; font-weight: 600; }
-.report-change.up   { color: #2E7D32; }
-.report-change.down { color: #C0392B; }
-
-/* ===== COHORT BARS ===== */
-.cohort-list { display: flex; flex-direction: column; gap: 10px; }
-
-.cohort-row {
+/* ===== CALENDAR EVENT LAYOUT CARDS ===== */
+.event-card {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 12px;
 }
-
-.cohort-name {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text);
-  width: 70px;
-  flex-shrink: 0;
+.date-box {
+  background: var(--admin-purple-light);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  min-width: 55px;
 }
+.date-box .day { font-size: 18px; font-weight: 700; }
+.date-box .month { font-size: 10px; font-weight: 600; opacity: 0.9; }
+.event-title { font-size: 14px; font-weight: 700; color: var(--text); }
+.event-location { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
-.cohort-bar-wrap {
-  flex: 1;
-  height: 8px;
-  background: var(--border);
-  border-radius: 4px;
-  overflow: hidden;
+/* ===== JOB CARDS PLACEMENTS ===== */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 14px;
 }
-
-.cohort-bar {
-  height: 100%;
-  background: var(--orange);
-  border-radius: 4px;
+.job-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  position: relative;
 }
-
-.cohort-count {
-  font-size: 12px;
+.job-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 10px;
   font-weight: 700;
-  color: var(--orange-dark);
-  width: 30px;
-  text-align: right;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
 }
+.job-badge.full-time { background: #E6F4EA; color: #2E7D32; }
+.job-badge.remote { background: #E8F0FE; color: #1A73E8; }
+.job-badge.part-time { background: #FEF7E0; color: #B06000; }
+.job-badge.internship { background: #F3EBF7; color: var(--admin-purple-light); }
 
-/* ===== DESKTOP ===== */
+.job-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.job-location { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+
+/* ===== SYSTEM ANNOUNCEMENTS FEED CARDS ===== */
+.feed-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-subtle);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 12px;
+}
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--brand-orange);
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.feed-title { font-size: 14px; font-weight: 700; color: var(--text); }
+.feed-meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* ===== FORMS STYLING ===== */
+.admin-form {
+  background: var(--bg-subtle);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 14px;
+}
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+.admin-form input, .admin-form select, .admin-form textarea {
+  width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; background: #fff;
+}
+.admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus { border-color: var(--brand-orange); }
+.admin-form textarea { height: 80px; resize: none; }
+
+.btn-primary {
+  background: var(--admin-purple-light);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-primary:hover { background: var(--admin-purple-dark); }
+
+/* ===== MANAGE UTILITY MINI BUTTONS ===== */
+.event-manage-btns, .job-manage-btns { display: flex; gap: 8px; margin-top: 10px; }
+.btn-edit-sm, .btn-delete-sm { border: none; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-weight: 600; }
+.btn-edit-sm { background: #f3ebf7; color: var(--admin-purple-light); }
+.btn-delete-sm { background: #FDECEA; color: #C0392B; }
+
+.badge-count { background: var(--brand-orange); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+
+/* ===== REPORTS AND CHARTS ===== */
+.reports-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+.report-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
+.report-icon  { font-size: 24px; }
+.report-num   { font-size: 24px; font-weight: 700; color: var(--admin-purple-dark); margin: 4px 0; }
+.report-label { font-size: 11px; color: var(--muted); }
+.report-change.up { color: #2E7D32; font-size: 11px; font-weight: 600; margin-top: 4px; }
+
 @media (min-width: 768px) {
-  .reports-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .admin-welcome h2 { font-size: 24px; }
-  .admin-avatar     { font-size: 52px; }
+  .action-grid { grid-template-columns: repeat(3, 1fr); }
+  .jobs-grid { grid-template-columns: repeat(2, 1fr); }
 }
