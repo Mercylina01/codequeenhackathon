@@ -2,95 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlumniArc – Mentors</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="mentors.css">
 </head>
 <body>
 
-  <nav>
-    <div class="hamburger">
-      <span></span><span></span><span></span>
+  <!-- TOP BAR — full width -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="nav-brand">
+        <img src="logo.png" alt="AlumniArc" class="nav-logo" />
+        <span class="nav-wordmark">AlumniArc</span>
+      </div>
+      <nav class="nav-links">
+        <a href="dashboard.html"><i class="ti ti-home"></i> Dashboard</a>
+        <a href="feed.html"><i class="ti ti-world"></i> Feed</a>
+        <a href="chats.html"><i class="ti ti-message"></i> Chats</a>
+        <a href="profile.html"><i class="ti ti-user"></i> Profile</a>
+        <a href="mentors.html" class="active"><i class="ti ti-school"></i> Mentors</a>
+        <a href="eventscalendar.html"><i class="ti ti-calendar"></i> Events</a>
+        <a href="jobs.html"><i class="ti ti-briefcase"></i> Jobs</a>
+        <a href="login.html" class="logout-link"><i class="ti ti-logout"></i> Log Out</a>
+      </nav>
     </div>
-    <span class="nav-logo">AlumniArc</span>
-    <div style="width:22px"></div>
-  </nav>
+  </header>
 
-  <main>
-    <h1 class="section-title">Mentors</h1>
-    <p class="section-sub">Guided professional growth from experienced leaders</p>
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <h1 class="page-title">Mentors</h1>
+      <p class="page-sub">Guided professional growth from experienced leaders</p>
+    </div>
 
     <div class="quote-card">
       <p class="quote-text">
-        Our mentorship program pairs young professionals with industry veterans for structured career guidance.
+        Our mentorship program pairs young professionals with industry veterans
+        for structured career guidance.
       </p>
-      <div class="quote-im"></div>
     </div>
 
-    <button class="cta-btn">connect with a Mentor</button>
+    <button class="cta-btn">Connect with a Mentor</button>
 
     <p class="mentors-label">Featured Mentors</p>
     <div class="mentors-grid">
 
       <div class="mentor-card">
-        <img class="mentor-avatar"
-          src="images/Sheeba.jpeg"
-          alt="Sheba">
+        <img class="mentor-avatar" src="images/Sheeba.jpeg" alt="Sheba">
         <span class="mentor-name">Sheba</span>
         <span class="mentor-skill">HTML &amp; CSS</span>
         <button class="connect-btn">Connect</button>
       </div>
 
       <div class="mentor-card">
-        <img class="mentor-avatar"
-          src="images/Prossy.jpeg"
-          alt="Liz Prossy">
+        <img class="mentor-avatar" src="images/Prossy.jpeg" alt="Liz Prossy">
         <span class="mentor-name">Liz Prossy</span>
         <span class="mentor-skill">Github</span>
         <button class="connect-btn">Connect</button>
       </div>
 
       <div class="mentor-card">
-        <img class="mentor-avatar"
-          src="images/Sarah Victorious.jpeg"
-          alt="Sarah M">
-        <span class="mentor-name">Sarah Victorous</span>
-        <span class="mentor-skill">Product Design Facilitator</span>
+        <img class="mentor-avatar" src="images/Sarah Victorious.jpeg" alt="Sarah M">
+        <span class="mentor-name">Sarah Victorious</span>
+        <span class="mentor-skill">Product Design</span>
         <button class="connect-btn">Connect</button>
       </div>
 
-       <div class="mentor-card">
-        <img class="mentor-avatar"
-          src="images/Vision.jpeg"
-          alt="Vision N">
+      <div class="mentor-card">
+        <img class="mentor-avatar" src="images/Vision.jpeg" alt="Vision N">
         <span class="mentor-name">Vision Nimusiima</span>
         <span class="mentor-skill">Javascript</span>
         <button class="connect-btn">Connect</button>
       </div>
 
-       <div class="mentor-card">
-        <img class="mentor-avatar"
-          src="images/Lillian.jpeg"
-          alt="Lillian">
+      <div class="mentor-card">
+        <img class="mentor-avatar" src="images/Lillian.jpeg" alt="Lillian">
         <span class="mentor-name">Lilian Savah</span>
-        <span class="mentor-skill">Asistant Mentor</span>
+        <span class="mentor-skill">Assistant Mentor</span>
         <button class="connect-btn">Connect</button>
       </div>
 
-       <div class="mentor-card">
-        <img class="mentor-avatar"
-          src="images/Collins.jpeg"
-          alt="Collins">
+      <div class="mentor-card">
+        <img class="mentor-avatar" src="images/Collins.jpeg" alt="Collins">
         <span class="mentor-name">Collins</span>
-        <span class="mentor-skill">Asistant Mentor</span>
+        <span class="mentor-skill">Assistant Mentor</span>
         <button class="connect-btn">Connect</button>
       </div>
 
     </div>
   </main>
 
-  <script src="app.js"></script>
-  
 </body>
 </html>
