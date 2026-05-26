@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Partner Workspace</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="partner-dashboard.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="nav-brand">
+        <img src="logo.png" alt="AlumniArc" class="nav-logo" />
+        <span class="nav-wordmark">AlumniArc</span>
+      </div>
+      <div class="nav-links">
+        <a href="partner-dashboard.html" class="active"><i class="ti ti-layout-dashboard"></i> Partner Hub</a>
+        <a href="feed.html"><i class="ti ti-world"></i> Feed</a>
+        <a href="chats.html"><i class="ti ti-message"></i> Chats</a>
+        <a href="profile.html"><i class="ti ti-user"></i> Profile Workspace</a>
+        <a href="jobs.html"><i class="ti ti-briefcase"></i> Postings</a>
+        <a href="login.html" class="nav-logout"><i class="ti ti-logout"></i> Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="dashboard-body">
+    
+    <header class="welcome-hero">
+      <div class="hero-text">
+        <h1 id="partner-welcome">Welcome back, Talent Partner</h1>
+        <p>Source vetted Code Queen technical graduates and manage your active vacancies.</p>
+      </div>
+      <span class="partner-badge" id="partner-badge">Corporate Hub</span>
+    </header>
+
+    <section class="metrics-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="ti ti-users"></i></div>
+        <div class="stat-info">
+          <span class="stat-value">1,000+</span>
+          <span class="stat-label">Vetted Alumni Available</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon active-jobs"><i class="ti ti-briefcase"></i></div>
+        <div class="stat-info">
+          <span class="stat-value" id="count-active-jobs">2</span>
+          <span class="stat-label">Active Vacancies</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon interviews"><i class="ti ti-calendar-event"></i></div>
+        <div class="stat-info">
+          <span class="stat-value">4</span>
+          <span class="stat-label">Interviews Slated</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="workspace-layout">
+      
+      <section class="main-content">
+        <div class="content-box">
+          <div class="box-header-row">
+            <h2 class="box-title"><i class="ti ti-search"></i> Talent Sourcing Engine</h2>
+            <span class="box-count-tag">Showing Vetted Candidates</span>
+          </div>
+
+          <div class="search-filter-bar">
+            <div class="search-input-wrapper">
+              <i class="ti ti-search input-search-icon"></i>
+              <input type="text" id="talent-search" placeholder="Search tech stacks, keywords or names..." onkeyup="filterTalentRegistry()" />
+            </div>
+            <select id="track-filter" onchange="filterTalentRegistry()">
+              <option value="all">All Tracks</option>
+              <option value="frontend">Frontend Dev</option>
+              <option value="backend">Backend Dev</option>
+              <option value="uiux">UI/UX Design</option>
+            </select>
+          </div>
+
+          <div class="talent-registry" id="talent-registry">
+            
+            <div class="talent-card" data-track="frontend">
+              <div class="talent-header">
+                <div class="candidate-avatar">AN</div>
+                <div class="candidate-identity">
+                  <h3>Aisha Nalwoga</h3>
+                  <p>Frontend Developer · Kampala, UG</p>
+                </div>
+                <span class="cohort-tag">Cohort 8</span>
+              </div>
+              <p class="candidate-bio">Specializing in fluid mobile-responsive interfaces, clean CSS architecture, and semantic modern layout components.</p>
+              <div class="candidate-skills">
+                <span class="skill-pill">HTML/CSS Logic</span>
+                <span class="skill-pill">Frontend Dev</span>
+                <span class="skill-pill">UI/UX Design</span>
+              </div>
+              <div class="talent-actions">
+                <a href="#" class="btn-action-outline"><i class="ti ti-file-text"></i> View Portfolio</a>
+                <button class="btn-action-primary" onclick="initiateChat('Aisha Nalwoga')"><i class="ti ti-message"></i> Request Interview</button>
+              </div>
+            </div>
+
+            <div class="talent-card" data-track="uiux">
+              <div class="talent-header">
+                <div class="candidate-avatar color-b">PN</div>
+                <div class="candidate-identity">
+                  <h3>Proscovia Nakato</h3>
+                  <p>UI/UX Product Architect · Entebbe, UG</p>
+                </div>
+                <span class="cohort-tag">Cohort 1</span>
+              </div>
+              <p class="candidate-bio">Transitioned from professional strategic communications to interface logic. Designing wireframes with accessibility in mind.</p>
+              <div class="candidate-skills">
+                <span class="skill-pill">Figma Logic</span>
+                <span class="skill-pill">UI/UX Design</span>
+                <span class="skill-pill">Project Mgmt</span>
+              </div>
+              <div class="talent-actions">
+                <a href="#" class="btn-action-outline"><i class="ti ti-file-text"></i> View Portfolio</a>
+                <button class="btn-action-primary" onclick="initiateChat('Proscovia Nakato')"><i class="ti ti-message"></i> Request Interview</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar-content">
+        <div class="content-box">
+          <h2 class="box-title"><i class="ti ti-circle-plus"></i> Post New Vacancy</h2>
+          
+          <form id="quick-job-form" onsubmit="handleJobSubmit(event)" style="margin-top: 14px;">
+            <div class="form-field">
+              <label for="job-title">Job Title</label>
+              <input type="text" id="job-title" placeholder="e.g. Junior Frontend Developer" required />
+            </div>
+            <div class="form-field">
+              <label for="job-type">Employment Model</label>
+              <select id="job-type">
+                <option value="Full-Time">Full-Time Placement</option>
+                <option value="Remote Contract">Remote Freelance Contract</option>
+                <option value="Paid Internship">Paid Graduate Internship</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="job-reward">Salary Bracket / Stipend</label>
+              <input type="text" id="job-reward" placeholder="e.g. Competitive UGX / Mo" />
+            </div>
+            <button type="submit" class="btn-submit-job">Publish Placement</button>
+          </form>
+        </div>
+
+        <div class="content-box active-postings-box" style="margin-top: 24px;">
+          <h2 class="box-title">Our Open Openings</h2>
+          <div class="job-mini-list" id="job-mini-list">
+            <div class="job-mini-item">
+              <div>
+                <div class="mini-job-title">React Native Engineer</div>
+                <div class="mini-job-meta">Full-Time · Kampala Hub</div>
+              </div>
+              <span class="mini-status-badge">Active</span>
+            </div>
+            <div class="job-mini-item">
+              <div>
+                <div class="mini-job-title">UI/UX Layout Intern</div>
+                <div class="mini-job-meta">Remote Contract · 3 Months</div>
+              </div>
+              <span class="mini-status-badge">Active</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <script>
+    // INTEGRATION NODE: SUCKS IN CENTRAL PROFILE INFORMATION IF AVAILABLE
+    (function initPartnerWorkspace() {
+      var raw = localStorage.getItem('alumniProfileMaster');
+      if (raw) {
+        var payload = JSON.parse(raw);
+        if (payload.persona === 'partner') {
+          document.getElementById('partner-welcome').textContent = "Welcome back, " + payload.name;
+          document.getElementById('partner-badge').textContent = payload.partnerData.scale || "Corporate Hub";
+        }
+      }
+    })();
+
+    // CLIENT SIDE SEARCH & DROPDOWN TRACK FILTER ENGINE
+    function filterTalentRegistry() {
+      var query = document.getElementById('talent-search').value.toLowerCase();
+      var trackFilter = document.getElementById('track-filter').value;
+      var cards = document.getElementsByClassName('talent-card');
+
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var textContent = card.textContent.toLowerCase();
+        var cardTrack = card.getAttribute('data-track');
+
+        var matchQuery = textContent.indexOf(query) > -1;
+        var matchTrack = (trackFilter === 'all') || (cardTrack === trackFilter);
+
+        if (matchQuery && matchTrack) {
+          card.classList.remove('hidden-item');
+        } else {
+          card.classList.add('hidden-item');
+        }
+      }
+    }
+
+    // SIMULATED SYSTEM ROUTER INTERVIEWS TRACE
+    function initiateChat(candidateName) {
+      alert("Opening instant message workflow channel to coordinate interview sequence with: " + candidateName);
+      window.location.href = "chats.html";
+    }
+
+    // MANAGES VOLATILE VACANCY MANAGEMENT ADDITIONS
+    var activeJobsCount = 2;
+    function handleJobSubmit(e) {
+      e.preventDefault();
+      var title = document.getElementById('job-title').value.trim();
+      var type = document.getElementById('job-type').value;
+      var reward = document.getElementById('job-reward').value.trim() || "Negotiable";
+
+      if(!title) return;
+
+      // Construct list element architecture dynamically
+      var container = document.getElementById('job-mini-list');
+      var newItem = document.createElement('div');
+      newItem.className = "job-mini-item item-animated";
+      newItem.innerHTML = `
+        <div>
+          <div class="mini-job-title">${title}</div>
+          <div class="mini-job-meta">${type} · ${reward}</div>
+        </div>
+        <span class="mini-status-badge">Active</span>
+      `;
+      
+      container.insertBefore(newItem, container.firstChild);
+      
+      // Bump local analytics counter tokens
+      activeJobsCount++;
+      document.getElementById('count-active-jobs').textContent = activeJobsCount;
+
+      // Clean inputs
+      document.getElementById('quick-job-form').reset();
+    }
+  </script>
+</body>
+</html>

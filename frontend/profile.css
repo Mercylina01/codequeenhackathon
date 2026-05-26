@@ -1,5 +1,5 @@
 /*
-   AlumniArc profile page
+   AlumniArc Profile Workspace Engine Stylesheet
    2026
 */
 
@@ -38,14 +38,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-
 /* -------- navbar -------- */
-
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--pink);
+  background: var(--white);
   border-bottom: 1px solid var(--line);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
 }
@@ -127,18 +125,14 @@ body {
 
 .nav-links a.nav-logout:hover { background: var(--coral-soft); }
 
-
 /* -------- page layout -------- */
-
 .page-body {
   max-width: 560px;
   margin: 32px auto;
   padding: 0 20px 60px;
 }
 
-
 /* -------- profile card -------- */
-
 .profile-card {
   background: var(--white);
   border: 1px solid var(--line);
@@ -147,14 +141,12 @@ body {
   overflow: hidden;
 }
 
-/* cover photo area */
 .card-cover {
   height: 100px;
   background: linear-gradient(135deg, #2d0a5e 0%, #9333ea 50%, #fb923c 100%);
   position: relative;
 }
 
-/* avatar overlapping the cover */
 .card-identity {
   display: flex;
   flex-direction: column;
@@ -190,7 +182,6 @@ body {
   display: none;
 }
 
-/* camera overlay */
 .avatar-edit {
   position: absolute;
   bottom: 0;
@@ -240,16 +231,6 @@ body {
 
 .user-role i { font-size: 14px; }
 
-.cohort-tag {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--mint);
-  background: var(--mint-soft);
-  padding: 3px 10px;
-  border-radius: 999px;
-  letter-spacing: .3px;
-}
-
 .btn-edit-profile {
   margin-top: 16px;
   padding: 9px 24px;
@@ -274,9 +255,7 @@ body {
 
 .btn-edit-profile i { font-size: 14px; }
 
-
 /* -------- card sections -------- */
-
 .card-sep {
   height: 1px;
   background: var(--line-light);
@@ -302,7 +281,6 @@ body {
   color: var(--ink-soft);
 }
 
-/* skills */
 .pills {
   display: flex;
   flex-wrap: wrap;
@@ -318,9 +296,7 @@ body {
   border-radius: 999px;
 }
 
-
 /* -------- edit form -------- */
-
 .edit-form {
   padding: 22px 28px;
   display: none;
@@ -440,9 +416,7 @@ body {
 
 .btn-save:hover { background: var(--accent-dark); }
 
-
 /* -------- preferences -------- */
-
 .pref-row {
   display: flex;
   align-items: center;
@@ -498,9 +472,7 @@ body {
 .switch input:checked + .switch-track { background: var(--accent); }
 .switch input:checked + .switch-track::before { transform: translateX(20px); }
 
-
 /* -------- account links -------- */
-
 .acct-link {
   display: flex;
   align-items: center;
@@ -515,7 +487,6 @@ body {
 }
 
 .acct-link:last-child { border-bottom: none; }
-
 .acct-link:hover { color: var(--accent); }
 
 .acct-icon {
@@ -537,13 +508,10 @@ body {
   margin-left: auto;
 }
 
-/* danger style */
 .acct-link.danger { color: var(--coral); }
 .acct-link.danger .acct-icon { background: var(--coral-soft); }
 .acct-link.danger .acct-icon i { color: var(--coral); }
 
-
-/* logout */
 .btn-logout {
   width: 100%;
   padding: 13px;
@@ -565,5 +533,49 @@ body {
 .btn-logout:hover { background: var(--coral-soft); }
 .btn-logout i { font-size: 16px; }
 
-
 .hidden { display: none !important; }
+
+/* -------- multi-user modular system styling updates -------- */
+.persona-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-top: 8px;
+}
+
+.persona-student { background: #eff6ff; color: #2563eb; }
+.persona-alumni { background: var(--mint-soft); color: var(--mint); }
+.persona-partner { background: #fff7ed; color: var(--orange); }
+
+.persona-select-highlight {
+  border-color: var(--accent) !important;
+  font-weight: 600;
+}
+
+.meta-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .meta-input-grid { grid-template-columns: 1fr; }
+}
+
+.conditional-block {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.conditional-block.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

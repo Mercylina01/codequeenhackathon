@@ -1,0 +1,475 @@
+/*
+   AlumniArc Corporate & Talent Partner Workspace Stylesheet
+   2026
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --ink: #1a0533;
+  --ink-soft: #6b4fa0;
+  --ink-faint: #a090c0;
+  --cream: #f8f6fc;
+  --white: #ffffff;
+  --smoke: #ede9fe;
+  --line: #ddd6fe;
+  --line-light: rgba(221, 214, 254, .45);
+  --accent: #b14b99;
+  --accent-soft: #ede9fe;
+  --accent-dark: #b455a2;
+  --mint: #059669;
+  --mint-soft: #d1fae5;
+  --orange: #f97316;
+  --radius: 16px;
+  --radius-sm: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -------- NAVBAR RULES -------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
+}
+
+.navbar-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 58px;
+  padding: 0 24px;
+  gap: 36px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo {
+  height: 30px;
+  border-radius: 6px;
+}
+
+.nav-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav-links a {
+  padding: 8px 14px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .15s;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+  background: var(--smoke);
+}
+
+.nav-links a.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.nav-links a.nav-logout {
+  color: var(--orange);
+  margin-left: auto;
+}
+
+/* -------- CORE LAYOUT PANELS -------- */
+.dashboard-body {
+  max-width: 1140px;
+  margin: 32px auto;
+  padding: 0 24px 60px;
+}
+
+.welcome-hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+  color: var(--white);
+  padding: 28px 32px;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(26, 5, 51, 0.08);
+}
+
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -.4px;
+}
+
+.hero-text p {
+  font-size: 14.5px;
+  color: var(--line);
+  margin-top: 4px;
+}
+
+.partner-badge {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* -------- PERFORMANCE STATS LAYOUT -------- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.stat-icon.active-jobs { background: var(--accent-soft); color: var(--accent); }
+.stat-icon.interviews { background: var(--mint-soft); color: var(--mint); }
+
+.stat-info { display: flex; flex-direction: column; }
+.stat-value { font-size: 22px; font-weight: 700; color: var(--ink); }
+.stat-label { font-size: 13px; color: var(--ink-soft); }
+
+/* -------- TWIN WORKSPACE CONFIGURATION -------- */
+.workspace-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .workspace-layout { grid-template-columns: 1fr; }
+}
+
+.content-box {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.box-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.box-count-tag {
+  font-size: 11px;
+  background: var(--smoke);
+  color: var(--ink-soft);
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+
+/* -------- FILTER BAR COMPONENT -------- */
+.search-filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.input-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-faint);
+}
+
+.search-filter-bar input,
+.search-filter-bar select {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  background: var(--cream);
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  outline: none;
+  color: var(--ink);
+}
+
+.search-filter-bar input { padding-left: 38px; }
+
+.search-filter-bar select {
+  width: 160px;
+  cursor: pointer;
+}
+
+/* -------- TALENT REGISTRY CARDS -------- */
+.talent-registry {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.talent-card {
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  background: var(--white);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.talent-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(107, 79, 160, 0.05);
+}
+
+.talent-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.candidate-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #2563eb;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.candidate-avatar.color-b { background: var(--accent-soft); color: var(--accent); }
+
+.candidate-identity { flex: 1; }
+.candidate-identity h3 { font-size: 16px; color: var(--ink); }
+.candidate-identity p { font-size: 12.5px; color: var(--ink-soft); }
+
+.cohort-tag {
+  font-size: 11px;
+  background: var(--mint-soft);
+  color: var(--mint);
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+
+.talent-card p.candidate-bio {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+.candidate-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.skill-pill {
+  font-size: 11.5px;
+  background: var(--cream);
+  color: var(--ink-soft);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line-light);
+}
+
+.talent-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line-light);
+  padding-top: 14px;
+}
+
+.btn-action-outline {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  border: 1.5px solid var(--line);
+  padding: 8px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+
+.btn-action-outline:hover { background: var(--cream); }
+
+.btn-action-primary {
+  flex: 1.2;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.btn-action-primary:hover { background: var(--accent-dark); }
+
+/* -------- VACANCY SUBMISSION SIDEBAR -------- */
+.form-field { margin-bottom: 14px; }
+.form-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13.5px;
+  background: var(--cream);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 12px;
+  outline: none;
+  color: var(--ink);
+}
+
+.btn-submit-job {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background .15s;
+}
+
+.btn-submit-job:hover { background: var(--ink-soft); }
+
+/* -------- JOB LISTINGS -------- */
+.job-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.job-mini-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--cream);
+  border: 1px solid var(--line-light);
+}
+
+.mini-job-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.mini-job-meta { font-size: 11.5px; color: var(--ink-faint); }
+
+.mini-status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--mint);
+  background: var(--mint-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* -------- HELPER FUNCTION UTILITIES -------- */
+.hidden-item { display: none !important; }
+
+.item-animated {
+  animation: slideIn 0.35s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

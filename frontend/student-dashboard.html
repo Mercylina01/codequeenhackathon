@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Student Launchpad</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <style>
+    /* COMPONENT LAYER EXTENSIONS (Specific to Student Experience) */
+    .progress-wrapper {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--orange-main);
+      width: 65%; /* Updates dynamically from backend metric */
+      transition: width 0.4s ease;
+    }
+    .progress-caption {
+      font-size: 11px;
+      opacity: 0.85;
+      margin-top: 6px;
+      color: #ffffff;
+    }
+    
+    /* Cohort Timeline Heuristics */
+    .timeline-container {
+      background: var(--purple-panel);
+      border: 1px solid var(--white-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 30px; left: 15%; right: 15%;
+      height: 2px;
+      background: var(--white-border);
+      z-index: 1;
+    }
+    .timeline-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      width: 30%;
+      z-index: 2;
+      text-align: center;
+    }
+    .node-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--purple-panel);
+      border: 2px solid var(--white-border);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .timeline-node.complete .node-dot {
+      background: var(--purple-accent);
+      border-color: var(--purple-accent);
+      color: #ffffff;
+    }
+    .timeline-node.active .node-dot {
+      border-color: var(--orange-main);
+      background: var(--purple-light);
+      color: var(--orange-main);
+      box-shadow: 0 0 0 4px var(--purple-light);
+    }
+    .node-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .timeline-node.active .node-label {
+      color: var(--orange-main);
+    }
+
+    /* Live Countdown Block */
+    .countdown-container {
+      display: flex;
+      gap: 10px;
+    }
+    .countdown-box {
+      background: var(--purple-accent);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 12px;
+      text-align: center;
+      flex: 1;
+    }
+    .countdown-box .val {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--orange-main);
+      display: block;
+    }
+    .countdown-box .lbl {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+ 
+<div class="page">
+ 
+  <nav class="navbar">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+ 
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="student-dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="feed.html">🌐 Feed</a>
+    <a href="chats.html">💬 Chats</a>
+    <a href="profile.html">👤 My Profile</a>
+    <a href="mentors.html">🎓 Mentors</a>
+    <a href="eventscalendar.html">📅 Events</a>
+    <a href="jobs.html">💼 Jobs</a>
+    <a href="login.html" class="danger">🚪 Log Out</a>
+  </div>
+ 
+  <div class="dash-content">
+ 
+    <div class="section">
+      <h2>Student Launchpad</h2>
+      <p class="section-sub">Track your modules, coordinate peer pairings and view sisterhood news</p>
+ 
+      <div class="welcome-card" style="display: block;">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div>
+            <h3>Welcome back, Evelyn 👋</h3>
+            <p style="margin-top: 2px; color: #ffffff; opacity: 0.9;">Cohort 16 Trainee · Frontend Track</p>
+          </div>
+          <div class="avatar-glow">💻</div>
+        </div>
+        
+        <div class="progress-wrapper">
+          <div class="progress-fill"></div>
+        </div>
+        <p class="progress-caption">💡 Profile is 65% complete. Finish your profile setup to unlock instant employer job board routing!</p>
+      </div>
+ 
+      <div class="stats">
+        <div class="stat">
+          <div class="num" id="daysCounter">18</div>
+          <div class="label">Days to Grad</div>
+        </div>
+        <div class="stat">
+          <div class="num">4</div>
+          <div class="label">Live Spaces</div>
+        </div>
+        <div class="stat">
+          <div class="num">2</div>
+          <div class="label">Peer Chats</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Quick Actions</h2>
+      </div>
+ 
+      <div class="action-grid">
+        <a href="profile.html" class="action-card">
+          <div class="icon-wrapper">👤</div>
+          <span>My Status</span>
+        </a>
+        <a href="feed.html" class="action-card">
+          <div class="icon-wrapper">🌐</div>
+          <span>Newsfeed</span>
+        </a>
+        <a href="chats.html" class="action-card">
+          <div class="icon-wrapper">💬</div>
+          <span>Big Sister Thread</span>
+        </a>
+        <a href="mentors.html" class="action-card">
+          <div class="icon-wrapper">🎓</div>
+          <span>Alumni Pool</span>
+        </a>
+        <a href="#" class="action-card">
+          <div class="icon-wrapper">📋</div>
+          <span>Learning Log</span>
+        </a>
+      </div>
+    </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Your Learning Journey</h2>
+      </div>
+      <p class="section-sub" style="margin-bottom: 12px;">Real-time system mapping of your technical certification modules</p>
+      
+      <div class="timeline-container">
+        <div class="timeline-node complete">
+          <div class="node-dot">✓</div>
+          <span class="node-label">HTML/CSS</span>
+        </div>
+        <div class="timeline-node active">
+          <div class="node-dot">2</div>
+          <span class="node-label">UI/UX</span>
+        </div>
+        <div class="timeline-node">
+          <div class="node-dot">3</div>
+          <span class="node-label">Node/Express</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="row-header">
+        <h2>Alumni Circle Countdown</h2>
+      </div>
+      <p class="section-sub" style="margin-bottom: 12px;">Days until you officially transition from Trainee to full Code Queen Alumna</p>
+      
+      <div class="countdown-container" aria-live="polite">
+        <div class="countdown-box">
+          <span class="val">18</span>
+          <span class="lbl">Days</span>
+        </div>
+        <div class="countdown-box">
+          <span class="val">05</span>
+          <span class="lbl">Hours</span>
+        </div>
+        <div class="countdown-box">
+          <span class="val">42</span>
+          <span class="lbl">Minutes</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Your Assigned Big Sister</h2>
+        <a href="chats.html">Chat</a>
+      </div>
+      <p class="section-sub">AI-driven peer assignment pairing based on your shared Frontend Developer focus area</p>
+ 
+      <div class="mentor-card" style="margin-bottom: 12px;">
+        <div class="avatar">👩🏾‍💻</div>
+        <div>
+          <div class="name">Proscovia Nakato</div>
+          <div class="role">Cohort 1 Alumna · Tech Strategist & Developer</div>
+          <span class="tag">Frontend</span>
+          <span class="tag">UI/UX Layouts</span>
+        </div>
+      </div>
+      
+      <a href="chats.html" class="btn-outline">Open Mentorship Chat Window</a>
+    </div>
+ 
+    <div class="section">
+      <div class="row-header">
+        <h2>Upcoming Spaces & workshops</h2>
+        <a href="eventscalendar.html">View all</a>
+      </div>
+ 
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="date-box">
+            <div class="day">29</div>
+            <div class="month">MAY</div>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div class="title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Sisterhood Friday Space 🎉</div>
+            <div class="location">📍 Live Stream Platform</div>
+          </div>
+        </div>
+ 
+        <div class="event-card">
+          <div class="date-box" style="background-color: var(--purple-accent);">
+            <div class="day">06</div>
+            <div class="month">JUNE</div>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div class="title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Portfolio Crafting Layouts</div>
+            <div class="location">📍 Google Meet Lounge</div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="student-dashboard.html" class="nav-item active">
+      <span class="icon">🏠</span> Home
+    </a>
+    <a href="feed.html" class="nav-item">
+      <span class="icon">🌐</span> Feed
+    </a>
+    <a href="#" class="nav-item">
+      <div class="nav-plus">+</div>
+    </a>
+    <a href="chats.html" class="nav-item">
+      <span class="icon">💬</span> Chats
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="icon">👤</span> Profile
+    </a>
+  </nav>
+ 
+</div>
+ 
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+  }
+ 
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('nav-menu');
+    const btn  = document.querySelector('.menu-btn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+</script>
+ 
+</body>
+</html>
