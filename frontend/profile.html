@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlumniArc – My Profile</title>
+  <title>AlumniArc – My Profile Workspace</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="profile.css">
 </head>
@@ -16,7 +16,7 @@
         <span class="nav-wordmark">AlumniArc</span>
       </div>
       <div class="nav-links">
-        <a href="dashboard.html"><i class="ti ti-home"></i> Dashboard</a>
+        <a href="dashboard.html" id="dynamic-dash-link"><i class="ti ti-home"></i> Dashboard</a>
         <a href="feed.html"><i class="ti ti-world"></i> Feed</a>
         <a href="chats.html"><i class="ti ti-message"></i> Chats</a>
         <a href="profile.html" class="active"><i class="ti ti-user"></i> Profile</a>
@@ -40,73 +40,155 @@
           <label class="avatar-edit" for="photo-upload"><i class="ti ti-camera"></i></label>
           <input type="file" id="photo-upload" accept="image/*" onchange="previewPhoto(event)" />
         </div>
+        
         <h1 class="user-name" id="display-name">Aisha Nalwoga</h1>
+        
         <div class="user-meta">
           <span class="user-role"><i class="ti ti-map-pin"></i> <span id="display-role">Frontend Developer · Kampala, UG</span></span>
-          <span class="cohort-tag" id="cohort-badge">Cohort 8</span>
         </div>
-        <button class="btn-edit-profile" onclick="toggleEdit()"><i class="ti ti-pencil"></i> Edit profile</button>
+        
+        <div id="display-persona-badge" class="persona-indicator persona-alumni">Alumni Member</div>
+        
+        <button class="btn-edit-profile" onclick="toggleEdit()"><i class="ti ti-pencil"></i> Edit profile workspace</button>
       </div>
 
-      <!-- edit form -->
       <div class="edit-form" id="edit-form">
         <div class="card-sep" style="margin: 0 0 22px"></div>
-        <div class="block-title">Edit profile</div>
+        <div class="block-title">Edit profile workspace</div>
+        
         <div class="field">
-          <label for="edit-name">Full name</label>
-          <input type="text" id="edit-name" value="Aisha Nalwoga" />
-        </div>
-        <div class="field">
-          <label for="edit-role">Role / Title</label>
-          <input type="text" id="edit-role" value="Frontend Developer" />
-        </div>
-        <div class="field">
-          <label for="edit-location">Location</label>
-          <input type="text" id="edit-location" value="Kampala, Uganda" />
-        </div>
-        <div class="field">
-          <label for="edit-bio">Short bio</label>
-          <textarea id="edit-bio">Passionate about building beautiful interfaces and empowering women in tech.</textarea>
-        </div>
-        <div class="field">
-          <label for="edit-cohort">Cohort</label>
-          <select id="edit-cohort">
-            <option>Cohort 1</option><option>Cohort 2</option><option>Cohort 3</option>
-            <option>Cohort 4</option><option>Cohort 5</option><option>Cohort 6</option>
-            <option>Cohort 7</option><option selected>Cohort 8</option><option>Cohort 9</option>
-            <option>Cohort 10</option><option>Cohort 11</option><option>Cohort 12</option>
-            <option>Cohort 13</option><option>Cohort 14</option><option>Cohort 15</option>
-            <option>Cohort 16</option>
+          <label for="edit-account-type">Profile Persona Type</label>
+          <select id="edit-account-type" onchange="handlePersonaSwitch(this.value)" class="persona-select-highlight">
+            <option value="student">Active Student / Trainee</option>
+            <option value="alumni" selected>Code Queen Alumna</option>
+            <option value="partner">Corporate / Hiring Partner</option>
           </select>
         </div>
+
+        <div class="meta-input-grid">
+          <div class="field">
+            <label for="edit-name">Full name / Corporate Identity</label>
+            <input type="text" id="edit-name" value="Aisha Nalwoga" />
+          </div>
+          <div class="field">
+            <label for="edit-location">Primary Location</label>
+            <input type="text" id="edit-location" value="Kampala, Uganda" />
+          </div>
+        </div>
+
         <div class="field">
-          <label>Skills</label>
+          <label for="edit-role">Headline Title / Current Role</label>
+          <input type="text" id="edit-role" value="Frontend Developer" />
+        </div>
+
+        <div class="field">
+          <label for="edit-bio">Professional summary / Bio</label>
+          <textarea id="edit-bio">Passionate about building beautiful interfaces and empowering women in tech.</textarea>
+        </div>
+
+        <div id="block-student" class="conditional-block">
+          <div class="meta-input-grid">
+            <div class="field">
+              <label for="student-cohort">Active Trainee Cohort</label>
+              <select id="student-cohort">
+                <option value="Cohort 15">Cohort 15</option>
+                <option value="Cohort 16" selected>Cohort 16</option>
+                <option value="Cohort 17">Cohort 17</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="student-track">Learning Track Focus</label>
+              <select id="student-track">
+                <option value="Frontend Development" selected>Frontend Track</option>
+                <option value="Backend System Architecture">Backend Track</option>
+                <option value="UI/UX Product Design">UI/UX Track</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="student-learning-log">Current Module / Learning Log Link</label>
+            <input type="url" id="student-learning-log" placeholder="https://github.com/yourusername/learning-log" />
+          </div>
+        </div>
+
+        <div id="block-alumni" class="conditional-block">
+          <div class="meta-input-grid">
+            <div class="field">
+              <label for="alumni-cohort">Graduation Cohort</label>
+              <select id="alumni-cohort">
+                <option value="Cohort 1">Cohort 1</option>
+                <option value="Cohort 8" selected>Cohort 8</option>
+                <option value="Cohort 12">Cohort 12</option>
+                <option value="Cohort 14">Cohort 14</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="alumni-company">Current Employer / Freelance</label>
+              <input type="text" id="alumni-company" value="Andela" placeholder="e.g. Safaricom, MTN, Google" />
+            </div>
+          </div>
+          <div class="meta-input-grid">
+            <div class="field">
+              <label for="alumni-portfolio">Live Portfolio URL</label>
+              <input type="url" id="alumni-portfolio" value="https://portfolio.alumniarc.com" />
+            </div>
+            <div class="field">
+              <label for="alumni-cv">Updated CV (Cloud Link)</label>
+              <input type="url" id="alumni-cv" placeholder="https://drive.google.com/.../cv.pdf" />
+            </div>
+          </div>
+        </div>
+
+        <div id="block-partner" class="conditional-block">
+          <div class="field">
+            <label for="partner-company-size">Hiring Scale / Organization Type</label>
+            <select id="partner-company-size">
+              <option value="Startup / Early Stage">Startup / Early Stage Venture</option>
+              <option value="Mid-Market Enterprise">Mid-Market Corporate Hub</option>
+              <option value="Global Tech Enterprise" selected>Global Technology Enterprise</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="partner-website">Official Corporate Website</label>
+            <input type="url" id="partner-website" placeholder="https://company.com" />
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 12px;">
+          <label>Core Competencies & Technology Tags</label>
           <div class="tag-picker">
             <span class="tag-option selected" onclick="toggleTag(this)">UI/UX Design</span>
             <span class="tag-option selected" onclick="toggleTag(this)">Frontend Dev</span>
             <span class="tag-option" onclick="toggleTag(this)">Backend Dev</span>
             <span class="tag-option" onclick="toggleTag(this)">Data Science</span>
             <span class="tag-option" onclick="toggleTag(this)">Project Mgmt</span>
-            <span class="tag-option" onclick="toggleTag(this)">Cybersecurity</span>
-            <span class="tag-option" onclick="toggleTag(this)">Cloud</span>
-            <span class="tag-option" onclick="toggleTag(this)">Mobile Dev</span>
+            <span class="tag-option" onclick="toggleTag(this)">Python Architecture</span>
+            <span class="tag-option" onclick="toggleTag(this)">HTML/CSS Logic</span>
           </div>
         </div>
+
         <div class="form-actions">
           <button class="btn-cancel" onclick="toggleEdit()">Cancel</button>
-          <button class="btn-save" onclick="saveProfile()">Save changes</button>
+          <button class="btn-save" onclick="saveProfile()">Save verified changes</button>
         </div>
       </div>
 
       <div class="card-sep"></div>
       <div class="card-block" id="bio-section">
-        <div class="block-title">About me</div>
+        <div class="block-title">About / Workspace Overview</div>
         <p class="bio-text" id="display-bio">Passionate about building beautiful interfaces and empowering women in tech.</p>
       </div>
 
       <div class="card-sep"></div>
+      <div class="card-block" id="dynamic-metadata-section">
+        <div class="block-title" id="metadata-title">System Verified Info</div>
+        <div class="pills" id="metadata-display-pills">
+          </div>
+      </div>
+
+      <div class="card-sep"></div>
       <div class="card-block" id="skills-section">
-        <div class="block-title">Skills</div>
+        <div class="block-title">Technical Competencies</div>
         <div class="pills" id="skills-display">
           <span class="pill">UI/UX Design</span>
           <span class="pill">Frontend Dev</span>
@@ -115,38 +197,31 @@
 
       <div class="card-sep"></div>
       <div class="card-block">
-        <div class="block-title">Preferences</div>
+        <div class="block-title">System & Security Preferences</div>
         <div class="pref-row">
-          <div><div class="pref-label">Push notifications</div><div class="pref-sub">Events, messages and opportunities</div></div>
+          <div><div class="pref-label">Push notifications</div><div class="pref-sub">Events, community matches and mentorship threads</div></div>
           <label class="switch"><input type="checkbox" checked /><span class="switch-track"></span></label>
         </div>
         <div class="pref-row">
-          <div><div class="pref-label">Email updates</div><div class="pref-sub">Weekly digest from your community</div></div>
-          <label class="switch"><input type="checkbox" checked /><span class="switch-track"></span></label>
-        </div>
-        <div class="pref-row">
-          <div><div class="pref-label">Profile visibility</div><div class="pref-sub">Let other alumni find your profile</div></div>
+          <div><div class="pref-label">Profile visibility</div><div class="pref-sub">Allow global community members to search this profile</div></div>
           <label class="switch"><input type="checkbox" checked /><span class="switch-track"></span></label>
         </div>
       </div>
 
       <div class="card-sep"></div>
       <div class="card-block">
-        <div class="block-title">Account</div>
+        <div class="block-title">Account Security</div>
         <a href="#" class="acct-link">
-          <span class="acct-icon"><i class="ti ti-lock"></i></span> Change password <i class="ti ti-chevron-right arrow"></i>
-        </a>
-        <a href="#" class="acct-link">
-          <span class="acct-icon"><i class="ti ti-mail"></i></span> Change email address <i class="ti ti-chevron-right arrow"></i>
+          <span class="acct-icon"><i class="ti ti-lock"></i></span> Change master password <i class="ti ti-chevron-right arrow"></i>
         </a>
         <a href="#" class="acct-link danger">
-          <span class="acct-icon"><i class="ti ti-trash"></i></span> Delete account <i class="ti ti-chevron-right arrow"></i>
+          <span class="acct-icon"><i class="ti ti-trash"></i></span> Delete profile registry <i class="ti ti-chevron-right arrow"></i>
         </a>
       </div>
 
       <div class="card-sep"></div>
       <div class="card-block">
-        <button class="btn-logout" onclick="logout()"><i class="ti ti-logout"></i> Log out</button>
+        <button class="btn-logout" onclick="logout()"><i class="ti ti-logout"></i> Log out of workspace</button>
       </div>
 
     </div>
@@ -157,41 +232,134 @@
     var f = document.getElementById('edit-form');
     var b = document.getElementById('bio-section');
     var s = document.getElementById('skills-section');
+    var m = document.getElementById('dynamic-metadata-section');
     var open = f.classList.contains('open');
+    
     f.classList.toggle('open', !open);
     b.classList.toggle('hidden', !open);
     s.classList.toggle('hidden', !open);
-    if (!open) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    m.classList.toggle('hidden', !open);
+    
+    if (!open) {
+      f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      handlePersonaSwitch(document.getElementById('edit-account-type').value);
+    }
   }
 
   function toggleTag(el) { el.classList.toggle('selected'); }
 
+  function handlePersonaSwitch(selectedRole) {
+    document.getElementById('block-student').classList.toggle('active', selectedRole === 'student');
+    document.getElementById('block-alumni').classList.toggle('active', selectedRole === 'alumni');
+    document.getElementById('block-partner').classList.toggle('active', selectedRole === 'partner');
+  }
+
   function saveProfile() {
+    var persona = document.getElementById('edit-account-type').value;
     var name = document.getElementById('edit-name').value.trim();
     var role = document.getElementById('edit-role').value.trim();
     var loc  = document.getElementById('edit-location').value.trim();
     var bio  = document.getElementById('edit-bio').value.trim();
-    var coh  = document.getElementById('edit-cohort').value;
-    var sk   = [];
-    document.querySelectorAll('.tag-option.selected').forEach(function(t) { sk.push(t.textContent.trim()); });
+    
+    var sk = [];
+    var tags = document.getElementsByClassName('tag-option');
+    for(var i=0; i<tags.length; i++) {
+      if(tags[i].classList.contains('selected')) {
+        sk.push(tags[i].textContent.trim());
+      }
+    }
+
+    var customMetaLabel = "";
+    var customMetaPillsHtml = "";
+    var cohortValueForBadge = "";
+
+    if (persona === 'student') {
+      cohortValueForBadge = document.getElementById('student-cohort').value;
+      var track = document.getElementById('student-track').value;
+      var log = document.getElementById('student-learning-log').value.trim();
+      
+      customMetaLabel = "Learning & Tracking Insights";
+      customMetaPillsHtml = `<span class="pill" style="background:#eff6ff; color:#2563eb;">Track: ${track}</span>`;
+      if(log) customMetaPillsHtml += `<span class="pill" style="background:#f3f4f6; color:#374151;">📋 Log Verified</span>`;
+      
+      updateBadgeState('student', cohortValueForBadge);
+      document.getElementById('dynamic-dash-link').href = "student-dashboard.html";
+    } 
+    else if (persona === 'alumni') {
+      cohortValueForBadge = document.getElementById('alumni-cohort').value;
+      var company = document.getElementById('alumni-company').value.trim();
+      var portfolio = document.getElementById('alumni-portfolio').value.trim();
+      
+      customMetaLabel = "Alumni Industry Placement";
+      customMetaPillsHtml = `<span class="pill">Firm: ${company || 'Seeking Placement'}</span>`;
+      if(portfolio) customMetaPillsHtml += `<span class="pill">🌐 Portfolio Live</span>`;
+      
+      updateBadgeState('alumni', cohortValueForBadge);
+      document.getElementById('dynamic-dash-link').href = "dashboard.html";
+    } 
+    else if (persona === 'partner') {
+      cohortValueForBadge = "Corporate Partner";
+      var enterpriseScale = document.getElementById('partner-company-size').value;
+      
+      customMetaLabel = "Talent Acquisition Metadata";
+      customMetaPillsHtml = `<span class="pill" style="background:#fff7ed; color:var(--orange);">${enterpriseScale}</span>`;
+      
+      updateBadgeState('partner', cohortValueForBadge);
+      document.getElementById('dynamic-dash-link').href = "partner-dashboard.html"; 
+    }
 
     document.getElementById('display-name').textContent = name;
     document.getElementById('display-role').textContent = role + ' \u00b7 ' + loc;
     document.getElementById('display-bio').textContent  = bio;
-    document.getElementById('cohort-badge').textContent = coh;
+    
+    document.getElementById('metadata-title').textContent = customMetaLabel;
+    document.getElementById('metadata-display-pills').innerHTML = customMetaPillsHtml;
 
     var p = name.split(' ');
     document.getElementById('avatar-initials').textContent =
-      ((p[0]||'')[0]||'').toUpperCase() + ((p[1]||'')[0]||'').toUpperCase();
+      ((p[0]||'')[0]||'').toUpperCase() + ((p[1]||'')[1] ? (p[1]||'')[0] : (p[0]||'')[1] || '').toUpperCase();
 
     document.getElementById('skills-display').innerHTML =
       sk.map(function(s) { return '<span class="pill">' + s + '</span>'; }).join('');
 
-    localStorage.setItem('alumniProfile', JSON.stringify({
-      name: name, role: role, location: loc, bio: bio, cohort: coh, skills: sk,
-      photo: document.getElementById('profile-pic').src || ''
-    }));
+    var photoSrc = document.getElementById('profile-pic').src || '';
+
+    var profileStatePayload = {
+      persona: persona, name: name, role: role, location: loc, bio: bio, 
+      cohort: cohortValueForBadge, skills: sk, photo: photoSrc,
+      studentData: {
+        cohort: document.getElementById('student-cohort').value,
+        track: document.getElementById('student-track').value,
+        log: document.getElementById('student-learning-log').value
+      },
+      alumniData: {
+        cohort: document.getElementById('alumni-cohort').value,
+        company: document.getElementById('alumni-company').value,
+        portfolio: document.getElementById('alumni-portfolio').value,
+        cv: document.getElementById('alumni-cv').value
+      },
+      partnerData: {
+        scale: document.getElementById('partner-company-size').value,
+        url: document.getElementById('partner-website').value
+      }
+    };
+    
+    localStorage.setItem('alumniProfileMaster', JSON.stringify(profileStatePayload));
+    if(photoSrc && !photoSrc.endsWith('profile.html')) {
+      localStorage.setItem('alumniProfileImage', photoSrc);
+    }
+
     toggleEdit();
+  }
+
+  function updateBadgeState(role, badgeText) {
+    var badgeEl = document.getElementById('display-persona-badge');
+    badgeEl.textContent = badgeText;
+    badgeEl.className = "persona-indicator";
+    
+    if(role === 'student') badgeEl.classList.add('persona-student');
+    if(role === 'alumni') badgeEl.classList.add('persona-alumni');
+    if(role === 'partner') badgeEl.classList.add('persona-partner');
   }
 
   function previewPhoto(e) {
@@ -199,42 +367,63 @@
     if (!file) return;
     var r = new FileReader();
     r.onload = function(ev) {
-      document.getElementById('profile-pic').src = ev.target.result;
+      var base64Img = ev.target.result;
+      document.getElementById('profile-pic').src = base64Img;
       document.getElementById('profile-pic').style.display = 'block';
       document.getElementById('avatar-initials').style.display = 'none';
+      localStorage.setItem('alumniProfileImage', base64Img);
     };
     r.readAsDataURL(file);
   }
 
   function logout() {
-    if (confirm('Log out of AlumniArc?')) window.location.href = 'login.html';
+    if (confirm('Log out of secure platform workspace?')) window.location.href = 'login.html';
   }
 
   (function() {
-    var raw = localStorage.getItem('alumniProfile');
-    if (!raw) return;
-    var s = JSON.parse(raw);
-    if (s.name) document.getElementById('display-name').textContent = s.name;
-    if (s.role) document.getElementById('display-role').textContent = s.role + ' \u00b7 ' + (s.location||'');
-    if (s.bio)  document.getElementById('display-bio').textContent = s.bio;
-    if (s.cohort) document.getElementById('cohort-badge').textContent = s.cohort;
-    if (s.name) {
-      var p = s.name.split(' ');
-      document.getElementById('avatar-initials').textContent =
-        ((p[0]||'')[0]||'').toUpperCase() + ((p[1]||'')[0]||'').toUpperCase();
-    }
-    if (s.name) document.getElementById('edit-name').value = s.name;
-    if (s.role) document.getElementById('edit-role').value = s.role;
-    if (s.location) document.getElementById('edit-location').value = s.location;
-    if (s.bio) document.getElementById('edit-bio').value = s.bio;
-    if (s.skills && s.skills.length)
-      document.getElementById('skills-display').innerHTML =
-        s.skills.map(function(x) { return '<span class="pill">' + x + '</span>'; }).join('');
-    if (s.photo) {
-      document.getElementById('profile-pic').src = s.photo;
+    var raw = localStorage.getItem('alumniProfileMaster');
+    var savedPhoto = localStorage.getItem('alumniProfileImage');
+    
+    if (savedPhoto) {
+      document.getElementById('profile-pic').src = savedPhoto;
       document.getElementById('profile-pic').style.display = 'block';
       document.getElementById('avatar-initials').style.display = 'none';
     }
+
+    if (!raw) {
+      handlePersonaSwitch('alumni');
+      return;
+    }
+    
+    var data = JSON.parse(raw);
+    
+    document.getElementById('edit-account-type').value = data.persona || 'alumni';
+    document.getElementById('edit-name').value = data.name || '';
+    document.getElementById('edit-role').value = data.role || '';
+    document.getElementById('edit-location').value = data.location || '';
+    document.getElementById('edit-bio').value = data.bio || '';
+    
+    if(data.studentData) {
+      document.getElementById('student-cohort').value = data.studentData.cohort;
+      document.getElementById('student-track').value = data.studentData.track;
+      document.getElementById('student-learning-log').value = data.studentData.log;
+    }
+    if(data.alumniData) {
+      document.getElementById('alumni-cohort').value = data.alumniData.cohort;
+      document.getElementById('alumni-company').value = data.alumniData.company;
+      document.getElementById('alumni-portfolio').value = data.alumniData.portfolio;
+      document.getElementById('alumni-cv').value = data.alumniData.cv;
+    }
+    if(data.partnerData) {
+      document.getElementById('partner-company-size').value = data.partnerData.scale;
+      document.getElementById('partner-website').value = data.partnerData.url;
+    }
+
+    saveProfile();
+    document.getElementById('edit-form').classList.remove('open');
+    document.getElementById('bio-section').classList.remove('hidden');
+    document.getElementById('skills-section').classList.remove('hidden');
+    document.getElementById('dynamic-metadata-section').classList.remove('hidden');
   })();
 </script>
 

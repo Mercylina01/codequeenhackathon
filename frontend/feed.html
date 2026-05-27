@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Community Feed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="feed.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+    </div>
+    <div class="nav-right">
+      <a href="#" class="nav-link active">Feed</a>
+      <a href="#" class="nav-link" id="dynamic-dash-link">Dashboard</a>
+      <div class="nav-avatar" id="nav-avatar-circle">UA</div>
+    </div>
+  </nav>
+
+  <main class="feed-container">
+    
+    <aside class="feed-sidebar-left">
+      <div class="user-profile-card">
+        <div class="user-cover"></div>
+        <div class="user-avatar-main" id="user-card-avatar">UA</div>
+        <h3 id="user-card-name">User Name</h3>
+        <p id="user-card-role">Community Member</p>
+        <div class="user-stats">
+          <div class="stat-box">
+            <span class="stat-num" id="user-post-count">2</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="stat-line"></div>
+          <div class="stat-box">
+            <span class="stat-num">1.2k</span>
+            <span class="stat-label">Views</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="feed-main-stream">
+      
+      <div class="feed-composer" id="composer-box">
+        <div class="composer-top">
+          <div class="nav-avatar" id="composer-avatar">UA</div>
+          <textarea id="post-input" placeholder="Share an insight, milestone, or job opportunity..."></textarea>
+        </div>
+        
+        <div class="composer-media-preview id-hidden" id="image-preview-strip">
+          <span>🖼️ photo_ready_to_upload.png</span>
+          <button onclick="removeMediaAttachment('image')">✕</button>
+        </div>
+        <div class="composer-media-preview id-hidden" id="tag-preview-strip">
+          <span>🏷️ Tagged: <small class="preview-tag">#FromCommsToCode</small></span>
+          <button onclick="removeMediaAttachment('tag')">✕</button>
+        </div>
+
+        <div class="composer-bottom">
+          <div class="composer-tools">
+            <button class="tool-btn" id="btn-tool-image" onclick="triggerImageAttach()">🖼️ Image</button>
+            <button class="tool-btn" id="btn-tool-tag" onclick="triggerTagAttach()">🏷️ Tag</button>
+          </div>
+          <button class="btn-send" onclick="createNewPost()">Publish Post</button>
+        </div>
+      </div>
+
+      <div class="posts-stream" id="posts-stream-target">
+        
+        <article class="post-card" id="post-sample-1">
+          <div class="post-header">
+            <div class="post-avatar alumni-badge">AN</div>
+            <div class="post-meta">
+              <h4>Aisha Nalwoga</h4>
+              <p class="role-badge alumni">Alumni Graduate • Cohort 12</p>
+              <span class="post-time">2 hours ago</span>
+            </div>
+          </div>
+          <div class="post-content">
+            <p>Thrilled to share that I've officially started my new role as a Junior Frontend Developer today! Immensely grateful for the core training and support system here. To everyone in the current cohort: keep pushing! 🚀💻</p>
+          </div>
+          <div class="post-footer">
+            <button class="action-btn" onclick="toggleLike(this)">❤️ <span>24</span> Likes</button>
+            <button class="action-btn" onclick="toggleCommentTray('comment-tray-1')">💬 <span>1</span> Comment</button>
+          </div>
+          
+          <div class="comment-tray" id="comment-tray-1">
+            <div class="comments-list" id="comments-list-1">
+              <div class="single-comment">
+                <strong>Namuli Proscovia:</strong> Wow, congratulations Aisha! So inspiring to read this! 🎉
+              </div>
+            </div>
+            <div class="comment-input-row">
+              <input type="text" id="input-comm-1" placeholder="Write a supportive comment..." onkeypress="handleCommentKey(event, '1')" />
+              <button onclick="addComment('1')">Reply</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="post-card job-post" id="post-sample-2">
+          <div class="post-header">
+            <div class="post-avatar partner-badge">TI</div>
+            <div class="post-meta">
+              <h4>Tech Innovations Ltd</h4>
+              <p class="role-badge partner">Hiring Partner</p>
+              <span class="post-time">5 hours ago</span>
+            </div>
+          </div>
+          <div class="post-content">
+            <p><strong>🚨 WE ARE HIRING: Frontend Developer Intern (Remote)</strong></p>
+            <p>We are looking for a passionate trainee or recent graduate proficient in clean HTML, CSS, and basic JavaScript architecture. Applications are prioritized for AlumniArc members!</p>
+          </div>
+          <div class="post-footer">
+            <button class="action-btn" onclick="toggleLike(this)">❤️ <span>45</span> Likes</button>
+            <button class="action-btn job-apply-target" onclick="triggerJobApplication('Tech Innovations Ltd', 'Frontend Developer Intern')">💼 Apply Now</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <aside class="feed-sidebar-right">
+      <div class="context-card">
+        <h3>Trending Topics</h3>
+        <ul class="trending-list">
+          <li><a href="#" onclick="applyQuickTag('#FromCommsToCode')">#FromCommsToCode</a> <span>124 posts</span></li>
+          <li><a href="#" onclick="applyQuickTag('#CSSGridMastery')">#CSSGridMastery</a> <span>89 posts</span></li>
+          <li><a href="#" onclick="applyQuickTag('#JavascriptBasics')">#JavascriptBasics</a> <span>56 posts</span></li>
+        </ul>
+      </div>
+    </aside>
+
+  </main>
+</div>
+
+<script>
+  let hasAttachedImage = false;
+  let hasAttachedTag = false;
+  let simulatedPostCount = 2;
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const userSessionData = localStorage.getItem('alumniProfileMaster');
+    if (userSessionData) {
+      const user = JSON.parse(userSessionData);
+      document.getElementById('user-card-name').textContent = user.name || 'Anonymous Member';
+      document.getElementById('user-card-role').textContent = translateRoleLabel(user.persona);
+      
+      const initials = (user.name || 'UA').split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+      document.getElementById('nav-avatar-circle').textContent = initials;
+      document.getElementById('user-card-avatar').textContent = initials;
+      document.getElementById('composer-avatar').textContent = initials;
+
+      const dashboardLinks = {
+        alumni: 'profile.html', student: 'student-dashboard.html', partner: 'partner-dashboard.html', admin: 'admin-dashboard.html', superadmin: 'superadmin-dashboard.html'
+      };
+      document.getElementById('dynamic-dash-link').href = dashboardLinks[user.persona] || 'dashboard.html';
+
+      if (user.persona === 'partner') {
+        document.getElementById('post-input').placeholder = "Post an official enterprise job listing...";
+      }
+    }
+  });
+
+  function translateRoleLabel(persona) {
+    const labels = { alumni: 'Alumni Graduate', student: 'Current Trainee', partner: 'Hiring Partner', admin: 'System Admin', superadmin: 'Super Admin' };
+    return labels[persona] || 'Community Member';
+  }
+
+  // 🖼️ IMAGE ATTACH TOOL
+  function triggerImageAttach() {
+    hasAttachedImage = true;
+    const strip = document.getElementById('image-preview-strip');
+    strip.classList.remove('id-hidden');
+    document.getElementById('btn-tool-image').style.background = 'var(--purple-light)';
+  }
+
+  // 🏷️ TAG ATTACH TOOL
+  function triggerTagAttach() {
+    hasAttachedTag = true;
+    const strip = document.getElementById('tag-preview-strip');
+    strip.classList.remove('id-hidden');
+    document.getElementById('btn-tool-tag').style.background = 'var(--purple-light)';
+  }
+
+  function removeMediaAttachment(type) {
+    if (type === 'image') {
+      hasAttachedImage = false;
+      document.getElementById('image-preview-strip').classList.add('id-hidden');
+      document.getElementById('btn-tool-image').style.background = '#fdf6ff';
+    } else {
+      hasAttachedTag = false;
+      document.getElementById('tag-preview-strip').classList.add('id-hidden');
+      document.getElementById('btn-tool-tag').style.background = '#fdf6ff';
+    }
+  }
+
+  function applyQuickTag(tagName) {
+    document.getElementById('post-input').value += ` ${tagName} `;
+    document.getElementById('post-input').focus();
+  }
+
+  // ❤️ LIKE TOGGLE ENGINE
+  function toggleLike(btn) {
+    const span = btn.querySelector('span');
+    let currentLikes = parseInt(span.textContent);
+    btn.classList.toggle('liked');
+    span.textContent = btn.classList.contains('liked') ? currentLikes + 1 : currentLikes - 1;
+  }
+
+  // 💬 COMMENT EXPANSION TRAYS
+  function toggleCommentTray(trayId) {
+    const tray = document.getElementById(trayId);
+    tray.classList.toggle('open');
+  }
+
+  function handleCommentKey(e, postId) {
+    if (e.key === 'Enter') { addComment(postId); }
+  }
+
+  function addComment(postId) {
+    const input = document.getElementById(`input-comm-${postId}`);
+    const list = document.getElementById(`comments-list-${postId}`);
+    const txt = input.value.trim();
+    if (!txt) return;
+
+    const userSessionData = JSON.parse(localStorage.getItem('alumniProfileMaster') || '{}');
+    const myName = userSessionData.name || 'You';
+
+    const newComm = document.createElement('div');
+    newComm.className = 'single-comment';
+    newComm.innerHTML = `<strong>${myName}:</strong> ${txt}`;
+    list.appendChild(newComm);
+
+    // Increment Counter text UI element
+    const commentBtnSpan = input.closest('.post-card').querySelector('.action-btn:nth-child(2) span');
+    commentBtnSpan.textContent = parseInt(commentBtnSpan.textContent) + 1;
+
+    input.value = '';
+  }
+
+  // 💼 JOB ACTION ROUTER
+  function triggerJobApplication(company, position) {
+    alert(`🎉 Premium Application Initiated!\n\nYour AlumniArc structured profile data is being securely verified and securely packaged to be delivered directly to the Talent Acquisition team at ${company} for the "${position}" role.`);
+  }
+
+  // ✍️ POST PUBLICATION CONTROLLER
+  function createNewPost() {
+    const textInput = document.getElementById('post-input');
+    const stream = document.getElementById('posts-stream-target');
+    let text = textInput.value.trim();
+    
+    if (!text && !hasAttachedImage) return;
+
+    const userSessionData = JSON.parse(localStorage.getItem('alumniProfileMaster') || '{}');
+    const userName = userSessionData.name || 'AlumniArc Member';
+    const persona = userSessionData.persona || 'alumni';
+    const roleLabel = translateRoleLabel(persona);
+    const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
+    
+    simulatedPostCount++;
+    const nextPostIndex = simulatedPostCount;
+
+    if (hasAttachedTag) { text += ' <span class="post-inline-tag">#FromCommsToCode</span>'; }
+
+    const postArticle = document.createElement('article');
+    postArticle.className = `post-card ${persona === 'partner' ? 'job-post' : ''}`;
+    
+    postArticle.innerHTML = `
+      <div class="post-header">
+        <div class="post-avatar ${persona}-badge">${initials}</div>
+        <div class="post-meta">
+          <h4>${userName}</h4>
+          <p class="role-badge ${persona}">${roleLabel}</p>
+          <span class="post-time">Just now</span>
+        </div>
+      </div>
+      <div class="post-content">
+        <p>${text.replace(/\n/g, '<br>')}</p>
+        ${hasAttachedImage ? '<div class="post-image-placeholder">🖼️ Attached Project Image Resource (Rendered)</div>' : ''}
+      </div>
+      <div class="post-footer">
+        <button class="action-btn" onclick="toggleLike(this)">❤️ <span>0</span> Likes</button>
+        <button class="action-btn" onclick="toggleCommentTray('comment-tray-${nextPostIndex}')">💬 <span>0</span> Comments</button>
+      </div>
+      <div class="comment-tray" id="comment-tray-${nextPostIndex}">
+        <div class="comments-list" id="comments-list-${nextPostIndex}"></div>
+        <div class="comment-input-row">
+          <input type="text" id="input-comm-${nextPostIndex}" placeholder="Write a supportive comment..." onkeypress="handleCommentKey(event, '${nextPostIndex}')" />
+          <button onclick="addComment('${nextPostIndex}')">Reply</button>
+        </div>
+      </div>
+    `;
+
+    stream.insertBefore(postArticle, stream.firstChild);
+    
+    // Clear composer states completely
+    textInput.value = '';
+    removeMediaAttachments();
+    document.getElementById('user-post-count').textContent = parseInt(document.getElementById('user-post-count').textContent) + 1;
+  }
+
+  function removeMediaAttachments() {
+    removeMediaAttachment('image');
+    removeMediaAttachment('tag');
+  }
+</script>
+</body>
+</html>
