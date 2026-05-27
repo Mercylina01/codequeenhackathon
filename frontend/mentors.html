@@ -6,13 +6,13 @@
   <title>AlumniArc – Mentors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="mentors.css">
 </head>
 <body>
 
-  <!-- TOP BAR — full width -->
+  <!-- TOP BAR -->
   <header class="top-bar">
     <div class="top-bar-inner">
       <div class="nav-brand">
@@ -32,70 +32,219 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="main-content">
-
-    <div class="page-header">
-      <h1 class="page-title">Mentors</h1>
-      <p class="page-sub">Guided professional growth from experienced leaders</p>
+  <!-- HERO / CTA SECTION -->
+  <section class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="hero-tag"><i class="ti ti-sparkles"></i> Mentorship Program</span>
+        <h1 class="hero-title">Find a mentor who<br><em>gets</em> your journey</h1>
+        <p class="hero-desc">
+          Our mentorship program pairs young professionals with experienced
+          leaders for structured career guidance. Whether you're starting out
+          or levelling up — there's someone here for you.
+        </p>
+        <div class="hero-actions">
+          <button class="cta-btn primary">
+            <i class="ti ti-heart-handshake"></i> Connect with a Mentor
+          </button>
+          <button class="cta-btn secondary">
+            <i class="ti ti-info-circle"></i> How It Works
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">25+</span>
+            <span class="stat-label">Active Mentors</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">80+</span>
+            <span class="stat-label">Mentees Matched</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">4.9</span>
+            <span class="stat-label">Avg Rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <div class="avatar-cluster">
+          <img src="images/Sheeba.jpeg" alt="" class="cluster-img c1" />
+          <img src="images/Prossy.jpeg" alt="" class="cluster-img c2" />
+          <img src="images/Sarah Victorious.jpeg" alt="" class="cluster-img c3" />
+          <img src="images/Vision.jpeg" alt="" class="cluster-img c4" />
+          <img src="images/Lillian.jpeg" alt="" class="cluster-img c5" />
+          <img src="images/Collins.jpeg" alt="" class="cluster-img c6" />
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="quote-card">
-      <p class="quote-text">
-        Our mentorship program pairs young professionals with industry veterans
-        for structured career guidance.
-      </p>
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="how-inner">
+      <h2 class="section-title">How mentorship works</h2>
+      <div class="steps-row">
+        <div class="step">
+          <div class="step-icon"><i class="ti ti-user-search"></i></div>
+          <h3 class="step-name">Browse Mentors</h3>
+          <p class="step-desc">Explore profiles and find someone whose skills and experience match your goals.</p>
+        </div>
+        <div class="step-connector"><i class="ti ti-arrow-right"></i></div>
+        <div class="step">
+          <div class="step-icon"><i class="ti ti-send"></i></div>
+          <h3 class="step-name">Send a Request</h3>
+          <p class="step-desc">Reach out with a short intro about yourself and what you'd like guidance on.</p>
+        </div>
+        <div class="step-connector"><i class="ti ti-arrow-right"></i></div>
+        <div class="step">
+          <div class="step-icon"><i class="ti ti-rocket"></i></div>
+          <h3 class="step-name">Grow Together</h3>
+          <p class="step-desc">Meet regularly, set goals, and build a professional relationship that lasts.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <button class="cta-btn">Connect with a Mentor</button>
-
-    <p class="mentors-label">Featured Mentors</p>
-    <div class="mentors-grid">
-
-      <div class="mentor-card">
-        <img class="mentor-avatar" src="images/Sheeba.jpeg" alt="Sheba">
-        <span class="mentor-name">Sheba</span>
-        <span class="mentor-skill">HTML &amp; CSS</span>
-        <button class="connect-btn">Connect</button>
+  <!-- FEATURED MENTORS -->
+  <section class="mentors-section">
+    <div class="mentors-inner">
+      <div class="section-header">
+        <h2 class="section-title">Featured Mentors</h2>
+        <p class="section-sub">People ready to walk with you</p>
       </div>
 
-      <div class="mentor-card">
-        <img class="mentor-avatar" src="images/Prossy.jpeg" alt="Liz Prossy">
-        <span class="mentor-name">Liz Prossy</span>
-        <span class="mentor-skill">Github</span>
-        <button class="connect-btn">Connect</button>
-      </div>
+      <div class="mentors-grid">
 
-      <div class="mentor-card">
-        <img class="mentor-avatar" src="images/Sarah Victorious.jpeg" alt="Sarah M">
-        <span class="mentor-name">Sarah Victorious</span>
-        <span class="mentor-skill">Product Design</span>
-        <button class="connect-btn">Connect</button>
-      </div>
+        <div class="mentor-card">
+          <div class="mentor-top">
+            <img class="mentor-avatar" src="images/Sheeba.jpeg" alt="Sheba">
+            <div class="mentor-info">
+              <span class="mentor-name">Sheba</span>
+              <span class="mentor-skill"><i class="ti ti-code"></i> HTML &amp; CSS</span>
+            </div>
+          </div>
+          <p class="mentor-bio">Passionate about helping beginners build their first websites with confidence.</p>
+          <button class="connect-btn"><i class="ti ti-heart-handshake"></i> Connect</button>
+        </div>
 
-      <div class="mentor-card">
-        <img class="mentor-avatar" src="images/Vision.jpeg" alt="Vision N">
-        <span class="mentor-name">Vision Nimusiima</span>
-        <span class="mentor-skill">Javascript</span>
-        <button class="connect-btn">Connect</button>
-      </div>
+        <div class="mentor-card">
+          <div class="mentor-top">
+            <img class="mentor-avatar" src="images/Prossy.jpeg" alt="Liz Prossy">
+            <div class="mentor-info">
+              <span class="mentor-name">Liz Prossy</span>
+              <span class="mentor-skill"><i class="ti ti-brand-github"></i> Github</span>
+            </div>
+          </div>
+          <p class="mentor-bio">Guides teams through version control workflows and open-source collaboration.</p>
+          <button class="connect-btn"><i class="ti ti-heart-handshake"></i> Connect</button>
+        </div>
 
-      <div class="mentor-card">
-        <img class="mentor-avatar" src="images/Lillian.jpeg" alt="Lillian">
-        <span class="mentor-name">Lilian Savah</span>
-        <span class="mentor-skill">Assistant Mentor</span>
-        <button class="connect-btn">Connect</button>
-      </div>
+        <div class="mentor-card">
+          <div class="mentor-top">
+            <img class="mentor-avatar" src="images/Sarah Victorious.jpeg" alt="Sarah Victorious">
+            <div class="mentor-info">
+              <span class="mentor-name">Sarah Victorious</span>
+              <span class="mentor-skill"><i class="ti ti-palette"></i> Product Design</span>
+            </div>
+          </div>
+          <p class="mentor-bio">Brings user-centred thinking to every project — from wireframes to final polish.</p>
+          <button class="connect-btn"><i class="ti ti-heart-handshake"></i> Connect</button>
+        </div>
 
-      <div class="mentor-card">
-        <img class="mentor-avatar" src="images/Collins.jpeg" alt="Collins">
-        <span class="mentor-name">Collins</span>
-        <span class="mentor-skill">Assistant Mentor</span>
-        <button class="connect-btn">Connect</button>
-      </div>
+        <div class="mentor-card">
+          <div class="mentor-top">
+            <img class="mentor-avatar" src="images/Vision.jpeg" alt="Vision Nimusiima">
+            <div class="mentor-info">
+              <span class="mentor-name">Vision Nimusiima</span>
+              <span class="mentor-skill"><i class="ti ti-brand-javascript"></i> Javascript</span>
+            </div>
+          </div>
+          <p class="mentor-bio">Loves breaking down complex JS concepts into simple, memorable lessons.</p>
+          <button class="connect-btn"><i class="ti ti-heart-handshake"></i> Connect</button>
+        </div>
 
+        <div class="mentor-card">
+          <div class="mentor-top">
+            <img class="mentor-avatar" src="images/Lillian.jpeg" alt="Lilian Savah">
+            <div class="mentor-info">
+              <span class="mentor-name">Lilian Savah</span>
+              <span class="mentor-skill"><i class="ti ti-school"></i> Assistant Mentor</span>
+            </div>
+          </div>
+          <p class="mentor-bio">A supportive peer mentor bridging the gap between learning and doing.</p>
+          <button class="connect-btn"><i class="ti ti-heart-handshake"></i> Connect</button>
+        </div>
+
+        <div class="mentor-card">
+          <div class="mentor-top">
+            <img class="mentor-avatar" src="images/Collins.jpeg" alt="Collins">
+            <div class="mentor-info">
+              <span class="mentor-name">Collins</span>
+              <span class="mentor-skill"><i class="ti ti-school"></i> Assistant Mentor</span>
+            </div>
+          </div>
+          <p class="mentor-bio">Brings energy and encouragement to every mentorship session.</p>
+          <button class="connect-btn"><i class="ti ti-heart-handshake"></i> Connect</button>
+        </div>
+
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta">
+    <div class="bottom-cta-inner">
+      <h2>Ready to start your mentorship journey?</h2>
+      <p>It only takes a minute to connect with someone who's been where you want to go.</p>
+      <button class="cta-btn primary"><i class="ti ti-heart-handshake"></i> Get Matched Today</button>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.connect-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const card = this.closest('.mentor-card');
+        const actions = card.querySelector('.mentor-actions');
+
+        // If already connected, toggle back to "Connect"
+        if (card.classList.contains('is-connected')) {
+          card.classList.remove('is-connected', 'is-pending');
+          this.innerHTML = '<i class="ti ti-heart-handshake"></i> Connect';
+          if (actions) actions.remove();
+          return;
+        }
+
+        // Show "Pending" briefly, then flip to "Connected"
+        card.classList.add('is-pending');
+        this.innerHTML = '<i class="ti ti-clock"></i> Pending…';
+        this.disabled = true;
+
+        setTimeout(() => {
+          card.classList.remove('is-pending');
+          card.classList.add('is-connected');
+          this.disabled = false;
+          this.innerHTML = '<i class="ti ti-user-check"></i> Connected';
+
+          // Add "Message" button if not already there
+          if (!card.querySelector('.message-btn')) {
+            const msgBtn = document.createElement('button');
+            msgBtn.className = 'message-btn';
+            msgBtn.innerHTML = '<i class="ti ti-message"></i> Message';
+            msgBtn.addEventListener('click', function (e) {
+              e.stopPropagation();
+              // Redirect to chats — swap href as needed
+              window.location.href = 'chats.html';
+            });
+            // Insert the message button right after the connect button
+            this.insertAdjacentElement('afterend', msgBtn);
+          }
+        }, 1200);
+      });
+    });
+  </script>
 
 </body>
 </html>
