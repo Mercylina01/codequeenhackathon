@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlumniArc – Alumni Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="feed.css" />
+  <style>
+    /* DIRECTORY SPECIFIC CORE EXTENSIONS */
+    .directory-header {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .directory-header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--purple-mid), var(--orange));
+    }
+    .directory-header h2 {
+      font-family: 'DM Serif Display', serif;
+      color: var(--purple-deep);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .directory-header p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+    
+    /* FILTER COMPONENT GRID ARCHITECTURE */
+    .search-filter-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 12px;
+    }
+    .filter-input-wrapper {
+      position: relative;
+    }
+    .filter-input-wrapper i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .filter-control {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--text);
+      background: #faf6f9;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .filter-control:focus {
+      border-color: var(--purple-mid);
+      background: var(--white);
+    }
+    select.filter-control {
+      padding-left: 16px; /* Adjust select spacing since it lacks icons */
+    }
+
+    /* DIRECTORY GRID CARDS MATRIX */
+    .directory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .alumni-card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .alumni-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(76, 6, 59, 0.08);
+    }
+    .alumni-card-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: var(--purple-light);
+      color: var(--purple-mid);
+      border: 2px solid var(--border);
+    }
+    .alumni-card h4 {
+      font-size: 1.05rem;
+      color: var(--purple-deep);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .alumni-card .track-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--purple-mid);
+      background: var(--purple-light);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .alumni-card .meta-line {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .alumni-card .meta-line i {
+      color: var(--purple-mid);
+    }
+    .alumni-card-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--purple-light);
+    }
+    .btn-profile {
+      width: 100%;
+      background: #fdfafd;
+      border: 1px solid var(--border);
+      color: var(--purple-deep);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-profile:hover {
+      background: var(--purple-mid);
+      color: var(--white);
+      border-color: var(--purple-mid);
+    }
+
+    /* RESPONSIVE BREAKPOINTS OVERRIDES */
+    @media (max-width: 768px) {
+      .search-filter-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- UNIVERSAL FIXED BRAND NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="nav-left">
+        <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+        <span class="nav-wordmark">AlumniArc</span>
+      </div>
+      <button class="menu-btn" onclick="toggleNavbarMenu()">☰</button>
+      <div class="nav-right hidden" id="nav-links-menu">
+        <a href="feed.html" class="nav-link"><i class="ti ti-world"></i> Feed</a>
+        <a href="directory.html" class="nav-link active"><i class="ti ti-users"></i> Directory</a>
+        <a href="#" class="nav-link" id="dynamic-dash-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+        <div class="nav-avatar" id="nav-avatar-circle">UA</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DIRECTORY CONTAINER MAIN VIEWPORT -->
+  <main class="feed-container" style="grid-template-columns: 1fr;">
+    <section class="feed-main-stream">
+      
+      <!-- HEADER SEARCH & FILTER WRAP MATRIX -->
+      <div class="directory-header">
+        <h2>Alumni Directory</h2>
+        <p>Connect with professional graduates, sort by expertise track, and track community milestone paths.</p>
+        
+        <div class="search-filter-grid">
+          <div class="filter-input-wrapper">
+            <i class="ti ti-search"></i>
+            <input type="text" class="filter-control" id="search-name-input" placeholder="Search alumni by name or keyword..." oninput="filterAlumniDirectory()" />
+          </div>
+          <select class="filter-control" id="filter-track-select" onchange="filterAlumniDirectory()">
+            <option value="all">All Specialties</option>
+            <option value="frontend">Frontend Web Development</option>
+            <option value="uiux">UI/UX Product Design</option>
+            <option value="comms">Digital Comms & PR</option>
+          </select>
+          <select class="filter-control" id="filter-cohort-select" onchange="filterAlumniDirectory()">
+            <option value="all">All Cohorts</option>
+            <option value="cohort1">Cohort 1</option>
+            <option value="cohort2">Cohort 2</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- DIRECTORY DATA CARDS MATRIX FEED -->
+      <div class="directory-grid" id="directory-grid-target">
+        
+        <!-- SAMPLE CARD 1 -->
+        <div class="alumni-card" data-name="Aisha Nalwoga" data-track="frontend" data-cohort="cohort2">
+          <div class="alumni-card-avatar">AN</div>
+          <h4>Aisha Nalwoga</h4>
+          <span class="track-pill">Frontend Developer</span>
+          <div class="meta-line"><i class="ti ti-school"></i> Cohort 2 Graduate</div>
+          <div class="meta-line"><i class="ti ti-briefcase"></i> Junior Engineer at Tech Innovations</div>
+          <div class="alumni-card-footer">
+            <button class="btn-profile" onclick="viewAlumniProfile('Aisha Nalwoga')"><i class="ti ti-user-search"></i> View Profile</button>
+          </div>
+        </div>
+
+        <!-- SAMPLE CARD 2 -->
+        <div class="alumni-card" data-name="Namuli Proscovia" data-track="comms" data-cohort="cohort1">
+          <div class="alumni-card-avatar">NP</div>
+          <h4>Namuli Proscovia</h4>
+          <span class="track-pill">Digital Comms & PR</span>
+          <div class="meta-line"><i class="ti ti-school"></i> Cohort 1 Graduate</div>
+          <div class="meta-line"><i class="ti ti-building-skyscrapers"></i> Founder, Clarity Comms</div>
+          <div class="alumni-card-footer">
+            <button class="btn-profile" onclick="viewAlumniProfile('Namuli Proscovia')"><i class="ti ti-user-search"></i> View Profile</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  // RESPONSIVE TOGGLE OVERLAY TRIGGER
+  function toggleNavbarMenu() {
+    const linkMenu = document.getElementById('nav-links-menu');
+    linkMenu.classList.toggle('hidden');
+  }
+
+  // RECONCILE CLIENT SESSION ON RE-LOAD
+  window.addEventListener('DOMContentLoaded', () => {
+    const userSessionData = localStorage.getItem('alumniProfileMaster');
+    if (userSessionData) {
+      const user = JSON.parse(userSessionData);
+      const initials = (user.name || 'UA').split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+      document.getElementById('nav-avatar-circle').textContent = initials;
+    }
+  });
+
+  // REAL-TIME DIRECTORY CLIENT-SIDE FILTERING LOGIC
+  function filterAlumniDirectory() {
+    const query = document.getElementById('search-name-input').value.toLowerCase();
+    const trackFilter = document.getElementById('filter-track-select').value;
+    const cohortFilter = document.getElementById('filter-cohort-select').value;
+    const cards = document.querySelectorAll('.alumni-card');
+
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      const track = card.getAttribute('data-track');
+      const cohort = card.getAttribute('data-cohort');
+
+      const matchesSearch = name.includes(query);
+      const matchesTrack = (trackFilter === 'all' || track === trackFilter);
+      const matchesCohort = (cohortFilter === 'all' || cohort === cohortFilter);
+
+      if (matchesSearch && matchesTrack && matchesCohort) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function viewAlumniProfile(name) {
+    alert(`🔍 Accessing secure profile environment for ${name}...\nConnection encrypted and loading data payload into view.`);
+  }
+</script>
+</body>
+</html>

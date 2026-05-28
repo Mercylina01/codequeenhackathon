@@ -1,331 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlumniArc – Community Feed</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="feed.css" />
 </head>
+
 <body>
-<div class="page-wrapper">
+  <div class="page-wrapper">
 
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="nav-left">
-        <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
-        <span class="nav-wordmark">AlumniArc</span>
-      </div>
-      
-      <button class="menu-btn" onclick="toggleNavbarMenu()" aria-label="Toggle Navigation">☰</button>
-      
-      <div class="nav-right hidden" id="nav-links-menu">
-        <a href="feed.html" class="nav-link active"><i class="ti ti-world"></i> Feed</a>
-        <a href="#" class="nav-link" id="dynamic-dash-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
-        <div class="nav-avatar" id="nav-avatar-circle">UA</div>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="nav-left">
+          <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+          <span class="nav-wordmark">AlumniArc</span>
+        </div>
 
-  <main class="feed-container">
-    
-    <aside class="feed-sidebar-left">
-      <div class="user-profile-card">
-        <div class="user-cover"></div>
-        <div class="user-avatar-main" id="user-card-avatar">UA</div>
-        <h3 id="user-card-name">User Name</h3>
-        <p id="user-card-role">Community Member</p>
-        <div class="user-stats">
-          <div class="stat-box">
-            <span class="stat-num" id="user-post-count">2</span>
-            <span class="stat-label">Posts</span>
-          </div>
-          <div class="stat-line"></div>
-          <div class="stat-box">
-            <span class="stat-num">1.2k</span>
-            <span class="stat-label">Views</span>
-          </div>
+        <button class="menu-btn" onclick="toggleNavbarMenu()" aria-label="Toggle Navigation">☰</button>
+
+        <div class="nav-right hidden" id="nav-links-menu">
+          <a href="feed.html" class="nav-link active"><i class="ti ti-world"></i> Feed</a>
+          <!-- NEW DIRECTORY LINK -->
+          <a href="directory.html" class="nav-link"><i class="ti ti-users"></i> Directory</a>
+          <a href="#" class="nav-link" id="dynamic-dash-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+          <div class="nav-avatar" id="nav-avatar-circle">UA</div>
         </div>
       </div>
-    </aside>
+    </nav>
 
-    <section class="feed-main-stream">
-      
-      <div class="feed-composer" id="composer-box">
-        <div class="composer-top">
-          <div class="nav-avatar" id="composer-avatar">UA</div>
-          <textarea id="post-input" placeholder="Share an insight, milestone, or job opportunity..."></textarea>
-        </div>
-        
-        <input type="file" id="device-file-input" class="hidden-hardware-input" onchange="handleDeviceFileSelection(event)" accept="image/*, application/pdf, .zip, .js, .css, .html" />
+    <main class="feed-container">
 
-        <div class="composer-media-preview id-hidden" id="image-preview-strip">
-          <span id="attached-file-name-label">📁 file_ready_to_upload.png</span>
-          <button onclick="removeMediaAttachment('image')" aria-label="Remove attachment">✕</button>
-        </div>
-        <div class="composer-media-preview id-hidden" id="tag-preview-strip">
-          <span>🏷️ Tagged: <small class="preview-tag">#FromCommsToCode</small></span>
-          <button onclick="removeMediaAttachment('tag')" aria-label="Remove tag">✕</button>
-        </div>
-
-        <div class="composer-bottom">
-          <div class="composer-tools">
-            <button class="tool-btn" id="btn-tool-image" onclick="triggerDeviceFileClick()">
-              <i class="ti ti-paperclip"></i> Attach File
-            </button>
-            <button class="tool-btn" id="btn-tool-tag" onclick="triggerTagAttach()">
-              <i class="ti ti-hash"></i> Tag Track
-            </button>
-          </div>
-          <button class="btn-send" onclick="createNewPost()">Publish Post</button>
-        </div>
-      </div>
-
-      <div class="posts-stream" id="posts-stream-target">
-        
-        <article class="post-card" id="post-sample-1">
-          <div class="post-header">
-            <div class="post-avatar alumni-badge">AN</div>
-            <div class="post-meta">
-              <h4>Aisha Nalwoga</h4>
-              <p class="role-badge alumni">Alumni Graduate • Cohort 8</p>
-              <span class="post-time">2 hours ago</span>
+      <aside class="feed-sidebar-left">
+        <div class="user-profile-card">
+          <div class="user-cover"></div>
+          <div class="user-avatar-main" id="user-card-avatar">UA</div>
+          <h3 id="user-card-name">User Name</h3>
+          <p id="user-card-role">Community Member</p>
+          <div class="user-stats">
+            <div class="stat-box">
+              <span class="stat-num" id="user-post-count">2</span>
+              <span class="stat-label">Posts</span>
+            </div>
+            <div class="stat-line"></div>
+            <div class="stat-box">
+              <span class="stat-num">1.2k</span>
+              <span class="stat-label">Views</span>
             </div>
           </div>
-          <div class="post-content">
-            <p>Thrilled to share that I've officially started my new role as a Junior Frontend Developer today! Immensely grateful for the core training and support system here. To everyone in the current cohort: keep pushing! 🚀💻</p>
+        </div>
+      </aside>
+
+      <section class="feed-main-stream">
+
+        <div class="feed-composer" id="composer-box">
+          <div class="composer-top">
+            <div class="nav-avatar" id="composer-avatar">UA</div>
+            <textarea id="post-input" placeholder="Share an insight, milestone, or job opportunity..."></textarea>
           </div>
-          <div class="post-footer">
-            <button class="action-btn" onclick="toggleLike(this)"><i class="ti ti-heart"></i> <span>24</span> Likes</button>
-            <button class="action-btn" onclick="toggleCommentTray('comment-tray-1')"><i class="ti ti-messages"></i> <span>1</span> Comment</button>
+
+          <input type="file" id="device-file-input" class="hidden-hardware-input"
+            onchange="handleDeviceFileSelection(event)" accept="image/*, application/pdf, .zip, .js, .css, .html" />
+
+          <div class="composer-media-preview id-hidden" id="image-preview-strip">
+            <span id="attached-file-name-label">📁 file_ready_to_upload.png</span>
+            <button onclick="removeMediaAttachment('image')" aria-label="Remove attachment">✕</button>
           </div>
-          
-          <div class="comment-tray" id="comment-tray-1">
-            <div class="comments-list" id="comments-list-1">
-              <div class="single-comment">
-                <strong>Namuli Proscovia:</strong> Wow, congratulations Aisha! So inspiring to read this! 🎉
+          <div class="composer-media-preview id-hidden" id="tag-preview-strip">
+            <span>🏷️ Tagged: <small class="preview-tag">#FromCommsToCode</small></span>
+            <button onclick="removeMediaAttachment('tag')" aria-label="Remove tag">✕</button>
+          </div>
+
+          <div class="composer-bottom">
+            <div class="composer-tools">
+              <button class="tool-btn" id="btn-tool-image" onclick="triggerDeviceFileClick()">
+                <i class="ti ti-paperclip"></i> Attach File
+              </button>
+              <button class="tool-btn" id="btn-tool-tag" onclick="triggerTagAttach()">
+                <i class="ti ti-hash"></i> Tag Track
+              </button>
+            </div>
+            <button class="btn-send" onclick="createNewPost()">Publish Post</button>
+          </div>
+        </div>
+
+        <div class="posts-stream" id="posts-stream-target">
+
+          <article class="post-card" id="post-sample-1">
+            <div class="post-header">
+              <div class="post-avatar alumni-badge">AN</div>
+              <div class="post-meta">
+                <h4>Aisha Nalwoga</h4>
+                <p class="role-badge alumni">Alumni Graduate • Cohort 8</p>
+                <span class="post-time">2 hours ago</span>
               </div>
             </div>
-            <div class="comment-input-row">
-              <input type="text" id="input-comm-1" placeholder="Write a supportive comment..." onkeypress="handleCommentKey(event, '1')" />
-              <button onclick="addComment('1')">Reply</button>
+            <div class="post-content">
+              <p>Thrilled to share that I've officially started my new role as a Junior Frontend Developer today!
+                Immensely grateful for the core training and support system here. To everyone in the current cohort:
+                keep pushing! 🚀💻</p>
             </div>
-          </div>
-        </article>
-
-        <article class="post-card job-post" id="post-sample-2">
-          <div class="post-header">
-            <div class="post-avatar partner-badge">TI</div>
-            <div class="post-meta">
-              <h4>Tech Innovations Ltd</h4>
-              <p class="role-badge partner">Hiring Partner</p>
-              <span class="post-time">5 hours ago</span>
+            <div class="post-footer">
+              <button class="action-btn" onclick="toggleLike(this)"><i class="ti ti-heart"></i> <span>24</span>
+                Likes</button>
+              <button class="action-btn" onclick="toggleCommentTray('comment-tray-1')"><i class="ti ti-messages"></i>
+                <span>1</span> Comment</button>
             </div>
-          </div>
-          <div class="post-content">
-            <p class="job-headline">🚨 WE ARE HIRING: Frontend Developer Intern (Remote)</p>
-            <p>We are looking for a passionate trainee or recent graduate proficient in clean HTML, CSS, and basic JavaScript architecture. Applications are prioritized for AlumniArc members!</p>
-          </div>
-          <div class="post-footer">
-            <button class="action-btn" onclick="toggleLike(this)"><i class="ti ti-heart"></i> <span>45</span> Likes</button>
-            <button class="action-btn job-apply-target" onclick="triggerJobApplication('Tech Innovations Ltd', 'Frontend Developer Intern')"><i class="ti ti-briefcase"></i> Apply Now</button>
-          </div>
-        </article>
 
-      </div>
-    </section>
+            <div class="comment-tray" id="comment-tray-1">
+              <div class="comments-list" id="comments-list-1">
+                <div class="single-comment">
+                  <strong>Namuli Proscovia:</strong> Wow, congratulations Aisha! So inspiring to read this! 🎉
+                </div>
+              </div>
+              <div class="comment-input-row">
+                <input type="text" id="input-comm-1" placeholder="Write a supportive comment..."
+                  onkeypress="handleCommentKey(event, '1')" />
+                <button onclick="addComment('1')">Reply</button>
+              </div>
+            </div>
+          </article>
 
-    <aside class="feed-sidebar-right">
-      <div class="context-card">
-        <h3>Trending Topics</h3>
-        <ul class="trending-list">
-          <li><a href="#" onclick="applyQuickTag('#FromCommsToCode')">#FromCommsToCode</a> <span>124 posts</span></li>
-          <li><a href="#" onclick="applyQuickTag('#CSSGridMastery')">#CSSGridMastery</a> <span>89 posts</span></li>
-          <li><a href="#" onclick="applyQuickTag('#JavascriptBasics')">#JavascriptBasics</a> <span>56 posts</span></li>
-        </ul>
-      </div>
-    </aside>
+          <article class="post-card job-post" id="post-sample-2">
+            <div class="post-header">
+              <div class="post-avatar partner-badge">TI</div>
+              <div class="post-meta">
+                <h4>Tech Innovations Ltd</h4>
+                <p class="role-badge partner">Hiring Partner</p>
+                <span class="post-time">5 hours ago</span>
+              </div>
+            </div>
+            <div class="post-content">
+              <p class="job-headline">🚨 WE ARE HIRING: Frontend Developer Intern (Remote)</p>
+              <p>We are looking for a passionate trainee or recent graduate proficient in clean HTML, CSS, and basic
+                JavaScript architecture. Applications are prioritized for AlumniArc members!</p>
+            </div>
+            <div class="post-footer">
+              <button class="action-btn" onclick="toggleLike(this)"><i class="ti ti-heart"></i> <span>45</span>
+                Likes</button>
+              <button class="action-btn job-apply-target"
+                onclick="triggerJobApplication('Tech Innovations Ltd', 'Frontend Developer Intern')"><i
+                  class="ti ti-briefcase"></i> Apply Now</button>
+            </div>
+          </article>
 
-  </main>
-</div>
+        </div>
+      </section>
 
-<script>
-  let hasAttachedImage = false;
-  let hasAttachedTag = false;
-  let simulatedPostCount = 2;
-  let activeSelectedFileObject = null;
+      <aside class="feed-sidebar-right">
+        <div class="context-card">
+          <h3>Trending Topics</h3>
+          <ul class="trending-list">
+            <li><a href="#" onclick="applyQuickTag('#FromCommsToCode')">#FromCommsToCode</a> <span>124 posts</span></li>
+            <li><a href="#" onclick="applyQuickTag('#CSSGridMastery')">#CSSGridMastery</a> <span>89 posts</span></li>
+            <li><a href="#" onclick="applyQuickTag('#JavascriptBasics')">#JavascriptBasics</a> <span>56 posts</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
 
-  // RESPONSIVE TOGGLE OVERLAY TRIGGER
-  function toggleNavbarMenu() {
-    const linkMenu = document.getElementById('nav-links-menu');
-    linkMenu.classList.toggle('hidden');
-  }
+    </main>
+  </div>
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const userSessionData = localStorage.getItem('alumniProfileMaster');
-    if (userSessionData) {
-      const user = JSON.parse(userSessionData);
-      document.getElementById('user-card-name').textContent = user.name || 'Anonymous Member';
-      document.getElementById('user-card-role').textContent = translateRoleLabel(user.persona);
-      
-      const initials = (user.name || 'UA').split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-      document.getElementById('nav-avatar-circle').textContent = initials;
-      document.getElementById('user-card-avatar').textContent = initials;
-      document.getElementById('composer-avatar').textContent = initials;
+  <script>
+    let hasAttachedImage = false;
+    let hasAttachedTag = false;
+    let simulatedPostCount = 2;
+    let activeSelectedFileObject = null;
 
-      const dashboardLinks = {
-        alumni: 'profile.html', student: 'student-dashboard.html', partner: 'partner-dashboard.html', admin: 'admin-dashboard.html', superadmin: 'superadmin-dashboard.html'
-      };
-      document.getElementById('dynamic-dash-link').href = dashboardLinks[user.persona] || 'dashboard.html';
+    // RESPONSIVE TOGGLE OVERLAY TRIGGER
+    function toggleNavbarMenu() {
+      const linkMenu = document.getElementById('nav-links-menu');
+      linkMenu.classList.toggle('hidden');
+    }
 
-      if (user.persona === 'partner') {
-        document.getElementById('post-input').placeholder = "Post an official enterprise job listing...";
+    window.addEventListener('DOMContentLoaded', () => {
+      const userSessionData = localStorage.getItem('alumniProfileMaster');
+      if (userSessionData) {
+        const user = JSON.parse(userSessionData);
+        document.getElementById('user-card-name').textContent = user.name || 'Anonymous Member';
+        document.getElementById('user-card-role').textContent = translateRoleLabel(user.persona);
+
+        const initials = (user.name || 'UA').split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+        document.getElementById('nav-avatar-circle').textContent = initials;
+        document.getElementById('user-card-avatar').textContent = initials;
+        document.getElementById('composer-avatar').textContent = initials;
+
+        const dashboardLinks = {
+          alumni: 'profile.html', student: 'student-dashboard.html', partner: 'partner-dashboard.html', admin: 'admin-dashboard.html', superadmin: 'superadmin-dashboard.html'
+        };
+        document.getElementById('dynamic-dash-link').href = dashboardLinks[user.persona] || 'dashboard.html';
+
+        if (user.persona === 'partner') {
+          document.getElementById('post-input').placeholder = "Post an official enterprise job listing...";
+        }
+      }
+    });
+
+    function translateRoleLabel(persona) {
+      const labels = { alumni: 'Alumni Graduate', student: 'Current Trainee', partner: 'Hiring Partner', admin: 'System Admin', superadmin: 'Super Admin' };
+      return labels[persona] || 'Community Member';
+    }
+
+    // NATIVE OPERATING SYSTEM FILE ACCESS BRIDGE CONTROLLER
+    function triggerDeviceFileClick() {
+      document.getElementById('device-file-input').click();
+    }
+
+    // DISPATCH FILE DETAILS ONCE DEVICE HARDWARE HANDS OVER CONTROL
+    function handleDeviceFileSelection(event) {
+      const inputNode = event.target;
+      if (inputNode.files && inputNode.files[0]) {
+        activeSelectedFileObject = inputNode.files[0];
+        hasAttachedImage = true;
+
+        const label = document.getElementById('attached-file-name-label');
+        label.textContent = `📎 Connected: ${activeSelectedFileObject.name} (${Math.round(activeSelectedFileObject.size / 1024)} KB)`;
+
+        const strip = document.getElementById('image-preview-strip');
+        strip.classList.remove('id-hidden');
+        document.getElementById('btn-tool-image').classList.add('tool-active');
       }
     }
-  });
 
-  function translateRoleLabel(persona) {
-    const labels = { alumni: 'Alumni Graduate', student: 'Current Trainee', partner: 'Hiring Partner', admin: 'System Admin', superadmin: 'Super Admin' };
-    return labels[persona] || 'Community Member';
-  }
-
-  // NATIVE OPERATING SYSTEM FILE ACCESS BRIDGE CONTROLLER
-  function triggerDeviceFileClick() {
-    document.getElementById('device-file-input').click();
-  }
-
-  // DISPATCH FILE DETAILS ONCE DEVICE HARDWARE HANDS OVER CONTROL
-  function handleDeviceFileSelection(event) {
-    const inputNode = event.target;
-    if (inputNode.files && inputNode.files[0]) {
-      activeSelectedFileObject = inputNode.files[0];
-      hasAttachedImage = true;
-      
-      const label = document.getElementById('attached-file-name-label');
-      label.textContent = `📎 Connected: ${activeSelectedFileObject.name} (${Math.round(activeSelectedFileObject.size / 1024)} KB)`;
-      
-      const strip = document.getElementById('image-preview-strip');
+    // TAG ATTACHMENT MUTATION BRIDGE CONTROL
+    function triggerTagAttach() {
+      hasAttachedTag = true;
+      const strip = document.getElementById('tag-preview-strip');
       strip.classList.remove('id-hidden');
-      document.getElementById('btn-tool-image').classList.add('tool-active');
-    }
-  }
-
-  // TAG ATTACHMENT MUTATION BRIDGE CONTROL
-  function triggerTagAttach() {
-    hasAttachedTag = true;
-    const strip = document.getElementById('tag-preview-strip');
-    strip.classList.remove('id-hidden');
-    document.getElementById('btn-tool-tag').classList.add('tool-active');
-  }
-
-  function removeMediaAttachment(type) {
-    if (type === 'image') {
-      hasAttachedImage = false;
-      activeSelectedFileObject = null;
-      document.getElementById('device-file-input').value = ""; // Clear hardware stream trace
-      document.getElementById('image-preview-strip').classList.add('id-hidden');
-      document.getElementById('btn-tool-image').classList.remove('tool-active');
-    } else {
-      hasAttachedTag = false;
-      document.getElementById('tag-preview-strip').classList.add('id-hidden');
-      document.getElementById('btn-tool-tag').classList.remove('tool-active');
-    }
-  }
-
-  function applyQuickTag(tagName) {
-    document.getElementById('post-input').value += ` ${tagName} `;
-    document.getElementById('post-input').focus();
-  }
-
-  // HEART INTERACTION STATE CONTROLLER MATRIX
-  function toggleLike(btn) {
-    const span = btn.querySelector('span');
-    const icon = btn.querySelector('i');
-    let currentLikes = parseInt(span.textContent);
-    btn.classList.toggle('liked');
-    
-    if (btn.classList.contains('liked')) {
-      span.textContent = currentLikes + 1;
-      if (icon) icon.className = "ti ti-heart-filled";
-    } else {
-      span.textContent = currentLikes - 1;
-      if (icon) icon.className = "ti ti-heart";
-    }
-  }
-
-  // COLLAPSIBLE RESPONSIVE COMMENT BLOCKS CONTROLLER
-  function toggleCommentTray(trayId) {
-    const tray = document.getElementById(trayId);
-    tray.classList.toggle('open');
-  }
-
-  function handleCommentKey(e, postId) {
-    if (e.key === 'Enter') { addComment(postId); }
-  }
-
-  function addComment(postId) {
-    const input = document.getElementById(`input-comm-${postId}`);
-    const list = document.getElementById(`comments-list-${postId}`);
-    const txt = input.value.trim();
-    if (!txt) return;
-
-    const userSessionData = JSON.parse(localStorage.getItem('alumniProfileMaster') || '{}');
-    const myName = userSessionData.name || 'You';
-
-    const newComm = document.createElement('div');
-    newComm.className = 'single-comment';
-    newComm.innerHTML = `<strong>${myName}:</strong> ${txt}`;
-    list.appendChild(newComm);
-
-    const commentBtnSpan = input.closest('.post-card').querySelector('.post-footer .action-btn:nth-child(2) span');
-    if (commentBtnSpan) {
-      commentBtnSpan.textContent = parseInt(commentBtnSpan.textContent) + 1;
+      document.getElementById('btn-tool-tag').classList.add('tool-active');
     }
 
-    input.value = '';
-  }
-
-  // VACANCY APPLICATION ROUTER INTERACTIVE LINK NODE
-  function triggerJobApplication(company, position) {
-    alert(`🎉 Direct Application Sent!\n\nYour AlumniArc unified professional profile and historical track verification payload have been packed and delivered directly to the recruitment board at ${company} for the position: "${position}".`);
-  }
-
-  // FEED COMPOSER PUBLICATION MUTATION HANDLER ENGINE
-  function createNewPost() {
-    const textInput = document.getElementById('post-input');
-    const stream = document.getElementById('posts-stream-target');
-    let text = textInput.value.trim();
-    
-    if (!text && !hasAttachedImage) return;
-
-    const userSessionData = JSON.parse(localStorage.getItem('alumniProfileMaster') || '{}');
-    const userName = userSessionData.name || 'AlumniArc Member';
-    const persona = userSessionData.persona || 'alumni';
-    const roleLabel = translateRoleLabel(persona);
-    const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
-    
-    simulatedPostCount++;
-    const nextPostIndex = simulatedPostCount;
-
-    if (hasAttachedTag) { 
-      text += ' <span class="post-inline-tag">#FromCommsToCode</span>'; 
+    function removeMediaAttachment(type) {
+      if (type === 'image') {
+        hasAttachedImage = false;
+        activeSelectedFileObject = null;
+        document.getElementById('device-file-input').value = ""; // Clear hardware stream trace
+        document.getElementById('image-preview-strip').classList.add('id-hidden');
+        document.getElementById('btn-tool-image').classList.remove('tool-active');
+      } else {
+        hasAttachedTag = false;
+        document.getElementById('tag-preview-strip').classList.add('id-hidden');
+        document.getElementById('btn-tool-tag').classList.remove('tool-active');
+      }
     }
 
-    const postArticle = document.createElement('article');
-    postArticle.className = `post-card ${persona === 'partner' ? 'job-post' : ''}`;
-    
-    // Check if attachment is present to render real dynamic label payload details
-    let mediaAttachmentHTML = '';
-    if (hasAttachedImage && activeSelectedFileObject) {
-      mediaAttachmentHTML = `<div class="post-image-placeholder"><i class="ti ti-file-check"></i> Connected Resource File: <strong>${activeSelectedFileObject.name}</strong> (${Math.round(activeSelectedFileObject.size / 1024)} KB) successfully uploaded onto stream framework.</div>`;
-    } else if (hasAttachedImage) {
-      mediaAttachmentHTML = `<div class="post-image-placeholder"><i class="ti ti-photo"></i> Attached Project Graphic Asset (Rendered on Network Feed Container)</div>`;
+    function applyQuickTag(tagName) {
+      document.getElementById('post-input').value += ` ${tagName} `;
+      document.getElementById('post-input').focus();
     }
 
-    postArticle.innerHTML = `
+    // HEART INTERACTION STATE CONTROLLER MATRIX
+    function toggleLike(btn) {
+      const span = btn.querySelector('span');
+      const icon = btn.querySelector('i');
+      let currentLikes = parseInt(span.textContent);
+      btn.classList.toggle('liked');
+
+      if (btn.classList.contains('liked')) {
+        span.textContent = currentLikes + 1;
+        if (icon) icon.className = "ti ti-heart-filled";
+      } else {
+        span.textContent = currentLikes - 1;
+        if (icon) icon.className = "ti ti-heart";
+      }
+    }
+
+    // COLLAPSIBLE RESPONSIVE COMMENT BLOCKS CONTROLLER
+    function toggleCommentTray(trayId) {
+      const tray = document.getElementById(trayId);
+      tray.classList.toggle('open');
+    }
+
+    function handleCommentKey(e, postId) {
+      if (e.key === 'Enter') { addComment(postId); }
+    }
+
+    function addComment(postId) {
+      const input = document.getElementById(`input-comm-${postId}`);
+      const list = document.getElementById(`comments-list-${postId}`);
+      const txt = input.value.trim();
+      if (!txt) return;
+
+      const userSessionData = JSON.parse(localStorage.getItem('alumniProfileMaster') || '{}');
+      const myName = userSessionData.name || 'You';
+
+      const newComm = document.createElement('div');
+      newComm.className = 'single-comment';
+      newComm.innerHTML = `<strong>${myName}:</strong> ${txt}`;
+      list.appendChild(newComm);
+
+      const commentBtnSpan = input.closest('.post-card').querySelector('.post-footer .action-btn:nth-child(2) span');
+      if (commentBtnSpan) {
+        commentBtnSpan.textContent = parseInt(commentBtnSpan.textContent) + 1;
+      }
+
+      input.value = '';
+    }
+
+    // VACANCY APPLICATION ROUTER INTERACTIVE LINK NODE
+    function triggerJobApplication(company, position) {
+      alert(`🎉 Direct Application Sent!\n\nYour AlumniArc unified professional profile and historical track verification payload have been packed and delivered directly to the recruitment board at ${company} for the position: "${position}".`);
+    }
+
+    // FEED COMPOSER PUBLICATION MUTATION HANDLER ENGINE
+    function createNewPost() {
+      const textInput = document.getElementById('post-input');
+      const stream = document.getElementById('posts-stream-target');
+      let text = textInput.value.trim();
+
+      if (!text && !hasAttachedImage) return;
+
+      const userSessionData = JSON.parse(localStorage.getItem('alumniProfileMaster') || '{}');
+      const userName = userSessionData.name || 'AlumniArc Member';
+      const persona = userSessionData.persona || 'alumni';
+      const roleLabel = translateRoleLabel(persona);
+      const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+
+      simulatedPostCount++;
+      const nextPostIndex = simulatedPostCount;
+
+      if (hasAttachedTag) {
+        text += ' <span class="post-inline-tag">#FromCommsToCode</span>';
+      }
+
+      const postArticle = document.createElement('article');
+      postArticle.className = `post-card ${persona === 'partner' ? 'job-post' : ''}`;
+
+      // Check if attachment is present to render real dynamic label payload details
+      let mediaAttachmentHTML = '';
+      if (hasAttachedImage && activeSelectedFileObject) {
+        mediaAttachmentHTML = `<div class="post-image-placeholder"><i class="ti ti-file-check"></i> Connected Resource File: <strong>${activeSelectedFileObject.name}</strong> (${Math.round(activeSelectedFileObject.size / 1024)} KB) successfully uploaded onto stream framework.</div>`;
+      } else if (hasAttachedImage) {
+        mediaAttachmentHTML = `<div class="post-image-placeholder"><i class="ti ti-photo"></i> Attached Project Graphic Asset (Rendered on Network Feed Container)</div>`;
+      }
+
+      postArticle.innerHTML = `
       <div class="post-header">
         <div class="post-avatar ${persona}-badge">${initials}</div>
         <div class="post-meta">
@@ -351,18 +368,19 @@
       </div>
     `;
 
-    stream.insertBefore(postArticle, stream.firstChild);
-    
-    // Reset composer back onto blank default layout states
-    textInput.value = '';
-    removeMediaAttachments();
-    document.getElementById('user-post-count').textContent = parseInt(document.getElementById('user-post-count').textContent) + 1;
-  }
+      stream.insertBefore(postArticle, stream.firstChild);
 
-  function removeMediaAttachments() {
-    removeMediaAttachment('image');
-    removeMediaAttachment('tag');
-  }
-</script>
+      // Reset composer back onto blank default layout states
+      textInput.value = '';
+      removeMediaAttachments();
+      document.getElementById('user-post-count').textContent = parseInt(document.getElementById('user-post-count').textContent) + 1;
+    }
+
+    function removeMediaAttachments() {
+      removeMediaAttachment('image');
+      removeMediaAttachment('tag');
+    }
+  </script>
 </body>
+
 </html>
