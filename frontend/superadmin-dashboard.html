@@ -1,555 +1,519 @@
 <!DOCTYPE html>
-<html lang="en)
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlumniArc – Super Admin</title>
+  <title>AlumniArc – Super Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <link rel="stylesheet" href="superadmin.css" />
 </head>
 <body>
 
-<div class="page">
+<div class="dashboard-layout">
+  
+  <aside class="sidebar" id="main-sidebar">
+    <div class="sidebar-brand">
+      <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+      <span class="brand-text">AlumniArc</span>
+    </div>
+    <div class="superadmin-badge-inline">Super Admin 👑</div>
+    
+    <nav class="sidebar-menu">
+      <a href="#" class="menu-item active" onclick="switchTab(event, 'overview')"><i class="ti ti-layout-dashboard"></i> Control Tower</a>
+      <a href="#" class="menu-item" onclick="switchTab(event, 'students')"><i class="ti ti-school"></i> Current Students</a>
+      <a href="#" class="menu-item" onclick="switchTab(event, 'alumni')"><i class="ti ti-users"></i> Alumni Directory</a>
+      <a href="#" class="menu-item" onclick="switchTab(event, 'partners')"><i class="ti ti-building-store"></i> Partner Accounts</a>
+      <a href="#" class="menu-item" onclick="switchTab(event, 'admins')"><i class="ti ti-shield-lock"></i> Staff Admins</a>
+      <a href="#" class="menu-item" onclick="switchTab(event, 'cohorts')"><i class="ti ti-certificate"></i> Manage Cohorts</a>
+      <a href="#" class="menu-item" onclick="switchTab(event, 'notifications')"><i class="ti ti-broadcast"></i> Bulk Broadcasts</a>
+      <a href="#" class="menu-item" onclick="switchTab(event, 'settings')"><i class="ti ti-settings-automation"></i> Platform Rules</a>
+      <a href="login.html" class="menu-item danger-link"><i class="ti ti-logout"></i> Exit Terminal</a>
+    </nav>
+  </aside>
 
-  <nav class="navbar">
-    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
-    <div class="superadmin-badge">Super Admin 👑</div>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-  </nav>
+  <div class="main-viewport">
+    
+    <header class="top-bar">
+      <button class="hamburger-toggle" onclick="toggleMobileSidebar()"><i class="ti ti-menu-2"></i></button>
+      <div class="top-bar-title" id="page-context-title">Control Tower Overview</div>
+      <div class="top-bar-right">
+        <div class="admin-avatar-pill">
+          <span class="avatar-sym">PN</span>
+          <span class="avatar-name">Proscovia N.</span>
+        </div>
+      </div>
+    </header>
 
-  <div class="nav-menu hidden" id="nav-menu">
-    <a href="superadmin-dashboard.html" class="active">🏠 Dashboard</a>
-    <a href="#" onclick="showSection('users')">👥 Manage Users</a>
-    <a href="#" onclick="showSection('admins')">🛡️ Manage Admins</a>
-    <a href="#" onclick="showSection('cohorts')">🎓 Manage Cohorts</a>
-    <a href="#" onclick="showSection('analytics')">📊 Analytics</a>
-    <a href="#" onclick="showSection('notifications')">🔔 Bulk Notifications</a>
-    <a href="#" onclick="showSection('settings')">⚙️ Platform Settings</a>
-    <a href="login.html" class="danger">🚪 Log Out</a>
+    <main class="workspace-content">
+
+      <section class="tab-section active-view" id="view-overview">
+        <div class="superadmin-welcome">
+          <div>
+            <h2>Network Control System</h2>
+            <p>Complete administrative platform matrix control and resource scaling operations — Code Queen Systems</p>
+          </div>
+          <div class="sa-avatar">👑</div>
+        </div>
+
+        <div class="sa-stats-grid">
+          <div class="sa-stat-card" onclick="triggerTabSwitch('students')">
+            <div class="stat-header"><span>Students</span><i class="ti ti-school icon-students"></i></div>
+            <div class="stat-num">432</div>
+            <div class="stat-subtext">Active learning paths</div>
+          </div>
+          <div class="sa-stat-card" onclick="triggerTabSwitch('alumni')">
+            <div class="stat-header"><span>Total Alumni</span><i class="ti ti-users icon-alumni"></i></div>
+            <div class="stat-num">1,024</div>
+            <div class="stat-subtext">Directory verified nodes</div>
+          </div>
+          <div class="sa-stat-card" onclick="triggerTabSwitch('partners')">
+            <div class="stat-header"><span>Premium Partners</span><i class="ti ti-diamond icon-premium"></i></div>
+            <div class="stat-num">48</div>
+            <div class="stat-subtext">Active corporate tiers</div>
+          </div>
+          <div class="sa-stat-card" onclick="triggerTabSwitch('partners')">
+            <div class="stat-header"><span>Freemium Partners</span><i class="ti ti-building icon-freemium"></i></div>
+            <div class="stat-num">112</div>
+            <div class="stat-subtext">Awaiting upgrade funnels</div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Quick Engine Navigation</h3>
+          <div class="action-route-grid">
+            <div class="route-card" onclick="triggerTabSwitch('students')"><i class="ti ti-school"></i><span>Students</span></div>
+            <div class="route-card" onclick="triggerTabSwitch('alumni')"><i class="ti ti-users"></i><span>Alumni Panel</span></div>
+            <div class="route-card" onclick="triggerTabSwitch('partners')"><i class="ti ti-premium-rights"></i><span>Tiers & Partners</span></div>
+            <div class="route-card" onclick="triggerTabSwitch('cohorts')"><i class="ti ti-notebook"></i><span>Cohorts Registry</span></div>
+            <div class="route-card" onclick="triggerTabSwitch('notifications')"><i class="ti ti-antenna-bars-5"></i><span>Broadcast Feed</span></div>
+            <div class="route-card" onclick="triggerTabSwitch('settings')"><i class="ti ti-adjustments"></i><span>Core Rules</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-section" id="view-students">
+        <div class="section-heading-wrap">
+          <div>
+            <h3>Current Student Rosters</h3>
+            <p>Monitor cohort progress, ongoing technical paths, and current status markers.</p>
+          </div>
+          <span class="badge-count">432 Students Registered</span>
+        </div>
+
+        <div class="table-search-bar">
+          <i class="ti ti-search"></i>
+          <input type="text" placeholder="Search students by name, email, track..." oninput="filterTableRows('students-table-body', this.value)" />
+        </div>
+
+        <div class="table-responsive-container">
+          <table class="data-matrix-table">
+            <thead>
+              <tr>
+                <th>Student Profile</th>
+                <th>Track Course</th>
+                <th>Cohort Reference</th>
+                <th>Academic Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="students-table-body">
+              <tr>
+                <td data-label="Student Profile">
+                  <div class="user-cell-meta">
+                    <span class="avatar-placeholder">JM</span>
+                    <div><div class="table-title">Joan Mukasa</div><div class="table-subtitle">joan@codequeen.com</div></div>
+                  </div>
+                </td>
+                <td data-label="Track Course">Frontend Developer</td>
+                <td data-label="Cohort Reference">Cohort 2</td>
+                <td data-label="Academic Status"><span class="status-pill green-pill">Learning</span></td>
+                <td data-label="Actions">
+                  <div class="action-btn-row">
+                    <button class="action-btn secondary" onclick="alert('Accessing academic logs...')">Logs</button>
+                    <button class="action-btn primary" onclick="alert('Promoting student token to Alumni node status.')">Graduate Node</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tab-section" id="view-alumni">
+        <div class="section-heading-wrap">
+          <div>
+            <h3>Verified Alumni Network</h3>
+            <p>Complete tracking over directory visibility parameters, employment statuses, and network roles.</p>
+          </div>
+          <span class="badge-count">1,024 Verified Profiles</span>
+        </div>
+
+        <div class="table-search-bar">
+          <i class="ti ti-search"></i>
+          <input type="text" placeholder="Search alumni directory..." oninput="filterTableRows('alumni-table-body', this.value)" />
+        </div>
+
+        <div class="table-responsive-container">
+          <table class="data-matrix-table">
+            <thead>
+              <tr>
+                <th>Graduate</th>
+                <th>Core Track</th>
+                <th>Affiliated Venture</th>
+                <th>Directory View</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="alumni-table-body">
+              <tr>
+                <td data-label="Graduate">
+                  <div class="user-cell-meta">
+                    <span class="avatar-placeholder">AN</span>
+                    <div><div class="table-title">Aisha Nalwoga</div><div class="table-subtitle">aisha@example.com</div></div>
+                  </div>
+                </td>
+                <td data-label="Core Track">Frontend Web Dev</td>
+                <td data-label="Affiliated Venture">Tech Innovations Ltd</td>
+                <td data-label="Directory View"><span class="status-pill green-pill">Listed Public</span></td>
+                <td data-label="Actions">
+                  <div class="action-btn-row">
+                    <button class="action-btn secondary" onclick="alert('Editing metadata payload...')">Edit Profile</button>
+                    <button class="action-btn destructive" onclick="toggleStatusPill(this)">Hide Record</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tab-section" id="view-partners">
+        <div class="section-heading-wrap">
+          <div>
+            <h3>Corporate Partner Portals</h3>
+            <p>Manage enterprise monetization configurations, toggle premium features, and audit renewal cycles.</p>
+          </div>
+          <span class="badge-count">160 Registered Corporate Nodes</span>
+        </div>
+
+        <div class="table-search-bar">
+          <i class="ti ti-search"></i>
+          <input type="text" placeholder="Search partners by corporate name..." oninput="filterTableRows('partners-table-body', this.value)" />
+        </div>
+
+        <div class="table-responsive-container">
+          <table class="data-matrix-table">
+            <thead>
+              <tr>
+                <th>Corporate Account</th>
+                <th>Assigned Class</th>
+                <th>Active Placements</th>
+                <th>Billing Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="partners-table-body">
+              <tr>
+                <td data-label="Corporate Account">
+                  <div class="user-cell-meta">
+                    <span class="avatar-placeholder corporate-logo">🚀</span>
+                    <div><div class="table-title">DevSolutions Inc.</div><div class="table-subtitle">billing@devsolutions.io</div></div>
+                  </div>
+                </td>
+                <td data-label="Assigned Class"><span class="status-pill premium-pill"><i class="ti ti-diamond"></i> Premium VIP</span></td>
+                <td data-label="Active Placements">14 Job Openings</td>
+                <td data-label="Billing Status"><span class="status-pill green-pill">Paid Tier</span></td>
+                <td data-label="Actions">
+                  <div class="action-btn-row">
+                    <button class="action-btn secondary" onclick="alert('Downgrading subscription model to freemium context...')">Downgrade Tier</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="Corporate Account">
+                  <div class="user-cell-meta">
+                    <span class="avatar-placeholder corporate-logo">🏢</span>
+                    <div><div class="table-title">Kampala Tech Hub</div><div class="table-subtitle">contact@kampalatech.com</div></div>
+                  </div>
+                </td>
+                <td data-label="Assigned Class"><span class="status-pill freemium-pill">Freemium Base</span></td>
+                <td data-label="Active Placements">2 Standard Listings</td>
+                <td data-label="Billing Status"><span class="status-pill amber-pill">Free Account</span></td>
+                <td data-label="Actions">
+                  <div class="action-btn-row">
+                    <button class="action-btn primary" onclick="alert('Upgrading account tier to corporate Premium features...')">Upgrade to Premium</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tab-section" id="view-admins">
+        <div class="section-heading-wrap">
+          <div>
+            <h3>Administrative Access Matrix</h3>
+            <p>Elevate trusted members, assign functional privileges, and audit account access levels.</p>
+          </div>
+          <button class="action-btn primary" onclick="toggleFormBox('promote-form')">+ Escalate Administrative Token</button>
+        </div>
+
+        <div class="form-container-box hidden" id="promote-form">
+          <h4>Escalate Account Access</h4>
+          <div class="form-matrix-grid">
+            <div class="input-element-wrap">
+              <label>Select User Target</label>
+              <select id="admin-user-target">
+                <option value="Aisha Nalwoga">Aisha Nalwoga (Cohort 1)</option>
+                <option value="Fatuma Wanjiku">Fatuma Wanjiku (Cohort 6)</option>
+              </select>
+            </div>
+            <div class="input-element-wrap">
+              <label>Privilege Access Level</label>
+              <select id="admin-role-target">
+                <option value="Admin">Standard Admin Token</option>
+                <option value="Super Admin">Global Super Admin Key</option>
+              </select>
+            </div>
+          </div>
+          <button class="action-btn primary" style="width:auto; margin-top:14px;" onclick="commitAdminPromotion()">Provision Security Tokens</button>
+        </div>
+
+        <div class="admin-cards-flex-matrix" id="admin-cards-container">
+          <div class="admin-individual-row">
+            <span class="avatar-placeholder">FW</span>
+            <div class="admin-details-block">
+              <div class="table-title">Fatuma Wanjiku</div>
+              <div class="table-subtitle">Cohort 6 &middot; fatuma@example.com</div>
+            </div>
+            <span class="status-pill staff-admin-pill">Admin</span>
+            <button class="action-btn destructive" onclick="revokeStaffPrivileges(this)">Revoke System Keys</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-section" id="view-cohorts">
+        <div class="section-heading-wrap">
+          <div>
+            <h3>Cohorts Management Database</h3>
+            <p>Initialize operational cohort nodes, assign commencement frames, and chart growth indices.</p>
+          </div>
+          <button class="action-btn primary" onclick="toggleFormBox('add-cohort-form')">+ Initialize Cohort Node</button>
+        </div>
+
+        <div class="form-container-box hidden" id="add-cohort-form">
+          <h4>Initialize New Cohort Instance</h4>
+          <div class="form-matrix-grid">
+            <div class="input-element-wrap"><label>Cohort Identity Label</label><input type="text" placeholder="e.g., Cohort 16" /></div>
+            <div class="input-element-wrap"><label>Inauguration Frame Date</label><input type="date" /></div>
+            <div class="input-element-wrap"><label>Focus Tracks Specialty</label><input type="text" placeholder="e.g., Frontend Web Development Track" /></div>
+          </div>
+          <button class="action-btn primary" style="width:auto; margin-top:14px;" onclick="toggleFormBox('add-cohort-form')">Instantiate Cohort Node</button>
+        </div>
+
+        <div class="cohort-cards-flex-matrix">
+          <div class="cohort-card-node">
+            <div class="cohort-card-main-header">
+              <span class="cohort-node-title">Cohort 1</span>
+              <span class="cohort-node-count">87 Members Matriculated</span>
+            </div>
+            <div class="cohort-node-date">Inaugurated: December 2025</div>
+            <div class="cohort-node-actions">
+              <button class="action-btn secondary">Modify Rules</button>
+              <button class="action-btn secondary">Audit Registry</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-section" id="view-notifications">
+        <div class="section-heading-wrap">
+          <div>
+            <h3>Bulk System Broadcast Server</h3>
+            <p>Dispatch real-time announcements, targeted SMTP notifications, and global platform banner changes.</p>
+          </div>
+        </div>
+
+        <div class="form-container-box full-width-box">
+          <div class="form-matrix-grid">
+            <div class="input-element-wrap">
+              <label>Notification Vector Route</label>
+              <select>
+                <option>Synchronized Dual-Channel Delivery (In-app banner + Email)</option>
+                <option>In-app Workspace Banner Only</option>
+                <option>Direct SMTP Bulk Transmission</option>
+              </select>
+            </div>
+            <div class="input-element-wrap">
+              <label>Target Demographics Audience Cluster</label>
+              <select>
+                <option>All Platform Registered Accounts</option>
+                <option>Verified Alumni Directory Clusters</option>
+                <option>Current Learning Students Matrix</option>
+                <option>Premium VIP Partners Only</option>
+                <option>Freemium Partner Matrix</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-element-wrap" style="margin-top:16px;">
+            <label>Announcement Subject Line Header</label>
+            <input type="text" placeholder="e.g., Global Networking Event Kickoff!" />
+          </div>
+          <div class="input-element-wrap" style="margin-top:16px;">
+            <label>Core Notification Payload Markdown Message Text</label>
+            <textarea placeholder="Compose comprehensive global or custom target notices rules..."></textarea>
+          </div>
+          <button class="action-btn primary" style="width:auto; margin-top:20px;" onclick="alert('System Notice broadcast queued for processing across data channels.')">Dispatch Notice Payload 🔔</button>
+        </div>
+      </section>
+
+      <section class="tab-section" id="view-settings">
+        <div class="section-heading-wrap">
+          <div>
+            <h3>Platform Governance Rules</h3>
+            <p>Control routing states, access rules, safety models, and default behavior limits.</p>
+          </div>
+        </div>
+
+        <div class="global-settings-stack">
+          <div class="setting-item-row">
+            <div>
+              <div class="setting-row-title">Open Network Account Onboarding</div>
+              <div class="setting-row-desc">Allows outside users to self-register into the system database endpoints.</div>
+            </div>
+            <label class="switch-toggle"><input type="checkbox" checked /><span class="switch-slider"></span></label>
+          </div>
+          <div class="setting-item-row">
+            <div>
+              <div class="setting-row-title">Partner Visibility Pipeline Protection</div>
+              <div class="setting-row-desc">Enforces moderation workflows before partner job vacancies are visible in student/alumni spaces.</div>
+            </div>
+            <label class="switch-toggle"><input type="checkbox" checked /><span class="switch-slider"></span></label>
+          </div>
+          <div class="setting-item-row">
+            <div>
+              <div class="setting-row-title">Premium VIP Match Automations</div>
+              <div class="setting-row-desc">Automatically pairs active Premium Partners with top matching profiles from the Alumni Directory.</div>
+            </div>
+            <label class="switch-toggle"><input type="checkbox" checked /><span class="switch-slider"></span></label>
+          </div>
+          <div class="setting-item-row">
+            <div>
+              <div class="setting-row-title">System-Wide Deployment Offline Maintenance State</div>
+              <div class="setting-row-desc">Locks access rules and safely displays a maintenance notice across app screens.</div>
+            </div>
+            <label class="switch-toggle"><input type="checkbox" /><span class="switch-slider"></span></label>
+          </div>
+        </div>
+      </section>
+
+    </main>
   </div>
+</div>
 
-  <div class="dash-content">
-
-    <div class="superadmin-welcome">
-      <div>
-        <h2>Super Admin Overview</h2>
-        <p>Complete workspace control & network operations — AlumniArc Code Queen</p>
-      </div>
-      <div class="sa-avatar">👑</div>
-    </div>
-
-    <div class="sa-stats">
-      <div class="sa-stat">
-        <div class="sa-stat-icon">👥</div>
-        <div class="sa-stat-num">1,024</div>
-        <div class="sa-stat-label">Total Users</div>
-      </div>
-      <div class="sa-stat">
-        <div class="sa-stat-icon">🛡️</div>
-        <div class="sa-stat-num">5</div>
-        <div class="sa-stat-label">Admins</div>
-      </div>
-      <div class="sa-stat">
-        <div class="sa-stat-icon">🎓</div>
-        <div class="sa-stat-num">15</div>
-        <div class="sa-stat-label">Cohorts</div>
-      </div>
-      <div class="sa-stat">
-        <div class="sa-stat-icon">📈</div>
-        <div class="sa-stat-num">78%</div>
-        <div class="sa-stat-label">Engagement</div>
-      </div>
-      <div class="sa-stat">
-        <div class="sa-stat-icon">💬</div>
-        <div class="sa-stat-num">342</div>
-        <div class="sa-stat-label">Active Chats</div>
-      </div>
-      <div class="sa-stat">
-        <div class="sa-stat-icon">📅</div>
-        <div class="sa-stat-num">12</div>
-        <div class="sa-stat-label">Events Scheduled</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="row-header"><h2>Quick Navigation</h2></div>
-      <div class="action-grid">
-        <div class="action-card" onclick="showSection('users')">
-          <div class="icon">👥</div>
-          <span>Manage Users</span>
-        </div>
-        <div class="action-card" onclick="showSection('admins')">
-          <div class="icon">🛡️</div>
-          <span>Manage Admins</span>
-        </div>
-        <div class="action-card" onclick="showSection('cohorts')">
-          <div class="icon">🎓</div>
-          <span>Manage Cohorts</span>
-        </div>
-        <div class="action-card" onclick="showSection('analytics')">
-          <div class="icon">📊</div>
-          <span>Analytics</span>
-        </div>
-        <div class="action-card" onclick="showSection('notifications')">
-          <div class="icon">🔔</div>
-          <span>Bulk Notify</span>
-        </div>
-        <div class="action-card" onclick="showSection('settings')">
-          <div class="icon">⚙️</div>
-          <span>Settings</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="section-users">
-      <div class="row-header">
-        <h2>👥 Manage Users</h2>
-        <span class="badge-count">1,024 users registry</span>
-      </div>
-
-      <div class="sa-search">
-        <span>🔍</span>
-        <input type="text" placeholder="Search by name, email or cohort..." oninput="filterUsers(this.value)" />
-      </div>
-
-      <div class="users-table">
-        <div class="table-header">
-          <span>User Profile</span>
-          <span>Cohort</span>
-          <span>Security Role</span>
-          <span>Status</span>
-          <span>Management Actions</span>
-        </div>
-
-        <div class="table-row" id="user-1">
-          <div class="user-cell">
-            <span class="user-avatar">👩🏾</span>
-            <div>
-              <div class="user-name">Aisha Nalwoga</div>
-              <div class="user-email">aisha@example.com</div>
-            </div>
-          </div>
-          <span class="cell">Cohort 8</span>
-          <span class="cell"><span class="role-tag alumni">Alumni</span></span>
-          <span class="cell"><span class="status-tag active">Active</span></span>
-          <div class="cell actions-cell">
-            <button class="btn-edit-sm" onclick="changeRole('user-1')">Change Role</button>
-            <button class="btn-delete-sm" onclick="deactivate('user-1')">Deactivate</button>
-          </div>
-        </div>
-
-        <div class="table-row" id="user-2">
-          <div class="user-cell">
-            <span class="user-avatar">👩🏽</span>
-            <div>
-              <div class="user-name">Priya Ochieng</div>
-              <div class="user-email">priya@example.com</div>
-            </div>
-          </div>
-          <span class="cell">Cohort 7</span>
-          <span class="cell"><span class="role-tag alumni">Alumni</span></span>
-          <span class="cell"><span class="status-tag active">Active</span></span>
-          <div class="cell actions-cell">
-            <button class="btn-edit-sm" onclick="changeRole('user-2')">Change Role</button>
-            <button class="btn-delete-sm" onclick="deactivate('user-2')">Deactivate</button>
-          </div>
-        </div>
-
-        <div class="table-row" id="user-3">
-          <div class="user-cell">
-            <span class="user-avatar">👩🏿</span>
-            <div>
-              <div class="user-name">Fatuma Wanjiku</div>
-              <div class="user-email">fatuma@example.com</div>
-            </div>
-          </div>
-          <span class="cell">Cohort 6</span>
-          <span class="cell"><span class="role-tag admin">Admin</span></span>
-          <span class="cell"><span class="status-tag active">Active</span></span>
-          <div class="cell actions-cell">
-            <button class="btn-edit-sm" onclick="changeRole('user-3')">Change Role</button>
-            <button class="btn-delete-sm" onclick="deactivate('user-3')">Deactivate</button>
-          </div>
-        </div>
-
-        <div class="table-row" id="user-4">
-          <div class="user-cell">
-            <span class="user-avatar">👩🏾</span>
-            <div>
-              <div class="user-name">Diana Namutebi</div>
-              <div class="user-email">diana@example.com</div>
-            </div>
-          </div>
-          <span class="cell">Cohort 8</span>
-          <span class="cell"><span class="role-tag alumni">Alumni</span></span>
-          <span class="cell"><span class="status-tag inactive">Inactive</span></span>
-          <div class="cell actions-cell">
-            <button class="btn-edit-sm" onclick="changeRole('user-4')">Change Role</button>
-            <button class="btn-delete-sm" onclick="deactivate('user-4')">Activate</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="section-admins">
-      <div class="row-header">
-        <h2>🛡️ Manage Admins</h2>
-        <button class="btn-add" onclick="togglePromoteForm()">+ Promote to Admin</button>
-      </div>
-
-      <div class="admin-form hidden" id="promote-form">
-        <div class="form-group">
-          <label>Select User to Promote</label>
-          <select>
-            <option>Select a user...</option>
-            <option>Aisha Nalwoga — Cohort 8</option>
-            <option>Priya Ochieng — Cohort 7</option>
-            <option>Diana Namutebi — Cohort 8</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Assign Role Access</label>
-          <select>
-            <option>Admin</option>
-            <option>Super Admin</option>
-          </select>
-        </div>
-        <button class="btn-primary" onclick="togglePromoteForm()">Promote Account</button>
-      </div>
-
-      <div class="admin-list">
-        <div class="admin-row">
-          <span class="user-avatar">👩🏿</span>
-          <div class="admin-info">
-            <div class="user-name">Fatuma Wanjiku</div>
-            <div class="user-email">Cohort 6 · fatuma@example.com</div>
-          </div>
-          <span class="role-tag admin">Admin</span>
-          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke Access</button>
-        </div>
-
-        <div class="admin-row">
-          <span class="user-avatar">👩🏽‍🏫</span>
-          <div class="admin-info">
-            <div class="user-name">Grace Nakato</div>
-            <div class="user-email">Cohort 4 · grace@example.com</div>
-          </div>
-          <span class="role-tag admin">Admin</span>
-          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke Access</button>
-        </div>
-
-        <div class="admin-row">
-          <span class="user-avatar">👩🏿‍💼</span>
-          <div class="admin-info">
-            <div class="user-name">Sandra Akello</div>
-            <div class="user-email">Cohort 3 · sandra@example.com</div>
-          </div>
-          <span class="role-tag superadmin">Super Admin</span>
-          <button class="btn-delete-sm" onclick="revokeAdmin(this)">Revoke Access</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="section-cohorts">
-      <div class="row-header">
-        <h2>🎓 Manage Cohorts</h2>
-        <button class="btn-add" onclick="toggleAddCohort()">+ New Cohort</button>
-      </div>
-
-      <div class="admin-form hidden" id="add-cohort-form">
-        <div class="form-group">
-          <label>Cohort Nomenclature</label>
-          <input type="text" placeholder="e.g. Cohort 16" />
-        </div>
-        <div class="form-group">
-          <label>Inauguration Date</label>
-          <input type="date" />
-        </div>
-        <div class="form-group">
-          <label>Specialization Description</label>
-          <input type="text" placeholder="e.g. Frontend Web Development Track" />
-        </div>
-        <button class="btn-primary" onclick="toggleAddCohort()">Create Cohort Instance</button>
-      </div>
-
-      <div class="cohort-cards">
-        <div class="cohort-card">
-          <div class="cohort-card-header">
-            <span class="cohort-card-name">Cohort 8</span>
-            <span class="cohort-card-count">87 members</span>
-          </div>
-          <div class="cohort-card-date">Started: Jan 2024</div>
-          <div class="cohort-card-btns">
-            <button class="btn-edit-sm">✏️ Edit</button>
-            <button class="btn-edit-sm">👥 View Members</button>
-          </div>
-        </div>
-        <div class="cohort-card">
-          <div class="cohort-card-header">
-            <span class="cohort-card-name">Cohort 7</span>
-            <span class="cohort-card-count">74 members</span>
-          </div>
-          <div class="cohort-card-date">Started: Jun 2023</div>
-          <div class="cohort-card-btns">
-            <button class="btn-edit-sm">✏️ Edit</button>
-            <button class="btn-edit-sm">👥 View Members</button>
-          </div>
-        </div>
-        <div class="cohort-card">
-          <div class="cohort-card-header">
-            <span class="cohort-card-name">Cohort 6</span>
-            <span class="cohort-card-count">66 members</span>
-          </div>
-          <div class="cohort-card-date">Started: Jan 2023</div>
-          <div class="cohort-card-btns">
-            <button class="btn-edit-sm">✏️ Edit</button>
-            <button class="btn-edit-sm">👥 View Members</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="section-analytics">
-      <div class="row-header">
-        <h2>📊 Platform Analytics</h2>
-      </div>
-
-      <div class="reports-grid">
-        <div class="report-card">
-          <div class="report-icon">📈</div>
-          <div class="report-num">+12%</div>
-          <div class="report-label">User Growth</div>
-          <div class="report-change up">↑ vs last month</div>
-        </div>
-        <div class="report-card">
-          <div class="report-icon">💬</div>
-          <div class="report-num">78%</div>
-          <div class="report-label">Engagement Rate</div>
-          <div class="report-change up">↑ +5% vs last month</div>
-        </div>
-        <div class="report-card">
-          <div class="report-icon">🎓</div>
-          <div class="report-num">92%</div>
-          <div class="report-label">Profile Completion</div>
-          <div class="report-change up">↑ +8% this month</div>
-        </div>
-        <div class="report-card">
-          <div class="report-icon">📅</div>
-          <div class="report-num">87%</div>
-          <div class="report-label">Event Attendance</div>
-          <div class="report-change down">↓ -2% vs last month</div>
-        </div>
-      </div>
-
-      <div class="row-header" style="margin-top:32px;">
-        <h2>Top Performing Mentors</h2>
-      </div>
-      <div class="top-mentors">
-        <div class="mentor-rank">
-          <span class="rank-num">1</span>
-          <span class="user-avatar">👩🏽‍🏫</span>
-          <div class="mentor-details">
-            <div class="user-name">Grace Nakato</div>
-            <div class="user-email">24 active sessions · 4.9 ⭐ High Rating</div>
-          </div>
-        </div>
-        <div class="mentor-rank">
-          <span class="rank-num">2</span>
-          <span class="user-avatar">👩🏿‍💼</span>
-          <div class="mentor-details">
-            <div class="user-name">Sandra Akello</div>
-            <div class="user-email">18 active sessions · 4.8 ⭐ High Rating</div>
-          </div>
-        </div>
-        <div class="mentor-rank">
-          <span class="rank-num">3</span>
-          <span class="user-avatar">👩🏾</span>
-          <div class="mentor-details">
-            <div class="user-name">Ruth Namukasa</div>
-            <div class="user-email">15 active sessions · 4.7 ⭐ Rating</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row-header" style="margin-top:32px;">
-        <h2>Alumni Volume Matrix by Cohort</h2>
-      </div>
-      <div class="cohort-list">
-        <div class="cohort-row">
-          <span class="cohort-name">Cohort 8</span>
-          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:85%"></div></div>
-          <span class="cohort-count">87</span>
-        </div>
-        <div class="cohort-row">
-          <span class="cohort-name">Cohort 7</span>
-          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:72%"></div></div>
-          <span class="cohort-count">74</span>
-        </div>
-        <div class="cohort-row">
-          <span class="cohort-name">Cohort 6</span>
-          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:65%"></div></div>
-          <span class="cohort-count">66</span>
-        </div>
-        <div class="cohort-row">
-          <span class="cohort-name">Cohort 5</span>
-          <div class="cohort-bar-wrap"><div class="cohort-bar" style="width:58%"></div></div>
-          <span class="cohort-count">59</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="section-notifications">
-      <div class="row-header">
-        <h2>🔔 Bulk System Broadcast notifications</h2>
-      </div>
-
-      <div class="admin-form">
-        <div class="form-group">
-          <label>Notification Deployment Vector</label>
-          <select>
-            <option>In-app banner notification</option>
-            <option>Direct SMTP Email Delivery</option>
-            <option>Synchronized Dual Channel Delivery</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Target Demographics Audiences</label>
-          <select>
-            <option>All Registered Accounts</option>
-            <option>Verified Alumni Circle Only</option>
-            <option>Administrative Team Matrix</option>
-            <option>Cohort 8 Hub</option>
-            <option>Cohort 7 Hub</option>
-            <option>Cohort 6 Hub</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Announcement Subject Header</label>
-          <input type="text" placeholder="e.g. Sisterhood Friday Kickoff!" />
-        </div>
-        <div class="form-group">
-          <label>Notification Core Body Message Text</label>
-          <textarea placeholder="Write clear, formal or casual announcements details..."></textarea>
-        </div>
-        <button class="btn-primary">Dispatch Broadcast Notice 🔔</button>
-      </div>
-    </div>
-
-    <div class="section" id="section-settings">
-      <div class="row-header">
-        <h2>⚙️ Platform Governance Settings</h2>
-      </div>
-
-      <div class="settings-list">
-        <div class="settings-item">
-          <div>
-            <div class="settings-label">Open Network Self-Registration</div>
-            <div class="settings-sub">Enables outside profile onboarding signups directly</div>
-          </div>
-          <label class="toggle">
-            <input type="checkbox" checked />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-        <div class="settings-item">
-          <div>
-            <div class="settings-label">Pre-Moderation Thread Architecture</div>
-            <div class="settings-sub">Requires administrative review before public platform timeline releases</div>
-          </div>
-          <label class="toggle">
-            <input type="checkbox" checked />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-        <div class="settings-item">
-          <div>
-            <div class="settings-label">Global Maintenance Safe Mode</div>
-            <div class="settings-sub">Switches the active server nodes offline for configuration overhauls</div>
-          </div>
-          <label class="toggle">
-            <input type="checkbox" />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-        <div class="settings-item">
-          <div>
-            <div class="settings-label">Active Connection Mentorship Matches</div>
-            <div class="settings-sub">Allows current entry students to request matching from registered mentors</div>
-          </div>
-          <label class="toggle">
-            <input type="checkbox" checked />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-      </div>
-    </div>
-
-  </div></div><script>
-  function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('hidden');
-  }
-
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('nav-menu');
-    const btn  = document.querySelector('.menu-btn');
-    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-      menu.classList.add('hidden');
+<script>
+  // TAB TRANSITION NAVIGATION INTERFACE SCRIPT
+  function switchTab(event, targetId) {
+    if (event) event.preventDefault();
+    
+    // Deactivate all matching visual tabs
+    document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.tab-section').forEach(section => section.classList.remove('active-view'));
+    
+    // Activate target parameters
+    const activeSection = document.getElementById('view-' + targetId);
+    if(activeSection) {
+      activeSection.classList.add('active-view');
+      
+      // Update heading tracking
+      const headerTitle = document.getElementById('page-context-title');
+      const menuLabel = event ? event.currentTarget.textContent.trim() : targetId;
+      headerTitle.textContent = menuLabel;
     }
-  });
-
-  function showSection(id) {
-    document.getElementById('nav-menu').classList.add('hidden');
-    const el = document.getElementById('section-' + id);
-    if(el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    
+    // Add navigation styling confirmation
+    if (event) event.currentTarget.classList.add('active');
+    
+    // Dismiss mobile responsive slide overlays on trigger
+    document.getElementById('main-sidebar').classList.remove('mobile-reveal');
   }
 
-  function togglePromoteForm() {
-    document.getElementById('promote-form').classList.toggle('hidden');
+  // SHORTCUT LINK TRANSLATION LAYER
+  function triggerTabSwitch(targetId) {
+    const matchingLink = document.querySelector(`.menu-item[onclick*="'${targetId}'"]`);
+    if(matchingLink) {
+      matchingLink.click();
+    }
   }
 
-  function toggleAddCohort() {
-    document.getElementById('add-cohort-form').classList.toggle('hidden');
+  // RESPONSIVE SIDEBAR OVERLAY SLIDE CONTROLLER
+  function toggleMobileSidebar() {
+    document.getElementById('main-sidebar').classList.toggle('mobile-reveal');
   }
 
-  function filterUsers(query) {
-    document.querySelectorAll('.table-row').forEach(row => {
-      const name = row.querySelector('.user-name').textContent.toLowerCase();
-      row.style.display = name.includes(query.toLowerCase()) ? 'grid' : 'none';
+  // MODULAR DISPLAY TOGGLE UTILITIES
+  function toggleFormBox(id) {
+    document.getElementById(id).classList.toggle('hidden');
+  }
+
+  // REAL-TIME SEARCH MATRIX ENGINE
+  function filterTableRows(tableBodyId, query) {
+    const rows = document.getElementById(tableBodyId).querySelectorAll('tr');
+    const cleanQuery = query.toLowerCase();
+    
+    rows.forEach(row => {
+      const textContent = row.textContent.toLowerCase();
+      row.style.display = textContent.includes(cleanQuery) ? '' : 'none';
     });
   }
 
-  function changeRole(id) {
-    const row  = document.getElementById(id);
-    const tag  = row.querySelector('.role-tag');
-    const current = tag.textContent.trim();
-    if (current === 'Alumni') {
-      tag.textContent = 'Admin';
-      tag.className = 'role-tag admin';
-    } else if (current === 'Admin') {
-      tag.textContent = 'Super Admin';
-      tag.className = 'role-tag superadmin';
+  // INLINE PARAMETER MUTATION DEMOS
+  function toggleStatusPill(btn) {
+    const row = btn.closest('tr');
+    const statusPill = row.querySelector('.status-pill');
+    if (statusPill.classList.contains('green-pill')) {
+      statusPill.textContent = 'Hidden Record';
+      statusPill.className = 'status-pill freemium-pill';
+      btn.textContent = 'Publish Profile';
     } else {
-      tag.textContent = 'Alumni';
-      tag.className = 'role-tag alumni';
+      statusPill.textContent = 'Listed Public';
+      statusPill.className = 'status-pill green-pill';
+      btn.textContent = 'Hide Record';
     }
   }
 
-  function deactivate(id) {
-    const row    = document.getElementById(id);
-    const status = row.querySelector('.status-tag');
-    if (status.textContent === 'Active') {
-      status.textContent = 'Inactive';
-      status.className   = 'status-tag inactive';
-    } else {
-      status.textContent = 'Active';
-      status.className   = 'status-tag active';
-    }
+  function revokeStaffPrivileges(btn) {
+    const parentRow = btn.closest('.admin-individual-row');
+    parentRow.style.opacity = '0.4';
+    btn.disabled = true;
+    btn.textContent = 'Access Revoked';
   }
 
-  function revokeAdmin(btn) {
-    const row = btn.closest('.admin-row');
-    row.style.opacity = '0.4';
-    btn.textContent   = 'Revoked';
-    btn.disabled      = true;
+  function commitAdminPromotion() {
+    const selectedName = document.getElementById('admin-user-target').value;
+    const assignedRole = document.getElementById('admin-role-target').value;
+    const container = document.getElementById('admin-cards-container');
+    
+    const initials = selectedName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const cleanRoleClass = assignedRole.toLowerCase().replace(' ', '');
+    
+    const elementTemplate = `
+      <div class="admin-individual-row">
+        <span class="avatar-placeholder">${initials}</span>
+        <div class="admin-details-block">
+          <div class="table-title">${selectedName}</div>
+          <div class="table-subtitle">Dynamic Escalated Node &middot; secure-access@alumniarc.org</div>
+        </div>
+        <span class="status-pill staff-admin-pill">${assignedRole}</span>
+        <button class="action-btn destructive" onclick="revokeStaffPrivileges(this)">Revoke System Keys</button>
+      </div>`;
+    
+    container.insertAdjacentHTML('beforeend', elementTemplate);
+    toggleFormBox('promote-form');
   }
 </script>
 
