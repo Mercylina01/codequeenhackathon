@@ -36,64 +36,95 @@
     }
 
     /* NAVIGATION (Matching your Landing Page layout & colors) */
-    nav {
-      background: var(--card);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      height: 70px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      color: var(--purple-dark);
-      font-size: 1.4rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
+    .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background: rgba(42, 1, 38, 0.92); /* Rich deep translucent crimson-purple block */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  position: fixed;
+  height: 70px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
 
-    .nav-logo span {
-      color: var(--orange);
-    }
+.nav-logo {
+  height: 46px;
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-      align-items: center;
-    }
+.nav-logo:hover {
+  transform: scale(1.02);
+}
 
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
 
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--purple-light);
-    }
+/* NAV DROPDOWN RESPONSIVE TRAY */
+.nav-menu {
+  position: absolute;
+  top: 76px;
+  right: 24px;
+  background: #2a0126; /* Deep matching palette backdrop */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  width: 220px;
+  z-index: 1000;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
 
-    .nav-cta {
-      background: var(--bg-gradient);
-      color: var(--card) !important;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-weight: 600 !important;
-      box-shadow: 0 4px 12px rgba(92, 2, 84, 0.2);
-      transition: transform 0.2s;
-    }
+.nav-menu.hidden { 
+  display: none; 
+}
 
-    .nav-cta:hover {
-      transform: translateY(-1px);
-    }
+.nav-menu a {
+  display: block;
+  padding: 14px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, color 0.2s ease;
+}
 
+/* Clean up last border line inside tray container */
+.nav-menu a:last-child {
+  border-bottom: none;
+}
+
+.nav-menu a:hover { 
+  background: #5c0234; /* Premium crimson tone match */
+  color: #f97316;      /* Vibrant interface focal gold/orange */
+}
+
+/* GLOBAL STRUCTURAL FIX: Add this helper rule to prevent content underlap on sub-pages */
+body {
+  padding-top: 70px; /* Pushes page content perfectly below the 70px fixed header zone */
+}
     /* MAIN RESPONSIVE CONTAINER */
     main {
       padding: 40px 24px 100px;
@@ -331,15 +362,21 @@
 </head>
 <body>
 
-  <nav>
-    <a href="#" class="nav-logo">Alumni<span>Arc</span></a>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#" class="active">Events</a></li>
-      <li><a href="#">Directory</a></li>
-      <li><a href="#" class="nav-cta">Join Us</a></li>
-    </ul>
-  </nav>
+<nav class="navbar">
+  <a href="index.html" style="display: flex; align-items: center;">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+  </a>
+  
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="index.html#impact">Impact</a>
+    <a href="index.html#stories">Stories</a>
+    <a href="mentors.html">Mentors</a>
+    <a href="eventscalendar.html">Events</a>
+    <a href="jobs.html">Jobs</a>
+  </div>
+</nav>
 
   <main>
     <div class="calendar-card">
@@ -480,9 +517,24 @@
       }
     }
 
+    function toggleMenu() {
+    const menu = document.getElementById("nav-menu");
+    menu.classList.toggle("hidden");
+  }
+  
+  // Optional: Close the responsive dropdown tray instantly if clicking outside of it
+  window.addEventListener('click', function(e){   
+    const menu = document.getElementById("nav-menu");
+    const btn = document.querySelector(".menu-btn");
+    if (!menu.contains(e.target) && e.target !== btn){
+      menu.classList.add("hidden");
+    }
+  });
+
     function rsvpEvent(eventName) {
       alert(`Awesome selection! Registration confirmation for "${eventName}" has been activated successfully.`);
     }
+
   </script>
 
   <script src="app.js"></script>
