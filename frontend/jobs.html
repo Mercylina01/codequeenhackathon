@@ -9,20 +9,21 @@
 <body>
 
   <!-- GLOBAL IDENTITY NAVIGATION HEADER -->
-  <header class="global-navbar">
-    <div class="nav-brand-container">
-      <img src="logo.png" alt="AlumniArc logo" width="100px" height="100px">
-      <!-- <div class="nav-logo-emblem">👑</div> -->
-      <!-- <span class="nav-brand-name">AlumniArc</span> -->
-    </div>
-    
-    <nav class="nav-links-cluster">
-      <a href="index.html" class="nav-link-item">Home</a>
-      <a href="#" class="nav-link-item">Alumni Directory</a>
-      <a href="jobs.html" class="nav-link-item active-nav">Tech Jobs</a>
-    </nav>
-
-  </header>
+<nav class="navbar">
+  <a href="index.html" style="display: flex; align-items: center;">
+    <img src="logo.png" alt="AlumniArc Logo" class="nav-logo" />
+  </a>
+  
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  
+  <div class="nav-menu hidden" id="nav-menu">
+    <a href="index.html#impact">Impact</a>
+    <a href="index.html#stories">Stories</a>
+    <a href="mentors.html">Mentors</a>
+    <a href="eventscalendar.html">Events</a>
+    <a href="jobs.html">Jobs</a>
+  </div>
+</nav>
 
   <!-- MASTER CONTENT FRAMEWORK CONTAINER -->
   <div class="jobs-layout-wrapper">
@@ -31,7 +32,7 @@
     <main class="jobs-feed-column">
       <header class="jobs-header">
         <h1>Exclusive Jobs Board</h1>
-        <p>High-tier technical roles curated directly for verified Code Queen network graduates.</p>
+        <!-- <p>High-tier technical roles curated directly for verified Code Queen network graduates.</p> -->
         
         <div class="filter-action-bar">
           <input type="text" id="job-search-input" class="search-field" placeholder="Search by language, role title, or enterprise..." oninput="filterJobsListEngine()" />
@@ -148,6 +149,20 @@
         reqs: ["Advanced mastery of typography scaling configurations and Figma frameworks", "Ability to present interface prototypes and work directly with engineers", "High strategic communication skills and cross-department collaboration"] 
       }
     ];
+
+    function toggleMenu() {
+    const menu = document.getElementById("nav-menu");
+    menu.classList.toggle("hidden");
+  }
+  
+  // Optional: Close the responsive dropdown tray instantly if clicking outside of it
+  window.addEventListener('click', function(e){   
+    const menu = document.getElementById("nav-menu");
+    const btn = document.querySelector(".menu-btn");
+    if (!menu.contains(e.target) && e.target !== btn){
+      menu.classList.add("hidden");
+    }
+  });
 
     let currentlySelectedJobTitle = "";
 

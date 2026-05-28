@@ -26,61 +26,95 @@ body { background-color: var(--bg-main); color: var(--text-main); min-height: 10
 /* MASTER APPLICATION FRAMEWORK */
 
 /* GLOBAL BRANDING NAVIGATION STYLES */
-.global-navbar {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--bg-surface);
-  padding: 16px 40px;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
+  padding: 0 24px;
+  background: rgba(42, 1, 38, 0.92); /* Rich deep translucent crimson-purple block */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  position: fixed;
+  height: 50px;
   top: 0;
-  z-index: 500;
-  box-shadow: 0 2px 10px rgba(138, 70, 205, 0.03);
-  max-width: 100%;
-  margin-bottom: 40px;
-}
-.nav-brand-container { display: flex; align-items: center; gap: 10px; }
-.nav-logo-emblem { font-size: 22px; }
-.nav-brand-name { font-size: 19px; font-weight: 700; color: var(--purple-dark); letter-spacing: -0.3px; }
-
-.nav-links-cluster { display: flex; gap: 28px; }
-.nav-link-item {
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-muted);
-  transition: var(--transition);
-  position: relative;
-  padding: 4px 0;
-}
-.nav-link-item:hover, .nav-link-item.active-nav { color: var(--purple-primary); }
-.nav-link-item.active-nav::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
   left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--purple-primary);
-  border-radius: 2px;
+  right: 0;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
-.nav-profile-widget { display: flex; align-items: center; gap: 10px; }
-.nav-avatar {
-  width: 32px;
-  height: 32px;
-  background-color: var(--purple-light);
-  color: var(--purple-primary);
-  border-radius: 50%;
+.nav-logo {
+  height: 46px;
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.02);
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 4px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  border: 1px solid rgba(138, 70, 205, 0.2);
+  outline: none;
 }
-.nav-username { font-size: 13px; font-weight: 600; color: var(--text-main); }
+
+/* NAV DROPDOWN RESPONSIVE TRAY */
+.nav-menu {
+  position: absolute;
+  top: 70px;
+  right: 24px;
+  background: #2a0126; /* Deep matching palette backdrop */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  width: 200px;
+  z-index: 1000;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.nav-menu.hidden { 
+  display: none; 
+}
+
+.nav-menu a {
+  display: block;
+  padding: 14px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Clean up last border line inside tray container */
+.nav-menu a:last-child {
+  border-bottom: none;
+}
+
+.nav-menu a:hover { 
+  background: #5c0234; /* Premium crimson tone match */
+  color: #f97316;      /* Vibrant interface focal gold/orange */
+}
+
+/* GLOBAL STRUCTURAL FIX: Add this helper rule to prevent content underlap on sub-pages */
+body {
+  padding-top: 190px; /* Pushes page content perfectly below the 70px fixed header zone */
+}
 
 /* ADJUST WRAPPER BACK FROM PREVIOUS BODY PADDING OVERRIDES */
 body { padding: 0 0 40px 0; }
