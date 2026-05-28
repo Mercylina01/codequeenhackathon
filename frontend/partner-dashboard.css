@@ -1,7 +1,6 @@
-/*
+/* ==========================================================================
    AlumniArc Corporate & Talent Partner Workspace Stylesheet
-   2026
-*/
+   ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
@@ -14,9 +13,9 @@
   --smoke: #ede9fe;
   --line: #ddd6fe;
   --line-light: rgba(221, 214, 254, .45);
-  --accent: #b14b99;
-  --accent-soft: #ede9fe;
-  --accent-dark: #b455a2;
+  --accent: #5c0234;       /* Balanced Signature Dark Crimson/Purple */
+  --accent-soft: #fcf4f9;
+  --accent-dark: #3a0020;
   --mint: #059669;
   --mint-soft: #d1fae5;
   --orange: #f97316;
@@ -24,134 +23,168 @@
   --radius-sm: 12px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
 body {
   font-family: 'Outfit', sans-serif;
   background: var(--cream);
   color: var(--ink);
   min-height: 100vh;
+  padding-top: 70px; /* Structural safety offset for fixed header navigation layer */
   -webkit-font-smoothing: antialiased;
 }
 
-/* -------- NAVBAR RULES -------- */
+/* ==========================================================================
+   UNIFIED BRAND FIXED NAVBAR SYSTEM
+   ========================================================================== */
 .navbar {
-  position: sticky;
+  display: flex;
+  align-items: center;
+  background: rgba(42, 1, 38, 0.94); /* Deep corporate crimson block */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  position: fixed;
+  height: 70px;
   top: 0;
-  z-index: 100;
-  background: var(--white);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
-.navbar-inner {
+.navbar-container {
+  width: 100%;
   max-width: 1140px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  height: 58px;
+  justify-content: space-between;
   padding: 0 24px;
-  gap: 36px;
+}
+
+.nav-brand-link {
+  text-decoration: none;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .nav-logo {
-  height: 30px;
-  border-radius: 6px;
+  height: 44px;
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  object-fit: contain;
 }
 
 .nav-wordmark {
   font-family: 'Playfair Display', serif;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--ink);
+  color: #ffffff;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #ffffff;
+  cursor: pointer;
+  display: none; /* Invisible on desktop screens */
+  outline: none;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2px;
-  flex: 1;
+  gap: 6px;
 }
 
 .nav-links a {
   padding: 8px 14px;
-  font-size: 13.5px;
-  font-weight: 500;
-  color: var(--ink-soft);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all .15s;
+  transition: all 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: var(--ink);
-  background: var(--smoke);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-links a.active {
-  color: var(--accent);
-  background: var(--accent-soft);
-  font-weight: 600;
+  color: #ffffff;
+  background: var(--orange); /* Focal action state indicator tint */
 }
 
 .nav-links a.nav-logout {
-  color: var(--orange);
-  margin-left: auto;
+  color: #ef4444;
+  margin-left: 12px;
 }
 
-/* -------- CORE LAYOUT PANELS -------- */
+/* ==========================================================================
+   CORE INTERFACE PORTAL LAYOUT PANELS
+   ========================================================================== */
 .dashboard-body {
   max-width: 1140px;
-  margin: 32px auto;
-  padding: 0 24px 60px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
 }
 
 .welcome-hero {
-  background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+  background: linear-gradient(135deg, #1a0126 0%, #4a022a 100%);
   color: var(--white);
-  padding: 28px 32px;
+  padding: 32px;
   border-radius: var(--radius);
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 8px 32px rgba(26, 5, 51, 0.08);
+  gap: 20px;
 }
 
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -.4px;
 }
 
 .hero-text p {
-  font-size: 14.5px;
-  color: var(--line);
-  margin-top: 4px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 6px;
 }
 
 .partner-badge {
   background: rgba(249, 115, 22, 0.15);
   color: var(--orange);
   border: 1px solid var(--orange);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: .5px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-/* -------- PERFORMANCE STATS LAYOUT -------- */
+/* ==========================================================================
+   ANALYTICS SUMMARY MATRIX OVERVIEW
+   ========================================================================== */
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -159,49 +192,50 @@ body {
   margin-top: 24px;
 }
 
-@media (max-width: 768px) {
-  .metrics-grid { grid-template-columns: 1fr; }
-}
-
 .stat-card {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  padding: 20px;
+  padding: 24px;
   display: flex;
   align-items: center;
   gap: 16px;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
 }
 
 .stat-icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   background: #eff6ff;
   color: #2563eb;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
-.stat-icon.active-jobs { background: var(--accent-soft); color: var(--accent); }
+.stat-icon.active-jobs { background: #fae8ff; color: #d946ef; }
 .stat-icon.interviews { background: var(--mint-soft); color: var(--mint); }
 
 .stat-info { display: flex; flex-direction: column; }
-.stat-value { font-size: 22px; font-weight: 700; color: var(--ink); }
-.stat-label { font-size: 13px; color: var(--ink-soft); }
+.stat-value { font-size: 24px; font-weight: 700; color: var(--ink); }
+.stat-label { font-size: 13.5px; color: var(--ink-soft); font-weight: 500; }
 
-/* -------- TWIN WORKSPACE CONFIGURATION -------- */
+/* ==========================================================================
+   TWIN RESPONSIVE SPLIT PANELS LAYOUT
+   ========================================================================== */
 .workspace-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
   margin-top: 24px;
-}
-
-@media (max-width: 900px) {
-  .workspace-layout { grid-template-columns: 1fr; }
+  align-items: start;
 }
 
 .content-box {
@@ -209,17 +243,20 @@ body {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 24px;
+  margin-bottom: 24px;
 }
 
 .box-header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .box-title {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
+  font-size: 19px;
   color: var(--ink);
   display: flex;
   align-items: center;
@@ -227,19 +264,21 @@ body {
 }
 
 .box-count-tag {
-  font-size: 11px;
+  font-size: 12px;
   background: var(--smoke);
   color: var(--ink-soft);
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 99px;
   font-weight: 600;
 }
 
-/* -------- FILTER BAR COMPONENT -------- */
+/* ==========================================================================
+   TALENT FILTER CONTROL DECK
+   ========================================================================== */
 .search-filter-bar {
   display: flex;
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -254,6 +293,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   color: var(--ink-faint);
+  font-size: 18px;
 }
 
 .search-filter-bar input,
@@ -264,19 +304,27 @@ body {
   background: var(--cream);
   border: 1.5px solid var(--line);
   border-radius: 8px;
-  padding: 10px 14px;
+  padding: 12px 14px;
   outline: none;
   color: var(--ink);
+  transition: border-color 0.15s ease;
 }
 
-.search-filter-bar input { padding-left: 38px; }
+.search-filter-bar input:focus,
+.search-filter-bar select:focus {
+  border-color: var(--ink-soft);
+}
+
+.search-filter-bar input { padding-left: 42px; }
 
 .search-filter-bar select {
   width: 160px;
   cursor: pointer;
 }
 
-/* -------- TALENT REGISTRY CARDS -------- */
+/* ==========================================================================
+   TALENT REGISTRY CARD LAYOUT SYSTEM
+   ========================================================================== */
 .talent-registry {
   display: flex;
   flex-direction: column;
@@ -286,25 +334,25 @@ body {
 .talent-card {
   border: 1px solid var(--line-light);
   border-radius: var(--radius-sm);
-  padding: 18px;
+  padding: 20px;
   background: var(--white);
   transition: transform .2s, box-shadow .2s;
 }
 
 .talent-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(107, 79, 160, 0.05);
+  box-shadow: 0 8px 24px rgba(107, 79, 160, 0.06);
 }
 
 .talent-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .candidate-avatar {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: #eff6ff;
   color: #2563eb;
@@ -313,163 +361,358 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .candidate-avatar.color-b { background: var(--accent-soft); color: var(--accent); }
 
 .candidate-identity { flex: 1; }
-.candidate-identity h3 { font-size: 16px; color: var(--ink); }
-.candidate-identity p { font-size: 12.5px; color: var(--ink-soft); }
+.candidate-identity h3 { font-size: 17px; color: var(--ink); font-weight: 600; }
+.candidate-identity p { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
 
 .cohort-tag {
   font-size: 11px;
   background: var(--mint-soft);
   color: var(--mint);
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 99px;
   font-weight: 600;
 }
 
 .talent-card p.candidate-bio {
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--ink-soft);
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .candidate-skills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .skill-pill {
-  font-size: 11.5px;
+  font-size: 12px;
   background: var(--cream);
   color: var(--ink-soft);
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 6px;
   border: 1px solid var(--line-light);
 }
 
 .talent-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: 18px;
   border-top: 1px solid var(--line-light);
-  padding-top: 14px;
+  padding-top: 16px;
 }
 
 .btn-action-outline {
   flex: 1;
   text-align: center;
   text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 13.5px;
+  font-weight: 600;
   color: var(--ink-soft);
   border: 1.5px solid var(--line);
-  padding: 8px;
-  border-radius: 6px;
-  transition: background .15s;
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all .15s ease;
 }
 
-.btn-action-outline:hover { background: var(--cream); }
+.btn-action-outline:hover { 
+  background: var(--cream); 
+  color: var(--ink);
+}
 
 .btn-action-primary {
-  flex: 1.2;
+  flex: 1.3;
   font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #fff;
   background: var(--accent);
   border: none;
-  padding: 8px;
-  border-radius: 6px;
+  padding: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background .15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background .15s ease;
 }
 
 .btn-action-primary:hover { background: var(--accent-dark); }
 
-/* -------- VACANCY SUBMISSION SIDEBAR -------- */
-.form-field { margin-bottom: 14px; }
+/* ==========================================================================
+   SUSTAINABILITY & MONETIZATION PREMIUM AD MODULE
+   ========================================================================== */
+.monetization-box {
+  background: linear-gradient(to bottom right, #ffffff, #fff9f5);
+  border: 2px solid rgba(249, 115, 22, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.tier-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tier-icon {
+  font-size: 26px;
+  color: var(--orange);
+  background: rgba(249, 115, 22, 0.1);
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.tier-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.tier-desc {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.monetization-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.monetization-perks p {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text-orange { color: var(--orange); font-size: 16px; }
+.text-purple { color: var(--ink-soft); font-size: 16px; }
+.text-muted { color: var(--ink-faint); font-size: 16px; }
+
+.btn-upgrade-premium {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--orange) 0%, #ea580c 100%);
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-upgrade-premium:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+}
+
+/* ==========================================================================
+   FORM CONTROLS & SIDEBAR PLACEMENT UTILITIES
+   ========================================================================== */
+#quick-job-form {
+  margin-top: 18px;
+}
+
+.form-field { margin-bottom: 16px; }
 .form-field label {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--ink-soft);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .form-field input,
 .form-field select {
   width: 100%;
   font-family: 'Outfit', sans-serif;
-  font-size: 13.5px;
+  font-size: 14px;
   background: var(--cream);
   border: 1.5px solid var(--line);
-  border-radius: 6px;
-  padding: 9px 12px;
+  border-radius: 8px;
+  padding: 11px 12px;
   outline: none;
   color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: var(--ink-soft);
 }
 
 .btn-submit-job {
   width: 100%;
   font-family: 'Outfit', sans-serif;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   background: var(--ink);
   color: #fff;
   border: none;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
   margin-top: 6px;
-  transition: background .15s;
+  transition: background .15s ease;
 }
 
 .btn-submit-job:hover { background: var(--ink-soft); }
 
-/* -------- JOB LISTINGS -------- */
 .job-mini-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .job-mini-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 12px;
+  padding: 12px;
   border-radius: 8px;
   background: var(--cream);
   border: 1px solid var(--line-light);
+  gap: 10px;
 }
 
-.mini-job-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-.mini-job-meta { font-size: 11.5px; color: var(--ink-faint); }
+.mini-job-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+.mini-job-meta { font-size: 12px; color: var(--ink-faint); margin-top: 2px; }
 
 .mini-status-badge {
   font-size: 10px;
   font-weight: 700;
   color: var(--mint);
   background: var(--mint-soft);
-  padding: 2px 8px;
+  padding: 3px 8px;
   border-radius: 4px;
 }
 
-/* -------- HELPER FUNCTION UTILITIES -------- */
+/* ==========================================================================
+   UI HELPER SYSTEM & MOTION STATES
+   ========================================================================== */
 .hidden-item { display: none !important; }
 
 .item-animated {
-  animation: slideIn 0.35s ease forwards;
+  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(-8px); }
+  from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   STRICT RESPONSIBILITY MEDIA BREAKPOINTS OVERLAYS
+   ========================================================================== */
+
+/* Tablet & Smaller Workspaces */
+@media (max-width: 960px) {
+  .workspace-layout {
+    grid-template-columns: 1fr; /* Drop secondary components into vertical row flow stack */
+  }
+}
+
+/* Standard Mobile Adaptations */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+
+  .menu-btn {
+    display: block; /* Activate responsive drop stack button trigger */
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #2a0126;
+    padding: 16px;
+    border-bottom: 2px solid var(--orange);
+    gap: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  .nav-links.hidden {
+    display: none;
+  }
+  
+  /* When toggle clears .hidden class */
+  .nav-links:not(.hidden) {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .nav-links a.nav-logout {
+    margin-left: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 14px;
+  }
+
+  .welcome-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+
+  .partner-badge {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr; /* Convert analytics dashboard into clean rows */
+    gap: 14px;
+  }
+
+  .search-filter-bar {
+    flex-direction: column;
+  }
+
+  .search-filter-bar select {
+    width: 100%; /* Forms take uniform 100% real estate widths */
+  }
+
+  .talent-actions {
+    flex-direction: column; /* Stack contact portfolio buttons cleanly on phones */
+    gap: 10px;
+  }
+  
+  .btn-action-outline, .btn-action-primary {
+    width: 100%;
+  }
 }
